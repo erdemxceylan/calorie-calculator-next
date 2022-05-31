@@ -9,3 +9,63 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.table {
+  margin: 0.5rem;
+}
+
+.table th:first-of-type {
+  padding: 0.75rem !important;
+  padding-right: 0.25rem !important;
+}
+
+.table th {
+  padding: 0.75rem 0.25rem 0.75rem 0.25rem !important;
+}
+
+.table th:nth-child(6) {
+  padding: 0.75rem !important;
+  padding-left: 0.25rem !important;
+}
+
+.table th:nth-child(5) > div,
+.table th:nth-child(6) > div {
+  justify-content: center;
+}
+
+.table tbody tr td:first-of-type {
+  padding: 0.25rem !important;
+  padding-left: 0.75rem !important;
+}
+
+.table tbody tr td {
+  padding: 0.25rem !important;
+}
+
+.table tbody tr td:nth-child(6) {
+  padding: 0.25rem !important;
+  padding-right: 0.75rem !important;
+}
+
+/* p-datatable-footer */
+.table > div > div:last-child {
+  padding: 0;
+}
+
+.modal > div:nth-child(1) {
+  padding: 1rem;
+}
+
+.modal > div:nth-child(2),
+.modal > div:nth-child(3) {
+  padding: 0rem 1rem 1rem 1rem;
+}
+
+.modal > div:nth-child(4) {
+  display: none; /* disables resizability */
+}
+
+.invalid {
+  color: #ff0c00 !important;
+  border-color: #ff0c00 !important;
+}

@@ -1,0 +1,19 @@
+.button {
+  margin: 0.5rem !important;
+}
+
+.input {
+  margin: 0.25rem !important;
+  padding: 0.25rem !important;
+  width: 75% !important;
+}
+
+.deletion-button {
+  width: 2rem !important;
+  height: 2rem !important;
+  color: #6c757d !important;
+  border: 0 none !important;
+  background: transparent !important;
+  border-radius: 50% !important;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s !important;
+}

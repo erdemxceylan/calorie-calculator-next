@@ -1,0 +1,60 @@
+.desktop {
+  display: none;
+}
+
+.mobile {
+  margin: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.mobile h4,
+.desktop h4 {
+  margin: 0;
+  padding: 0.25rem;
+  color: lightseagreen;
+  text-align: center;
+}
+
+.mobile p,
+.desktop p {
+  margin: 0;
+  padding: 0.25rem;
+  color: grey;
+  text-align: center;
+}
+
+.success {
+  color: #22c55e !important;
+}
+
+.excess {
+  color: #ff2020 !important;
+}
+
+@media (min-width: 36rem) {
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .group-unit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

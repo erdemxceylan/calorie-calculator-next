@@ -1,0 +1,15 @@
+.switch {
+  padding: 0 !important;
+  border: 0 !important;
+  background-color: #ffffff !important;
+  color: #3b82f6 !important;
+  font-size: 0.9rem !important;
+}
+
+.form {
+  width: 18rem;
+  height: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
