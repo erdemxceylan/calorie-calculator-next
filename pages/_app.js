@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
     <Fragment>
       <Head>
         <title>Calorie Calculator</title>
-        <meta name='description' content='Calculate total nutrition facts with ease' />
+        <meta name='description' content='Calculate daily total nutrition facts with ease' />
       </Head>
       <Layout>
         <Component {...pageProps} />

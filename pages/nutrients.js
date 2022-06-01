@@ -1,4 +1,4 @@
-import NutrientList from '../components/NutrientList/NutrientList';
+import NutrientList from '../components/nutrients/NutrientList';
 
 export default function NutrientPage() {
    return <NutrientList />;
