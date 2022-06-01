@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputText } from 'primereact/inputtext';
-import useValidateInput from '../../../hooks/use-validate-input';
+import useValidateInput from '../../../../hooks/use-validate-input';
 import mainStyles from '../../../App.module.css';
 
 const MIN = 1;

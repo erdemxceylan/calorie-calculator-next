@@ -1,7 +1,7 @@
 import { Fragment, /*useContext,*/ useState } from 'react';
 // import useHttpRequest from '../../hooks/use-http-request';
 // import DatabaseContext from '../../global/context/database';
-import AddNutrientModal from './components/AddNutrientModal';
+import AddNutrientModal from '../modals/AddNutrientModal/AddNutrientModal';
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { InputText } from 'primereact/inputtext';

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { modalActions } from '../../global/redux/modal';
-import AuthContext from '../../global/context/auth';
-import useHttpRequest from '../../hooks/use-http-request';
+import { modalActions } from '../../../global/redux/modal';
+import AuthContext from '../../../global/context/auth';
+import useHttpRequest from '../../../hooks/use-http-request';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import LoginModalForm from './components/LoginModalForm';

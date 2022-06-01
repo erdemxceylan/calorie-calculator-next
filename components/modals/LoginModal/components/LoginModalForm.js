@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { InputText } from 'primereact/inputtext';
-import useValidateInput from '../../../hooks/use-validate-input';
+import useValidateInput from '../../../../hooks/use-validate-input';
 import mainStyles from '../../../App.module.css';
 
 const ADMIN = 'admin@test.com';
