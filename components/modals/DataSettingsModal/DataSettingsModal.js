@@ -1,15 +1,11 @@
 // import { useContext } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import DataSettingsModalForm from './components/DataSettingsModalForm';
 // import useHttpRequest from '../../hooks/use-http-request';
-// import { modalActions } from '../../global/redux/modal';
 // import DatabaseContext from '../../global/context/database';
 
 export default function DataSettings(props) {
-   // const displayDataSettings = useSelector(state => state.modal.displayDataSettings);
-   // const dispatch = useDispatch();
    // const database = useContext(DatabaseContext);
    // const { error, sendRequest } = useHttpRequest();
    let formData = {};
@@ -32,18 +28,18 @@ export default function DataSettings(props) {
 
       if (!formData.isValid) return;
 
-      sendRequest({
-         url: 'http://localhost:8080/update-settings',
-         method: 'PUT',
-         body: {
-            dailyCalorieNeed: formData.dailyCalorieNeed,
-            weight: formData.weight,
-            fatRatio: formData.fatRatio,
-            fitnessGoal: formData.fitnessGoal
-         }
-      }, database.updateDailyTargetValues);
+      // sendRequest({
+      //    url: 'http://localhost:8080/update-settings',
+      //    method: 'PUT',
+      //    body: {
+      //       dailyCalorieNeed: formData.dailyCalorieNeed,
+      //       weight: formData.weight,
+      //       fatRatio: formData.fatRatio,
+      //       fitnessGoal: formData.fitnessGoal
+      //    }
+      // }, database.updateDailyTargetValues);
 
-      if (error) console.log(error);
+      // if (error) console.log(error);
 
       formData.reset();
       props.onHide();

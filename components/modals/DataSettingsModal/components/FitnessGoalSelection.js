@@ -13,7 +13,7 @@ export default function FitnessGoalSelection(props) {
    return (
       <div className={styles.radio}>
          <h4>Fitness Goal</h4>
-         <div className="p-field-radiobutton">
+         <div className='p-field-radiobutton'>
             <RadioButton
                inputId={WEIGHT_GAIN}
                value={WEIGHT_GAIN}
@@ -22,7 +22,7 @@ export default function FitnessGoalSelection(props) {
             />
             <label htmlFor={WEIGHT_GAIN}>{WEIGHT_GAIN}</label>
          </div>
-         <div className="p-field-radiobutton">
+         <div className='p-field-radiobutton'>
             <RadioButton
                inputId={WEIGHT_LOSS}
                value={WEIGHT_LOSS}

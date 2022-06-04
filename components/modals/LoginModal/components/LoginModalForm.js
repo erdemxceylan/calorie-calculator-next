@@ -5,7 +5,7 @@ import useValidateInput from '../../../../hooks/use-validate-input';
 
 const ADMIN = 'admin@test.com';
 
-function LoginModalForm(props) {
+export default function LoginModalForm(props) {
    const auth = useContext(AuthContext);
 
    const {
@@ -69,5 +69,3 @@ function LoginModalForm(props) {
       </Fragment>
    );
 }
-
-export default LoginModalForm;

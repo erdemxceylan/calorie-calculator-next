@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import AddNutrientMenu from './components/AddNutrientMenu';
 import ConsumedNutrientsTable from './components/ConsumedNutrientsTable';

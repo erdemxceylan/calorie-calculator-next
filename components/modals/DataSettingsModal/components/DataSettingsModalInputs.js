@@ -68,7 +68,7 @@ export default function DataSettingsModalInputs(props) {
             type={NUMBER}
             min={MIN}
             max={MAX_ENTERED_DAILY_CALORIE_NEED}
-            placeholder="Daily Calorie Need (kcal)"
+            placeholder='Daily Calorie Need (kcal)'
             value={enteredDailyCalorieNeed}
             onChange={e => enteredDailyCalorieNeedChangeHandler(e)}
             onBlur={enteredDailyCalorieNeedBlurHandler}
@@ -78,7 +78,7 @@ export default function DataSettingsModalInputs(props) {
             type={NUMBER}
             min={MIN}
             max={MAX_ENTERED_WEIGHT}
-            placeholder="Weight (kg)"
+            placeholder='Weight (kg)'
             value={enteredWeight}
             onChange={e => enteredWeightChangeHandler(e)}
             onBlur={enteredWeightBlurHandler}
@@ -88,7 +88,7 @@ export default function DataSettingsModalInputs(props) {
             type={NUMBER}
             min={MIN}
             max={MAX_ENTERED_FAT_RATIO}
-            placeholder="Fat Ratio (%)"
+            placeholder='Fat Ratio (%)'
             value={enteredFatRatio}
             onChange={e => enteredFatRatioChangeHandler(e)}
             onBlur={enteredFatRatioBlurHandler}

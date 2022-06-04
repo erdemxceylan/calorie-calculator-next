@@ -3,10 +3,10 @@ import FitnessGoalSelection from './FitnessGoalSelection';
 import styles from './DataSettingsModalForm.module.css';
 import cn from 'classnames';
 
-function DataSettingsModalForm(props) {
+export default function DataSettingsModalForm(props) {
 
-   function getInputData(inputData) {
-      props.sendInputData(inputData);
+   function getInputData(data) {
+      props.sendInputData(data);
    };
 
    function getFitnessGoal(goal) {
@@ -14,11 +14,9 @@ function DataSettingsModalForm(props) {
    }
 
    return (
-      <div className={cn("p-fluid", styles.form)}>
+      <div className={cn('p-fluid', styles.form)}>
          <DataSettingsModalInputs sendInputData={getInputData} />
          <FitnessGoalSelection sendFitnessGoal={getFitnessGoal} />
       </div>
    );
 }
-
-export default DataSettingsModalForm;
