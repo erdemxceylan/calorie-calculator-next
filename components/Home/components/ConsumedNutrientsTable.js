@@ -19,7 +19,7 @@ const CONSUMED_QUANTITY = 'consumedQuantity';
 const CALORIES_TAKEN = 'caloriesTaken';
 const PROTEINS_TAKEN = 'proteinsTaken';
 
-export default function ConsumedNutrientsTable() {
+export default function ConsumedNutrientsTable(props) {
 
    const consumedNutrients = useSelector(state => state.consumedNutrients.consumedNutrients);
    const dispatch = useDispatch();
@@ -91,7 +91,7 @@ export default function ConsumedNutrientsTable() {
          editMode='row'
          onRowEditComplete={rowEditCompletionHandler}
          responsiveLayout='scroll'
-         footer={<TotalValues />}
+         footer={<TotalValues settings={props.settings} />}
       >
          {consumedNutrientsTableColumns.map(({ field, header }) => {
             if (field === CONSUMED_QUANTITY) {

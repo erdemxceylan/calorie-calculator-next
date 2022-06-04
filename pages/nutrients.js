@@ -7,6 +7,5 @@ export default function NutrientPage(props) {
 
 export async function getStaticProps() {
    const response = await axios.get('http://localhost:8080/nutrients');
-
    return { props: { nutrients: response.data } };
 }

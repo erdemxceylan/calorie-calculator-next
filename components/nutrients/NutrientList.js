@@ -1,6 +1,5 @@
 import { Fragment, useContext, useState } from 'react';
 // import useHttpRequest from '../../hooks/use-http-request';
-// import DatabaseContext from '../../global/context/database';
 import AddNutrientModal from '../modals/AddNutrientModal/AddNutrientModal';
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
@@ -9,8 +8,6 @@ import { Column } from 'primereact/column';
 import styles from './NutrientList.module.css';
 import cn from 'classnames';
 import AuthContext from '../../global/context/auth';
-
-// import DUMMY_NUTRIENTS from '../../test/dummy-nutrients';
 
 const NAME = 'Name';
 const UNIT = 'Unit';
@@ -27,7 +24,6 @@ const PROTEINS_FIELD = 'proteins';
 
 export default function NutrientList(props) {
    const [displayAddNutrientModal, setDisplayAddNutrientModal] = useState(false);
-   // const database = useContext(DatabaseContext);
    const auth = useContext(AuthContext);
    // const { sendRequest: sendUpdateRequest } = useHttpRequest();
    // const { sendRequest: sendDeleteRequest } = useHttpRequest();

@@ -1,15 +1,13 @@
-import { useState, /*useContext*/ } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrients';
-// import DatabaseContext from '../../../global/context/database';
 import styles from './AddNutrientMenu.module.css';
 import cn from 'classnames';
 
 export default function AddNutrientMenu(props) {
-   // const database = useContext(DatabaseContext);
    const [selectedNutrient, setSelectedNutrient] = useState(null);
    const [consumedQuantity, setConsumedQuantity] = useState('');
 

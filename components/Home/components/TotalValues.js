@@ -1,20 +1,13 @@
-// import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { Fragment } from 'react';
-// import DatabaseContext from '../../../global/context/database';
 import styles from './TotalValues.module.css';
 
-export default function TotalValues() {
+export default function TotalValues(props) {
    const totalCalories = useSelector(state => state.consumedNutrients.totalCalories).toFixed(2);
    const totalProteins = useSelector(state => state.consumedNutrients.totalProteins).toFixed(2);
-   // const database = useContext(DatabaseContext);
-   // const dailyCalorieTargetLowerBound = database.dailyTargetValues.dailyCalorieTargetLowerBound;
-   // const dailyCalorieTargetUpperBound = database.dailyTargetValues.dailyCalorieTargetUpperBound;
-   // const dailyProteinNeed = database.dailyTargetValues.dailyProteinNeed;
-
-   const dailyCalorieTargetLowerBound = 1500;
-   const dailyCalorieTargetUpperBound = 2000;
-   const dailyProteinNeed = 150;
+   const dailyCalorieTargetLowerBound = props.settings.dailyCalorieTargetLowerBound;
+   const dailyCalorieTargetUpperBound = props.settings.dailyCalorieTargetUpperBound;
+   const dailyProteinNeed = props.settings.dailyProteinNeed;
 
    const dailyCalorieTargetInterval = `${dailyCalorieTargetLowerBound} - ${dailyCalorieTargetUpperBound}`;
 

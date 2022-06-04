@@ -9,7 +9,7 @@ export default function Home(props) {
    return (
       <Fragment>
          <AddNutrientMenu nutrients={props.nutrients} />
-         {!isEmpty && <ConsumedNutrientsTable />}
+         {!isEmpty && <ConsumedNutrientsTable settings={props.settings} />}
       </Fragment>
    );
 }
