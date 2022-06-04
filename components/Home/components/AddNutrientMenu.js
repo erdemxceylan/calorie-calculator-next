@@ -8,9 +8,7 @@ import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrien
 import styles from './AddNutrientMenu.module.css';
 import cn from 'classnames';
 
-import DUMMY_NUTRIENTS from '../../../test/dummy-nutrients';
-
-export default function AddNutrientMenu() {
+export default function AddNutrientMenu(props) {
    // const database = useContext(DatabaseContext);
    const [selectedNutrient, setSelectedNutrient] = useState(null);
    const [consumedQuantity, setConsumedQuantity] = useState('');
@@ -42,7 +40,7 @@ export default function AddNutrientMenu() {
          <Dropdown
             className={styles.dropdown}
             value={selectedNutrient}
-            options={DUMMY_NUTRIENTS}
+            options={props.nutrients}
             onChange={e => setSelectedNutrient(e.target.value)}
             optionLabel='name'
             filter showClear filterBy='name'
