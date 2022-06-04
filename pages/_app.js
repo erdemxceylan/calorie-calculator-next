@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
 import { Provider } from 'react-redux';
+import { AuthContextProvider } from '../global/context/auth';
 import store from '../global/redux/index';
 import Layout from '../components/layout/Layout';
 import 'primereact/resources/themes/lara-light-blue/theme.css';
@@ -16,9 +17,11 @@ function MyApp({ Component, pageProps }) {
         <meta name='description' content='Calculate daily total nutrition facts with ease' />
       </Head>
       <Provider store={store}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <AuthContextProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </AuthContextProvider>
       </Provider>
     </Fragment>
   );

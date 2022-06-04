@@ -1,12 +1,12 @@
-import { Fragment } from 'react';
-import { useSelector } from 'react-redux';
+import { Fragment, useContext } from 'react';
 import { InputText } from 'primereact/inputtext';
+import AuthContext from '../../../../global/context/auth';
 import useValidateInput from '../../../../hooks/use-validate-input';
 
 const ADMIN = 'admin@test.com';
 
 function LoginModalForm(props) {
-   const isLoggingIn = useSelector(state => state.modal.isLoggingIn);
+   const auth = useContext(AuthContext);
 
    const {
       value: enteredEmail,
@@ -44,7 +44,7 @@ function LoginModalForm(props) {
 
    const isAdmin = enteredEmail === ADMIN;
 
-   if (!isLoggingIn && isAdmin) {
+   if (!auth.isLoggingIn && isAdmin) {
       alert(`${ADMIN} is reserved`);
       resetInputs();
       areInputsValid = false;

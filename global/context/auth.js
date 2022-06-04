@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 
 const AuthContext = React.createContext({
    token: '',
+   isLoggingIn: true,
    isLoggedIn: false,
    isAdminLoggedIn: false,
    login: function (token, email) { },
    logout: function () { },
+   switchToSignup: function () { }
 });
 
 const ADMIN = 'admin@test.com';
 
 export function AuthContextProvider(props) {
    const [token, setToken] = useState(null);
+   const [isLoggingIn, setIsLoggingIn] = useState(true);
    const [isAdmin, setIsAdmin] = useState(false);
 
    const isLoggedIn = !!token;
@@ -27,7 +30,11 @@ export function AuthContextProvider(props) {
       setIsAdmin(false);
    }
 
-   const value = { token, isLoggedIn, isAdminLoggedIn, login, logout };
+   function switchToSignup() {
+      setIsLoggingIn(!isLoggingIn);
+   }
+
+   const value = { token, isLoggingIn, isLoggedIn, isAdminLoggedIn, login, logout, switchToSignup };
 
    return (
       <AuthContext.Provider value={value}>
