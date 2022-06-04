@@ -7,16 +7,12 @@ import DataSettingsModalForm from './components/DataSettingsModalForm';
 // import { modalActions } from '../../global/redux/modal';
 // import DatabaseContext from '../../global/context/database';
 
-function DataSettings() {
+export default function DataSettings(props) {
    // const displayDataSettings = useSelector(state => state.modal.displayDataSettings);
    // const dispatch = useDispatch();
    // const database = useContext(DatabaseContext);
    // const { error, sendRequest } = useHttpRequest();
    let formData = {};
-
-   function closeHandler() {
-      dispatch(modalActions.hideDataSettings());
-   }
 
    function getInputData(inputData) {
       formData.reset = inputData.resetForm;
@@ -50,7 +46,7 @@ function DataSettings() {
       if (error) console.log(error);
 
       formData.reset();
-      closeHandler();
+      props.onHide();
    }
 
    const submitButton = (
@@ -65,13 +61,11 @@ function DataSettings() {
       <Dialog
          className='modal'
          header='Data Settings'
-         visible={displayDataSettings}
-         onHide={closeHandler}
+         visible={props.visible}
+         onHide={props.onHide}
          footer={submitButton}
       >
          <DataSettingsModalForm sendInputData={getInputData} sendFitnessGoal={getFitnessGoal} />
       </Dialog>
    );
 }
-
-export default DataSettings;

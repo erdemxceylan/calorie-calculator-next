@@ -1,8 +1,7 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { InputText } from 'primereact/inputtext';
 import useValidateInput from '../../../../hooks/use-validate-input';
-import mainStyles from '../../../App.module.css';
 
 const ADMIN = 'admin@test.com';
 
@@ -52,22 +51,22 @@ function LoginModalForm(props) {
    }
 
    return (
-      <React.Fragment>
+      <Fragment>
          <InputText
-            className={enteredEmailHasError ? mainStyles.invalid : null}
+            className={enteredEmailHasError ? 'invalid' : null}
             placeholder='Email'
             value={enteredEmail}
             onChange={e => enteredEmailChangeHandler(e)}
             onBlur={enteredEmailBlurHandler}
          />
          <InputText
-            className={enteredPasswordHasError ? mainStyles.invalid : null}
+            className={enteredPasswordHasError ? 'invalid' : null}
             placeholder='Password'
             value={enteredPassword}
             onChange={e => enteredPasswordChangeHandler(e)}
             onBlur={enteredPasswordBlurHandler}
          />
-      </React.Fragment>
+      </Fragment>
    );
 }
 

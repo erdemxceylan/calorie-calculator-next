@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { RadioButton } from 'primereact/radiobutton';
 import styles from './FitnessGoalSelection.module.css';
 
 const WEIGHT_GAIN = 'Weight Gain';
 const WEIGHT_LOSS = 'Weight Loss';
 
-function FitnessGoalSelection(props) {
+export default function FitnessGoalSelection(props) {
    const [enteredFitnessGoal, setEnteredFitnessGoal] = useState(WEIGHT_GAIN);
 
    props.sendFitnessGoal(enteredFitnessGoal);
@@ -34,5 +34,3 @@ function FitnessGoalSelection(props) {
       </div>
    );
 }
-
-export default FitnessGoalSelection;

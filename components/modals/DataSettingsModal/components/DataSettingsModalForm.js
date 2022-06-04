@@ -1,4 +1,3 @@
-import React from 'react';
 import DataSettingsModalInputs from './DataSettingsModalInputs';
 import FitnessGoalSelection from './FitnessGoalSelection';
 import styles from './DataSettingsModalForm.module.css';

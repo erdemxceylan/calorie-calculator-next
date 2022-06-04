@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Dialog } from 'primereact/dialog';
+import { Button } from 'primereact/button';
 import { modalActions } from '../../../global/redux/modal';
 import AuthContext from '../../../global/context/auth';
 import useHttpRequest from '../../../hooks/use-http-request';
-import { Dialog } from 'primereact/dialog';
-import { Button } from 'primereact/button';
 import LoginModalForm from './components/LoginModalForm';
-import mainStyles from '../../App.module.css';
 import styles from './LoginModal.module.css';
 
 const WEB_API_KEY = 'AIzaSyCayV-EV6nQ6yPmmyoxp8FaYswze90k_QA';
@@ -16,17 +15,12 @@ const SIGN_UP_URL = SIGN_UP_BASE_URL + WEB_API_KEY;
 const SIGN_IN_URL = SIGN_IN_BASE_URL + WEB_API_KEY;
 const POST = 'POST';
 
-function LoginModal() {
-   const displayLogin = useSelector(state => state.modal.displayLogin);
+export default function LoginModal(props) {
    const isLoggingIn = useSelector(state => state.modal.isLoggingIn);
    const dispatch = useDispatch();
    const auth = useContext(AuthContext);
    const { sendRequest: sign } = useHttpRequest();
    let formData = {};
-
-   function closeHandler() {
-      dispatch(modalActions.hideLogin());
-   }
 
    function switchHandler() {
       dispatch(modalActions.switchSignup());
@@ -77,10 +71,10 @@ function LoginModal() {
 
    return (
       <Dialog
-         className={mainStyles.modal}
+         className='modal'
          header={isLoggingIn ? 'Login' : 'Sign up'}
-         visible={displayLogin}
-         onHide={closeHandler}
+         visible={props.visible}
+         onHide={props.onHide}
          footer={switchButton}
       >
          <div className={styles.form}>
@@ -90,5 +84,3 @@ function LoginModal() {
       </Dialog>
    );
 }
-
-export default LoginModal;

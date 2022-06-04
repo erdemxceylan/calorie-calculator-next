@@ -52,7 +52,7 @@ export default function AddNutrientModal(props) {
       <Dialog
          className='modal'
          header='Add New Nutrient'
-         visible={props.displayModal}
+         visible={props.visible}
          onHide={props.onHide}
          footer={submitButton}
       >

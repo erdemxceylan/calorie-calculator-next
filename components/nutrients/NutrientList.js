@@ -154,9 +154,8 @@ export default function NutrientList() {
                {auth.isAdminLoggedIn && deletionColumn} */}
             </DataTable>
          </div>
-         {isvisible && <modal></modal>}
          <AddNutrientModal
-            displayModal={true}
+            visible={displayAddNutrientModal}
             onHide={setDisplayAddNutrientModal.bind(null, false)}
          />
       </Fragment>
