@@ -8,8 +8,9 @@ import { InputText } from 'primereact/inputtext';
 import { Column } from 'primereact/column';
 import styles from './NutrientList.module.css';
 import cn from 'classnames';
-import DUMMY_NUTRIENTS from '../../test/dummy-nutrients';
 import AuthContext from '../../global/context/auth';
+
+// import DUMMY_NUTRIENTS from '../../test/dummy-nutrients';
 
 const NAME = 'Name';
 const UNIT = 'Unit';
@@ -24,7 +25,7 @@ const PROTEINS_FIELD = 'proteins';
 // const UPDATE_URL = 'http://localhost:8080/update-nutrient';
 // const DELETE_URL = 'http://localhost:8080/delete-nutrient';
 
-export default function NutrientList() {
+export default function NutrientList(props) {
    const [displayAddNutrientModal, setDisplayAddNutrientModal] = useState(false);
    // const database = useContext(DatabaseContext);
    const auth = useContext(AuthContext);
@@ -144,7 +145,7 @@ export default function NutrientList() {
          {auth.isAdminLoggedIn && addNewNutrientButton}
          <div className={cn('card p-fluid', 'table')}>
             <DataTable
-               value={DUMMY_NUTRIENTS}
+               value={props.nutrients}
                editMode='row'
                onRowEditComplete={rowEditCompletionHandler}
                responsiveLayout='scroll'

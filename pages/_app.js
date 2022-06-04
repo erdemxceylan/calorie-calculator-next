@@ -9,7 +9,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   return (
     <Fragment>
       <Head>
@@ -26,5 +26,3 @@ function MyApp({ Component, pageProps }) {
     </Fragment>
   );
 }
-
-export default MyApp;
