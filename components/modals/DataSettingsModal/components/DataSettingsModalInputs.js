@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { InputText } from 'primereact/inputtext';
 import useValidateInput from '../../../../hooks/use-validate-input';
 
@@ -61,7 +62,7 @@ export default function DataSettingsModalInputs(props) {
    });
 
    return (
-      <React.Fragment>
+      <Fragment>
          <InputText
             className={enteredDailyCalorieNeedHasError ? 'invalid' : null}
             type={NUMBER}
@@ -92,6 +93,6 @@ export default function DataSettingsModalInputs(props) {
             onChange={e => enteredFatRatioChangeHandler(e)}
             onBlur={enteredFatRatioBlurHandler}
          />
-      </React.Fragment>
+      </Fragment>
    );
 }

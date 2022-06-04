@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function useValidateInput(validateValue) {
+export default function useValidateInput(validateValue) {
    const [value, setValue] = useState('');
    const [isTouched, setIsTouched] = useState(false);
 
@@ -22,5 +22,3 @@ function useValidateInput(validateValue) {
 
    return { value, isValid, hasError, valueChangeHandler, inputBlurHandler, reset };
 }
-
-export default useValidateInput;

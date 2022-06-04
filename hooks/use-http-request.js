@@ -6,7 +6,7 @@ const POST = 'POST';
 const PUT = 'PUT';
 const DELETE = 'DELETE';
 
-function useHttpRequest() {
+export default function useHttpRequest() {
    const [isLoading, setIsLoading] = useState(false);
    const [error, setError] = useState(null);
 
@@ -47,6 +47,4 @@ function useHttpRequest() {
    }, []);
 
    return { isLoading, error, sendRequest };
-};
-
-export default useHttpRequest;
+}

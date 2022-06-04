@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
+import { Provider } from 'react-redux';
+import store from '../global/redux/index';
 import Layout from '../components/layout/Layout';
 import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
@@ -13,9 +15,11 @@ function MyApp({ Component, pageProps }) {
         <title>Calorie Calculator</title>
         <meta name='description' content='Calculate daily total nutrition facts with ease' />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
     </Fragment>
   );
 }
