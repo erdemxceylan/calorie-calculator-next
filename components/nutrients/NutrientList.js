@@ -1,4 +1,4 @@
-import { Fragment, /*useContext,*/ useState } from 'react';
+import { Fragment, useContext, useState } from 'react';
 // import useHttpRequest from '../../hooks/use-http-request';
 // import DatabaseContext from '../../global/context/database';
 import AddNutrientModal from '../modals/AddNutrientModal/AddNutrientModal';
@@ -9,7 +9,7 @@ import { Column } from 'primereact/column';
 import styles from './NutrientList.module.css';
 import cn from 'classnames';
 import DUMMY_NUTRIENTS from '../../test/dummy-nutrients';
-// import AuthContext from '../../global/context/auth';
+import AuthContext from '../../global/context/auth';
 
 const NAME = 'Name';
 const UNIT = 'Unit';
@@ -27,7 +27,7 @@ const PROTEINS_FIELD = 'proteins';
 export default function NutrientList() {
    const [displayAddNutrientModal, setDisplayAddNutrientModal] = useState(false);
    // const database = useContext(DatabaseContext);
-   // const auth = useContext(AuthContext);
+   const auth = useContext(AuthContext);
    // const { sendRequest: sendUpdateRequest } = useHttpRequest();
    // const { sendRequest: sendDeleteRequest } = useHttpRequest();
 
@@ -141,7 +141,7 @@ export default function NutrientList() {
 
    return (
       <Fragment>
-         {/* {auth.isAdminLoggedIn && addNewNutrientButton} */}
+         {auth.isAdminLoggedIn && addNewNutrientButton}
          <div className={cn('card p-fluid', 'table')}>
             <DataTable
                value={DUMMY_NUTRIENTS}
@@ -150,8 +150,8 @@ export default function NutrientList() {
                responsiveLayout='scroll'
             >
                {nutrientListColumns}
-               {/* {auth.isAdminLoggedIn && editionColumn}
-               {auth.isAdminLoggedIn && deletionColumn} */}
+               {auth.isAdminLoggedIn && editionColumn}
+               {auth.isAdminLoggedIn && deletionColumn}
             </DataTable>
          </div>
          <AddNutrientModal

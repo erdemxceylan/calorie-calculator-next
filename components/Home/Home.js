@@ -5,7 +5,7 @@ import ConsumedNutrientsTable from './components/ConsumedNutrientsTable';
 
 export default function Home() {
    // const isEmpty = useSelector(state => state.consumedNutrients.isEmpty);
-   const isEmpty = true;
+   const isEmpty = false;
 
    return (
       <Fragment>

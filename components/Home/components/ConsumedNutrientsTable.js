@@ -2,15 +2,15 @@ import { Fragment, useContext } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-// import { Button } from 'primereact/button';
+import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import TotalValues from './TotalValues';
 // import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrients';
 import styles from './ConsumedNutrientsTable.module.css';
 import cn from 'classnames';
-// import AuthContext from '../../../global/context/auth';
+import AuthContext from '../../../global/context/auth';
 
-import DUMMY_NUTRIENTS from '../../../test/dummy-nutrients';
+import { DUMMY_CONSUMED_NUTRIENTS } from '../../../test/dummy-nutrients';
 
 const NAME = 'Name';
 const QUANTITY = 'Quantity';
@@ -25,7 +25,7 @@ export default function ConsumedNutrientsTable() {
 
    // const consumedNutrients = useSelector(state => state.consumedNutrients.consumedNutrients);
    // const dispatch = useDispatch();
-   // const auth = useContext(AuthContext);
+   const auth = useContext(AuthContext);
 
    const consumedNutrientsTableColumns = [
       { field: NUTRIENT_NAME, header: NAME },
@@ -91,7 +91,7 @@ export default function ConsumedNutrientsTable() {
       <Fragment>
          <div className={cn('card p-fluid', 'table')}>
             <DataTable
-               value={DUMMY_NUTRIENTS}
+               value={DUMMY_CONSUMED_NUTRIENTS}
                editMode='row'
                onRowEditComplete={rowEditCompletionHandler}
                responsiveLayout='scroll'
@@ -116,12 +116,13 @@ export default function ConsumedNutrientsTable() {
                   }
                })}
                <Column
+                  header='Edit'
                   rowEditor headerStyle={{ width: '8rem', minWidth: '8rem' }}
                   bodyStyle={{ textAlign: 'center' }}
                />
             </DataTable>
          </div>
-         {/* {auth.isLoggedIn && <Button label='Save List' />} */}
+         {auth.isLoggedIn && <Button label='Save List' />}
       </Fragment>
    );
 }

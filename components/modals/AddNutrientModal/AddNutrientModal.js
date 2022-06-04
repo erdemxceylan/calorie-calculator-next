@@ -3,7 +3,7 @@
 // import DatabaseContext from '../../../global/context/database';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
-import AddNutrientModalInputs from './AddNutrientModalInputs';
+import AddNutrientModalInputs from './components/AddNutrientModalInputs';
 import styles from './AddNutrientModal.module.css';
 import cn from 'classnames';
 

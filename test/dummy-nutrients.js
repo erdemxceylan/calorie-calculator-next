@@ -5,4 +5,13 @@ const DUMMY_NUTRIENTS = [
    { id: Math.random(), name: 'Pirinç Pilavı', unit: 'gram', calories: 40, proteins: 4 }
 ];
 
-export default DUMMY_NUTRIENTS;
+// This is a named import. Name cannot be changed when importing
+// Ex: import { DUMMY_CONSUMED_NUTRIENTS } from ... 
+export const DUMMY_CONSUMED_NUTRIENTS = [
+   { id: Math.random(), name: 'Kremalı Mantar Çorbası', unit: 'kase', consumedQuantity: 1, caloriesTaken: 10, proteinsTaken: 1 },
+   { id: Math.random(), name: 'Yeşil Mercimek', unit: 'tabak', consumedQuantity: 2, caloriesTaken: 20, proteinsTaken: 2 },
+   { id: Math.random(), name: 'Hindi Sote', unit: 'prosiyon', consumedQuantity: 3, caloriesTaken: 30, proteinsTaken: 3 },
+   { id: Math.random(), name: 'Pirinç Pilavı', unit: 'gram', consumedQuantity: 4, caloriesTaken: 40, proteinsTaken: 4 }
+];
+
+export default DUMMY_NUTRIENTS; // name can be changed when importing. Ex: import SOME_NAME from ...

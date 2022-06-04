@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { InputText } from 'primereact/inputtext';
-import useValidateInput from '../../../hooks/use-validate-input';
+import useValidateInput from '../../../../hooks/use-validate-input';
 
 const MIN = 0;
 const MAX = 1000;
