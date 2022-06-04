@@ -1,9 +1,9 @@
 import { useState, /*useContext*/ } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-// import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrients';
+import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrients';
 // import DatabaseContext from '../../../global/context/database';
 import styles from './AddNutrientMenu.module.css';
 import cn from 'classnames';
@@ -15,26 +15,26 @@ export default function AddNutrientMenu() {
    const [selectedNutrient, setSelectedNutrient] = useState(null);
    const [consumedQuantity, setConsumedQuantity] = useState('');
 
-   // const dispatch = useDispatch();
+   const dispatch = useDispatch();
 
    function submitHandler(event) {
       event.preventDefault();
 
-      // if (selectedNutrient && Number(consumedQuantity) > 0) {
-      //    const consumedNutrient = {
-      //       id: selectedNutrient.id,
-      //       name: selectedNutrient.name,
-      //       unit: selectedNutrient.unit,
-      //       consumedQuantity,
-      //       caloriesTaken: selectedNutrient.calories * +consumedQuantity,
-      //       proteinsTaken: selectedNutrient.proteins * +consumedQuantity
-      //    };
+      if (selectedNutrient && Number(consumedQuantity) > 0) {
+         const consumedNutrient = {
+            id: selectedNutrient.id,
+            name: selectedNutrient.name,
+            unit: selectedNutrient.unit,
+            consumedQuantity,
+            caloriesTaken: selectedNutrient.calories * +consumedQuantity,
+            proteinsTaken: selectedNutrient.proteins * +consumedQuantity
+         };
 
-      //    dispatch(consumedNutrientsActions.add(consumedNutrient));
+         dispatch(consumedNutrientsActions.add(consumedNutrient));
 
-      //    setSelectedNutrient(null);
-      //    setConsumedQuantity('');
-      // }
+         setSelectedNutrient(null);
+         setConsumedQuantity('');
+      }
    }
 
    return (

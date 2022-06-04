@@ -1,16 +1,14 @@
 import { Fragment, useContext } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import TotalValues from './TotalValues';
-// import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrients';
+import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrients';
 import styles from './ConsumedNutrientsTable.module.css';
 import cn from 'classnames';
 import AuthContext from '../../../global/context/auth';
-
-import { DUMMY_CONSUMED_NUTRIENTS } from '../../../test/dummy-nutrients';
 
 const NAME = 'Name';
 const QUANTITY = 'Quantity';
@@ -23,8 +21,8 @@ const PROTEINS_TAKEN = 'proteinsTaken';
 
 export default function ConsumedNutrientsTable() {
 
-   // const consumedNutrients = useSelector(state => state.consumedNutrients.consumedNutrients);
-   // const dispatch = useDispatch();
+   const consumedNutrients = useSelector(state => state.consumedNutrients.consumedNutrients);
+   const dispatch = useDispatch();
    const auth = useContext(AuthContext);
 
    const consumedNutrientsTableColumns = [
@@ -60,38 +58,38 @@ export default function ConsumedNutrientsTable() {
    }
 
    function rowEditCompletionHandler(event) {
-      // let { index, newData, originalEvent } = event;
-      // const newValue = newData.consumedQuantity;
-      // const rowData = consumedNutrients[index];
+      let { index, newData, originalEvent } = event;
+      const newValue = newData.consumedQuantity;
+      const rowData = consumedNutrients[index];
 
-      // if (newValue === rowData.consumedQuantity) {
-      //    return;
-      // } else if (Number(newValue) > 0) {
-      //    const nutrient = {
-      //       id: rowData.id,
-      //       name: rowData.name,
-      //       consumedQuantity: newValue,
-      //       caloriesTaken: rowData.caloriesTaken * +newValue / +rowData.consumedQuantity,
-      //       proteinsTaken: rowData.proteinsTaken * +newValue / +rowData.consumedQuantity
-      //    };
-      //    dispatch(consumedNutrientsActions.update(nutrient));
-      // } else if (Number(newValue) === 0) {
-      //    const nutrient = {
-      //       id: rowData.id,
-      //       calories: rowData.caloriesTaken,
-      //       proteins: rowData.proteinsTaken
-      //    };
-      //    dispatch(consumedNutrientsActions.delete(nutrient));
-      // } else {
-      //    originalEvent.preventDefault();
-      // }
+      if (newValue === rowData.consumedQuantity) {
+         return;
+      } else if (Number(newValue) > 0) {
+         const nutrient = {
+            id: rowData.id,
+            name: rowData.name,
+            consumedQuantity: newValue,
+            caloriesTaken: rowData.caloriesTaken * +newValue / +rowData.consumedQuantity,
+            proteinsTaken: rowData.proteinsTaken * +newValue / +rowData.consumedQuantity
+         };
+         dispatch(consumedNutrientsActions.update(nutrient));
+      } else if (Number(newValue) === 0) {
+         const nutrient = {
+            id: rowData.id,
+            calories: rowData.caloriesTaken,
+            proteins: rowData.proteinsTaken
+         };
+         dispatch(consumedNutrientsActions.delete(nutrient));
+      } else {
+         originalEvent.preventDefault();
+      }
    }
 
    return (
       <Fragment>
          <div className={cn('card p-fluid', 'table')}>
             <DataTable
-               value={DUMMY_CONSUMED_NUTRIENTS}
+               value={consumedNutrients}
                editMode='row'
                onRowEditComplete={rowEditCompletionHandler}
                responsiveLayout='scroll'
