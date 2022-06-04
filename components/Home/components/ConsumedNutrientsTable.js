@@ -85,40 +85,44 @@ export default function ConsumedNutrientsTable() {
       }
    }
 
+   const consumedNutrientsTable = (
+      <DataTable
+         value={consumedNutrients}
+         editMode='row'
+         onRowEditComplete={rowEditCompletionHandler}
+         responsiveLayout='scroll'
+         footer={<TotalValues />}
+      >
+         {consumedNutrientsTableColumns.map(({ field, header }) => {
+            if (field === CONSUMED_QUANTITY) {
+               return <Column
+                  key={field}
+                  field={field}
+                  header={header}
+                  body={rowData => labelField(rowData, field)}
+                  editor={options => quantityEditor(options)}
+               />;
+            } else {
+               return <Column
+                  key={field}
+                  field={field}
+                  header={header}
+                  body={rowData => labelField(rowData, field)}
+               />;
+            }
+         })}
+         <Column
+            header='Edit'
+            rowEditor headerStyle={{ width: '8rem', minWidth: '8rem' }}
+            bodyStyle={{ textAlign: 'center' }}
+         />
+      </DataTable>
+   );
+
    return (
       <Fragment>
          <div className={cn('card p-fluid', 'table')}>
-            <DataTable
-               value={consumedNutrients}
-               editMode='row'
-               onRowEditComplete={rowEditCompletionHandler}
-               responsiveLayout='scroll'
-               footer={<TotalValues />}
-            >
-               {consumedNutrientsTableColumns.map(({ field, header }) => {
-                  if (field === CONSUMED_QUANTITY) {
-                     return <Column
-                        key={field}
-                        field={field}
-                        header={header}
-                        body={rowData => labelField(rowData, field)}
-                        editor={options => quantityEditor(options)}
-                     />;
-                  } else {
-                     return <Column
-                        key={field}
-                        field={field}
-                        header={header}
-                        body={rowData => labelField(rowData, field)}
-                     />;
-                  }
-               })}
-               <Column
-                  header='Edit'
-                  rowEditor headerStyle={{ width: '8rem', minWidth: '8rem' }}
-                  bodyStyle={{ textAlign: 'center' }}
-               />
-            </DataTable>
+            {consumedNutrientsTable}
          </div>
          {auth.isLoggedIn && <Button label='Save List' />}
       </Fragment>
