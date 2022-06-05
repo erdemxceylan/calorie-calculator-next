@@ -3,7 +3,7 @@ import { CONSTANTS } from './constants';
 
 export default function handler(req, res) {
    if (req.method === CONSTANTS.DELETE) {
-      axios.delete(`${CONSTANTS.BASE_URL}/${CONSTANTS.NUTRIENTS}/${req.body.id}.json`);
+      axios.delete(`${CONSTANTS.NUTRIENTS_URL}/${req.body.id}.json`);
       res.status(200).json();
    }
 }

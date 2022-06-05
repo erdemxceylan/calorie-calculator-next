@@ -3,7 +3,7 @@ import { CONSTANTS } from './constants';
 
 export default function handler(req, res) {
    if (req.method === CONSTANTS.PUT) {
-      axios.put(`${CONSTANTS.BASE_URL}/${CONSTANTS.NUTRIENTS}/${req.body.id}.json`, {
+      axios.put(`${CONSTANTS.NUTRIENTS_URL}/${req.body.id}.json`, {
          name: req.body.name,
          unit: req.body.unit,
          calories: req.body.calories,

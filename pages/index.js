@@ -10,7 +10,7 @@ export async function getServerSideProps() {
   // Fetching nutrients
   let nutrients = [];
 
-  const nutrientsResponse = await axios.get(`${CONSTANTS.BASE_URL}/${CONSTANTS.NUTRIENTS}.json`);
+  const nutrientsResponse = await axios.get(`${CONSTANTS.NUTRIENTS_URL}.json`);
 
   for (const key in nutrientsResponse.data) {
     nutrients.push({
@@ -28,7 +28,7 @@ export async function getServerSideProps() {
   let dailyCalorieTargetUpperBound = 0;
   let dailyProteinNeed = 0;
 
-  const settingsResponse = await axios.get(`${CONSTANTS.BASE_URL}/${CONSTANTS.SETTINGS}.json`);
+  const settingsResponse = await axios.get(`${CONSTANTS.SETTINGS_URL}.json`);
 
   for (const key in settingsResponse.data) {
     dataSettings = {
