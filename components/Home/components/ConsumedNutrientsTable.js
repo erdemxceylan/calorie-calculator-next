@@ -21,8 +21,8 @@ const PROTEINS_TAKEN = 'proteinsTaken';
 
 export default function ConsumedNutrientsTable(props) {
 
-   const auth = useContext(AuthContext);
    const consumedNutrients = useSelector(state => state.consumedNutrients.consumedNutrients);
+   const auth = useContext(AuthContext);
    const dispatch = useDispatch();
 
    const consumedNutrientsTableColumns = [

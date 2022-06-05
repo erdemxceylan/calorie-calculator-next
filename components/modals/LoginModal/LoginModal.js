@@ -43,6 +43,7 @@ export default function LoginModal(props) {
       sign({ url, method, body }, data => auth.login(data.idToken, data.email));
 
       formData.reset();
+      props.onHide();
    }
 
    const submitButton = (

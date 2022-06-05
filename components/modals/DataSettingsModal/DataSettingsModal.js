@@ -4,6 +4,9 @@ import { Button } from 'primereact/button';
 import DataSettingsModalForm from './components/DataSettingsModalForm';
 import useHttpRequest from '../../../hooks/use-http-request';
 
+const URL_UPDATE_SETTINGS = 'http://localhost:8080/update-settings';
+const PUT = 'PUT';
+
 export default function DataSettings(props) {
    const router = useRouter();
    const { error, sendRequest: updateSettings } = useHttpRequest();
@@ -27,16 +30,16 @@ export default function DataSettings(props) {
 
       if (!formData.isValid) return;
 
-      updateSettings({
-         url: 'http://localhost:8080/update-settings',
-         method: 'PUT',
-         body: {
-            dailyCalorieNeed: formData.dailyCalorieNeed,
-            weight: formData.weight,
-            fatRatio: formData.fatRatio,
-            fitnessGoal: formData.fitnessGoal
-         }
-      });
+      const url = URL_UPDATE_SETTINGS;
+      const method = PUT;
+      const body = {
+         dailyCalorieNeed: formData.dailyCalorieNeed,
+         weight: formData.weight,
+         fatRatio: formData.fatRatio,
+         fitnessGoal: formData.fitnessGoal
+      };
+
+      updateSettings({ url, method, body });
 
       if (error) console.log(error);
 

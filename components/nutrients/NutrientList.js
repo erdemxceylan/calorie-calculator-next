@@ -20,8 +20,8 @@ const CALORIES_FIELD = 'calories';
 const PROTEINS_FIELD = 'proteins';
 const DELETE = 'DELETE';
 const PUT = 'PUT';
-const UPDATE_URL = 'http://localhost:8080/update-nutrient';
-const DELETE_URL = 'http://localhost:8080/delete-nutrient';
+const URL_UPDATE = 'http://localhost:8080/update-nutrient';
+const URL_DELETE = 'http://localhost:8080/delete-nutrient';
 
 export default function NutrientList(props) {
    const [displayAddNutrientModal, setDisplayAddNutrientModal] = useState(false);
@@ -72,26 +72,28 @@ export default function NutrientList(props) {
    function rowEditCompletionHandler(event) {
       let { newData: updatedNutrient } = event;
 
-      updateNutrient({
-         url: UPDATE_URL,
-         method: PUT,
-         body: {
-            id: updatedNutrient.id,
-            name: updatedNutrient.name,
-            calories: Number(updatedNutrient.calories),
-            proteins: Number(updatedNutrient.proteins),
-            unit: updatedNutrient.unit,
-         }
-      });
+      const url = URL_UPDATE;
+      const method = PUT;
+      const body = {
+         id: updatedNutrient.id,
+         name: updatedNutrient.name,
+         calories: Number(updatedNutrient.calories),
+         proteins: Number(updatedNutrient.proteins),
+         unit: updatedNutrient.unit,
+      };
+
+      updateNutrient({ url, method, body });
+
       router.push('/nutrients');
    }
 
    function deletionHandler(selectedNutrientId) {
-      deleteNutrient({
-         url: DELETE_URL,
-         method: DELETE,
-         body: { id: selectedNutrientId }
-      });
+      const url = URL_DELETE;
+      const method = DELETE;
+      const body = { id: selectedNutrientId };
+
+      deleteNutrient({ url, method, body });
+
       router.push('/nutrients');
    }
 

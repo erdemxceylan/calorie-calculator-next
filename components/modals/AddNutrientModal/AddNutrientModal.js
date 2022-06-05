@@ -6,6 +6,9 @@ import AddNutrientModalInputs from './components/AddNutrientModalInputs';
 import styles from './AddNutrientModal.module.css';
 import cn from 'classnames';
 
+const URL_ADD_NUTRIENT = 'http://localhost:8080/add-nutrient';
+const POST = 'POST';
+
 export default function AddNutrientModal(props) {
    const router = useRouter();
    const { sendRequest: addNutrient } = useHttpRequest();
@@ -24,16 +27,16 @@ export default function AddNutrientModal(props) {
 
       if (!formData.isValid) return;
 
-      addNutrient({
-         url: 'http://localhost:8080/add-nutrient',
-         method: 'POST',
-         body: {
-            name: formData.name,
-            unit: formData.unit,
-            calories: formData.calories,
-            proteins: formData.proteins
-         }
-      });
+      const url = URL_ADD_NUTRIENT;
+      const method = POST;
+      const body = {
+         name: formData.name,
+         unit: formData.unit,
+         calories: formData.calories,
+         proteins: formData.proteins
+      };
+
+      addNutrient({ url, method, body });
 
       formData.reset();
       props.onHide();

@@ -10,7 +10,6 @@ import cn from 'classnames';
 export default function AddNutrientMenu(props) {
    const [selectedNutrient, setSelectedNutrient] = useState(null);
    const [consumedQuantity, setConsumedQuantity] = useState('');
-
    const dispatch = useDispatch();
 
    function submitHandler(event) {
