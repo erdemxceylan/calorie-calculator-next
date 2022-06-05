@@ -6,7 +6,7 @@ export default function HomePage(props) {
   return <Home nutrients={props.nutrients} dailyTargetValues={props.dailyTargetValues} />;
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // Fetching nutrients
   let nutrients = [];
 

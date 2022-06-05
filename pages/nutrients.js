@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+// import { useState } from 'react';
 import NutrientList from '../components/nutrients/NutrientList';
 import { CONSTANTS } from '../pages/api/constants';
 
@@ -7,7 +7,7 @@ export default function NutrientPage(props) {
    return <NutrientList nutrients={props.nutrients} />;
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
    // Fetching nutrients
    let nutrients = [];
 
