@@ -6,9 +6,10 @@ import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { InputText } from 'primereact/inputtext';
 import { Column } from 'primereact/column';
+import { CONSTANTS } from '../../global/constants';
+import AuthContext from '../../global/context/auth';
 import styles from './NutrientList.module.css';
 import cn from 'classnames';
-import AuthContext from '../../global/context/auth';
 
 const NAME = 'Name';
 const UNIT = 'Unit';
@@ -18,10 +19,6 @@ const NAME_FIELD = 'name';
 const UNIT_FIELD = 'unit';
 const CALORIES_FIELD = 'calories';
 const PROTEINS_FIELD = 'proteins';
-const DELETE = 'DELETE';
-const PUT = 'PUT';
-const URL_UPDATE = 'http://localhost:8080/update-nutrient';
-const URL_DELETE = 'http://localhost:8080/delete-nutrient';
 
 export default function NutrientList(props) {
    const [displayAddNutrientModal, setDisplayAddNutrientModal] = useState(false);
@@ -72,8 +69,8 @@ export default function NutrientList(props) {
    function rowEditCompletionHandler(event) {
       let { newData: updatedNutrient } = event;
 
-      const url = URL_UPDATE;
-      const method = PUT;
+      const url = CONSTANTS.UPDATE_NUTRIENT_URL;
+      const method = CONSTANTS.PUT;
       const body = {
          id: updatedNutrient.id,
          name: updatedNutrient.name,
@@ -84,17 +81,17 @@ export default function NutrientList(props) {
 
       updateNutrient({ url, method, body });
 
-      router.push('/nutrients');
+      router.push(CONSTANTS.NUTRIENTS_PAGE);
    }
 
    function deletionHandler(selectedNutrientId) {
-      const url = URL_DELETE;
-      const method = DELETE;
+      const url = CONSTANTS.DELETE_NUTRIENT_URL;
+      const method = CONSTANTS.DELETE;
       const body = { id: selectedNutrientId };
 
       deleteNutrient({ url, method, body });
 
-      router.push('/nutrients');
+      router.push(CONSTANTS.NUTRIENTS_PAGE);
    }
 
    function deletionButton(rowData) {

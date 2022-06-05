@@ -1,9 +1,8 @@
 import { Fragment, useContext } from 'react';
 import { InputText } from 'primereact/inputtext';
+import { CONSTANTS } from '../../../../global/constants';
 import AuthContext from '../../../../global/context/auth';
 import useValidateInput from '../../../../hooks/use-validate-input';
-
-const ADMIN = 'admin@test.com';
 
 export default function LoginModalForm(props) {
    const auth = useContext(AuthContext);
@@ -42,10 +41,10 @@ export default function LoginModalForm(props) {
       resetForm: resetInputs
    });
 
-   const isAdmin = enteredEmail === ADMIN;
+   const isAdmin = enteredEmail === CONSTANTS.ADMIN;
 
    if (!auth.isLoggingIn && isAdmin) {
-      alert(`${ADMIN} is reserved`);
+      alert(`${CONSTANTS.ADMIN} is reserved`);
       resetInputs();
       areInputsValid = false;
    }

@@ -3,9 +3,7 @@ import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import DataSettingsModalForm from './components/DataSettingsModalForm';
 import useHttpRequest from '../../../hooks/use-http-request';
-
-const URL_UPDATE_SETTINGS = 'http://localhost:8080/update-settings';
-const PUT = 'PUT';
+import { CONSTANTS } from '../../../global/constants';
 
 export default function DataSettings(props) {
    const router = useRouter();
@@ -30,8 +28,8 @@ export default function DataSettings(props) {
 
       if (!formData.isValid) return;
 
-      const url = URL_UPDATE_SETTINGS;
-      const method = PUT;
+      const url = CONSTANTS.UPDATE_SETTINGS_URL;
+      const method = CONSTANTS.PUT;
       const body = {
          dailyCalorieNeed: formData.dailyCalorieNeed,
          weight: formData.weight,
@@ -45,7 +43,7 @@ export default function DataSettings(props) {
 
       formData.reset();
       props.onHide();
-      router.push('/');
+      router.push(CONSTANTS.HOME_PAGE);
    }
 
    const submitButton = (
@@ -64,7 +62,10 @@ export default function DataSettings(props) {
          onHide={props.onHide}
          footer={submitButton}
       >
-         <DataSettingsModalForm sendInputData={getInputData} sendFitnessGoal={getFitnessGoal} />
+         <DataSettingsModalForm
+            sendInputData={getInputData}
+            sendFitnessGoal={getFitnessGoal}
+         />
       </Dialog>
    );
 }

@@ -4,6 +4,7 @@ import AuthContext from '../../global/context/auth';
 import { TabMenu } from 'primereact/tabmenu';
 import DataSettingsModal from '../modals/DataSettingsModal/DataSettingsModal';
 import LoginModal from '../modals/LoginModal/LoginModal';
+import { CONSTANTS } from '../../global/constants';
 import styles from './MainNavigation.module.css';
 
 export default function MainNavigation() {
@@ -28,10 +29,10 @@ export default function MainNavigation() {
 
       switch (event.index) {
          case 0:
-            router.push('/');
+            router.push(CONSTANTS.HOME_PAGE);
             break;
          case 1:
-            router.push('/nutrients');
+            router.push(CONSTANTS.NUTRIENTS_PAGE);
             break;
          case 2:
             setDisplayDataSettings(true);

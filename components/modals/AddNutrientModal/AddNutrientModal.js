@@ -3,11 +3,9 @@ import useHttpRequest from '../../../hooks/use-http-request';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import AddNutrientModalInputs from './components/AddNutrientModalInputs';
+import { CONSTANTS } from '../../../global/constants';
 import styles from './AddNutrientModal.module.css';
 import cn from 'classnames';
-
-const URL_ADD_NUTRIENT = 'http://localhost:8080/add-nutrient';
-const POST = 'POST';
 
 export default function AddNutrientModal(props) {
    const router = useRouter();
@@ -27,8 +25,8 @@ export default function AddNutrientModal(props) {
 
       if (!formData.isValid) return;
 
-      const url = URL_ADD_NUTRIENT;
-      const method = POST;
+      const url = CONSTANTS.ADD_NUTRIENT_URL;
+      const method = CONSTANTS.POST;
       const body = {
          name: formData.name,
          unit: formData.unit,
@@ -40,7 +38,7 @@ export default function AddNutrientModal(props) {
 
       formData.reset();
       props.onHide();
-      router.push('/nutrients');
+      router.push(CONSTANTS.NUTRIENTS_PAGE);
    }
 
    const submitButton = (

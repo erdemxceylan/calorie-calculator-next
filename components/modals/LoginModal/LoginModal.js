@@ -1,17 +1,11 @@
 import { useContext } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
+import { CONSTANTS } from '../../../global/constants';
 import LoginModalForm from './components/LoginModalForm';
 import AuthContext from '../../../global/context/auth';
 import useHttpRequest from '../../../hooks/use-http-request';
 import styles from './LoginModal.module.css';
-
-const WEB_API_KEY = 'AIzaSyCayV-EV6nQ6yPmmyoxp8FaYswze90k_QA';
-const SIGN_UP_BASE_URL = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=';
-const SIGN_IN_BASE_URL = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=';
-const SIGN_UP_URL = SIGN_UP_BASE_URL + WEB_API_KEY;
-const SIGN_IN_URL = SIGN_IN_BASE_URL + WEB_API_KEY;
-const POST = 'POST';
 
 export default function LoginModal(props) {
    const auth = useContext(AuthContext);
@@ -32,8 +26,8 @@ export default function LoginModal(props) {
 
       if (!formData.isValid) return;
 
-      const url = auth.isLoggingIn ? SIGN_IN_URL : SIGN_UP_URL;
-      const method = POST;
+      const url = auth.isLoggingIn ? CONSTANTS.SIGN_IN_URL : CONSTANTS.SIGN_UP_URL;
+      const method = CONSTANTS.POST;
       const body = {
          email: formData.email,
          password: formData.password,

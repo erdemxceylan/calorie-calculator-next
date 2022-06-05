@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { RadioButton } from 'primereact/radiobutton';
+import { CONSTANTS } from '../../../../global/constants';
 import styles from './FitnessGoalSelection.module.css';
 
-const WEIGHT_GAIN = 'Weight Gain';
-const WEIGHT_LOSS = 'Weight Loss';
+const WEIGHT_GAIN = CONSTANTS.WEIGHT_GAIN;
+const WEIGHT_LOSS = CONSTANTS.WEIGHT_LOSS;
 
 export default function FitnessGoalSelection(props) {
    const [enteredFitnessGoal, setEnteredFitnessGoal] = useState(WEIGHT_GAIN);
