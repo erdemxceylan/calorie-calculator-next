@@ -26,12 +26,12 @@ export default function LoginModal(props) {
 
       if (!formData.isValid) return;
 
-      const url = auth.isLoggingIn ? CONSTANTS.SIGN_IN_URL : CONSTANTS.SIGN_UP_URL;
+      const url = CONSTANTS.AUTH_URL;
       const method = CONSTANTS.POST;
       const body = {
+         isLoggingIn: auth.isLoggingIn,
          email: formData.email,
-         password: formData.password,
-         returnSecureToken: true
+         password: formData.password
       };
 
       sign({ url, method, body }, data => auth.login(data.idToken, data.email));
