@@ -1,5 +1,5 @@
 import { Fragment, useContext, useState } from 'react';
-// import useHttpRequest from '../../hooks/use-http-request';
+import useHttpRequest from '../../hooks/use-http-request';
 import AddNutrientModal from '../modals/AddNutrientModal/AddNutrientModal';
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
@@ -17,16 +17,16 @@ const NAME_FIELD = 'name';
 const UNIT_FIELD = 'unit';
 const CALORIES_FIELD = 'calories';
 const PROTEINS_FIELD = 'proteins';
-// const DELETE = 'DELETE';
-// const PUT = 'PUT';
-// const UPDATE_URL = 'http://localhost:8080/update-nutrient';
-// const DELETE_URL = 'http://localhost:8080/delete-nutrient';
+const DELETE = 'DELETE';
+const PUT = 'PUT';
+const UPDATE_URL = 'http://localhost:8080/update-nutrient';
+const DELETE_URL = 'http://localhost:8080/delete-nutrient';
 
 export default function NutrientList(props) {
    const [displayAddNutrientModal, setDisplayAddNutrientModal] = useState(false);
    const auth = useContext(AuthContext);
-   // const { sendRequest: sendUpdateRequest } = useHttpRequest();
-   // const { sendRequest: sendDeleteRequest } = useHttpRequest();
+   const { sendRequest: updateNutrient } = useHttpRequest();
+   const { sendRequest: deleteNutrient } = useHttpRequest();
 
    const nutrientListColumnHeaders = [
       { field: NAME_FIELD, header: NAME },
@@ -68,27 +68,27 @@ export default function NutrientList(props) {
    }
 
    function rowEditCompletionHandler(event) {
-      // let { newData: updatedNutrient } = event;
+      let { newData: updatedNutrient } = event;
 
-      // sendUpdateRequest({
-      //    url: UPDATE_URL,
-      //    method: PUT,
-      //    body: {
-      //       id: updatedNutrient.id,
-      //       name: updatedNutrient.name,
-      //       calories: Number(updatedNutrient.calories),
-      //       proteins: Number(updatedNutrient.proteins),
-      //       unit: updatedNutrient.unit,
-      //    }
-      // }, database.updateNutrients);
+      updateNutrient({
+         url: UPDATE_URL,
+         method: PUT,
+         body: {
+            id: updatedNutrient.id,
+            name: updatedNutrient.name,
+            calories: Number(updatedNutrient.calories),
+            proteins: Number(updatedNutrient.proteins),
+            unit: updatedNutrient.unit,
+         }
+      });
    }
 
    function deletionHandler(selectedNutrientId) {
-      // sendDeleteRequest({
-      //    url: DELETE_URL,
-      //    method: DELETE,
-      //    body: { id: selectedNutrientId }
-      // }, database.updateNutrients);
+      deleteNutrient({
+         url: DELETE_URL,
+         method: DELETE,
+         body: { id: selectedNutrientId }
+      });
    }
 
    function deletionButton(rowData) {

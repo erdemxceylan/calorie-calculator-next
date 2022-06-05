@@ -1,6 +1,4 @@
-// import { useContext } from 'react';
-// import useHttpRequest from '../../../hooks/use-http-request';
-// import DatabaseContext from '../../../global/context/database';
+import useHttpRequest from '../../../hooks/use-http-request';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import AddNutrientModalInputs from './components/AddNutrientModalInputs';
@@ -8,8 +6,7 @@ import styles from './AddNutrientModal.module.css';
 import cn from 'classnames';
 
 export default function AddNutrientModal(props) {
-   // const { sendRequest: addNutrient } = useHttpRequest();
-   // const database = useContext(DatabaseContext);
+   const { sendRequest: addNutrient } = useHttpRequest();
    let formData = {};
 
    function getInputData(inputData) {
@@ -25,16 +22,16 @@ export default function AddNutrientModal(props) {
 
       if (!formData.isValid) return;
 
-      // addNutrient({
-      //    url: 'http://localhost:8080/add-nutrient',
-      //    method: 'POST',
-      //    body: {
-      //       name: formData.name,
-      //       unit: formData.unit,
-      //       calories: formData.calories,
-      //       proteins: formData.proteins
-      //    }
-      // }, database.updateNutrients);
+      addNutrient({
+         url: 'http://localhost:8080/add-nutrient',
+         method: 'POST',
+         body: {
+            name: formData.name,
+            unit: formData.unit,
+            calories: formData.calories,
+            proteins: formData.proteins
+         }
+      }, database.updateNutrients);
 
       formData.reset();
       props.onHide();

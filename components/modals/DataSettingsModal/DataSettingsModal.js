@@ -1,13 +1,10 @@
-// import { useContext } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import DataSettingsModalForm from './components/DataSettingsModalForm';
-// import useHttpRequest from '../../hooks/use-http-request';
-// import DatabaseContext from '../../global/context/database';
+import useHttpRequest from '../../../hooks/use-http-request';
 
 export default function DataSettings(props) {
-   // const database = useContext(DatabaseContext);
-   // const { error, sendRequest } = useHttpRequest();
+   const { error, sendRequest: updateSettings } = useHttpRequest();
    let formData = {};
 
    function getInputData(inputData) {
@@ -28,18 +25,18 @@ export default function DataSettings(props) {
 
       if (!formData.isValid) return;
 
-      // sendRequest({
-      //    url: 'http://localhost:8080/update-settings',
-      //    method: 'PUT',
-      //    body: {
-      //       dailyCalorieNeed: formData.dailyCalorieNeed,
-      //       weight: formData.weight,
-      //       fatRatio: formData.fatRatio,
-      //       fitnessGoal: formData.fitnessGoal
-      //    }
-      // }, database.updateDailyTargetValues);
+      updateSettings({
+         url: 'http://localhost:8080/update-settings',
+         method: 'PUT',
+         body: {
+            dailyCalorieNeed: formData.dailyCalorieNeed,
+            weight: formData.weight,
+            fatRatio: formData.fatRatio,
+            fitnessGoal: formData.fitnessGoal
+         }
+      }, database.updateDailyTargetValues);
 
-      // if (error) console.log(error);
+      if (error) console.log(error);
 
       formData.reset();
       props.onHide();
