@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { Fragment, useContext, useState } from 'react';
 import useHttpRequest from '../../hooks/use-http-request';
 import AddNutrientModal from '../modals/AddNutrientModal/AddNutrientModal';
@@ -24,6 +25,7 @@ const DELETE_URL = 'http://localhost:8080/delete-nutrient';
 
 export default function NutrientList(props) {
    const [displayAddNutrientModal, setDisplayAddNutrientModal] = useState(false);
+   const router = useRouter();
    const auth = useContext(AuthContext);
    const { sendRequest: updateNutrient } = useHttpRequest();
    const { sendRequest: deleteNutrient } = useHttpRequest();
@@ -81,6 +83,7 @@ export default function NutrientList(props) {
             unit: updatedNutrient.unit,
          }
       });
+      router.push('/nutrients');
    }
 
    function deletionHandler(selectedNutrientId) {
@@ -89,6 +92,7 @@ export default function NutrientList(props) {
          method: DELETE,
          body: { id: selectedNutrientId }
       });
+      router.push('/nutrients');
    }
 
    function deletionButton(rowData) {

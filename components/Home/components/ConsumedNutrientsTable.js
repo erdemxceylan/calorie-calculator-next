@@ -21,9 +21,9 @@ const PROTEINS_TAKEN = 'proteinsTaken';
 
 export default function ConsumedNutrientsTable(props) {
 
+   const auth = useContext(AuthContext);
    const consumedNutrients = useSelector(state => state.consumedNutrients.consumedNutrients);
    const dispatch = useDispatch();
-   const auth = useContext(AuthContext);
 
    const consumedNutrientsTableColumns = [
       { field: NUTRIENT_NAME, header: NAME },
@@ -91,7 +91,7 @@ export default function ConsumedNutrientsTable(props) {
          editMode='row'
          onRowEditComplete={rowEditCompletionHandler}
          responsiveLayout='scroll'
-         footer={<TotalValues settings={props.settings} />}
+         footer={<TotalValues dailyTargetValues={props.dailyTargetValues} />}
       >
          {consumedNutrientsTableColumns.map(({ field, header }) => {
             if (field === CONSUMED_QUANTITY) {

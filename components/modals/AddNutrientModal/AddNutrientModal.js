@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import useHttpRequest from '../../../hooks/use-http-request';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
@@ -6,6 +7,7 @@ import styles from './AddNutrientModal.module.css';
 import cn from 'classnames';
 
 export default function AddNutrientModal(props) {
+   const router = useRouter();
    const { sendRequest: addNutrient } = useHttpRequest();
    let formData = {};
 
@@ -31,10 +33,11 @@ export default function AddNutrientModal(props) {
             calories: formData.calories,
             proteins: formData.proteins
          }
-      }, database.updateNutrients);
+      });
 
       formData.reset();
       props.onHide();
+      router.push('/nutrients');
    }
 
    const submitButton = (

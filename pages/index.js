@@ -2,7 +2,7 @@ import axios from 'axios';
 import Home from '../components/home/Home';
 
 export default function HomePage(props) {
-  return <Home nutrients={props.nutrients} settings={props.settings} />;
+  return <Home nutrients={props.nutrients} dailyTargetValues={props.dailyTargetValues} />;
 }
 
 export async function getStaticProps() {

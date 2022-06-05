@@ -1,9 +1,11 @@
+import { useRouter } from 'next/router';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import DataSettingsModalForm from './components/DataSettingsModalForm';
 import useHttpRequest from '../../../hooks/use-http-request';
 
 export default function DataSettings(props) {
+   const router = useRouter();
    const { error, sendRequest: updateSettings } = useHttpRequest();
    let formData = {};
 
@@ -34,12 +36,13 @@ export default function DataSettings(props) {
             fatRatio: formData.fatRatio,
             fitnessGoal: formData.fitnessGoal
          }
-      }, database.updateDailyTargetValues);
+      });
 
       if (error) console.log(error);
 
       formData.reset();
       props.onHide();
+      router.push('/');
    }
 
    const submitButton = (
