@@ -8,5 +8,5 @@ export default function HomePage(props) {
 export async function getStaticProps() {
   const nutrientsResponse = await axios.get('http://localhost:8080/nutrients');
   const settingsResponse = await axios.get('http://localhost:8080/settings');
-  return { props: { nutrients: nutrientsResponse.data, settings: settingsResponse.data } };
+  return { props: { nutrients: nutrientsResponse.data, dailyTargetValues: settingsResponse.data } };
 }

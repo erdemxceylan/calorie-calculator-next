@@ -5,9 +5,9 @@ import styles from './TotalValues.module.css';
 export default function TotalValues(props) {
    const totalCalories = useSelector(state => state.consumedNutrients.totalCalories).toFixed(2);
    const totalProteins = useSelector(state => state.consumedNutrients.totalProteins).toFixed(2);
-   const dailyCalorieTargetLowerBound = props.settings.dailyCalorieTargetLowerBound;
-   const dailyCalorieTargetUpperBound = props.settings.dailyCalorieTargetUpperBound;
-   const dailyProteinNeed = props.settings.dailyProteinNeed;
+   const dailyCalorieTargetLowerBound = props.dailyTargetValues.dailyCalorieTargetLowerBound;
+   const dailyCalorieTargetUpperBound = props.dailyTargetValues.dailyCalorieTargetUpperBound;
+   const dailyProteinNeed = props.dailyTargetValues.dailyProteinNeed;
 
    const dailyCalorieTargetInterval = `${dailyCalorieTargetLowerBound} - ${dailyCalorieTargetUpperBound}`;
 
