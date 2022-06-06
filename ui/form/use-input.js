@@ -1,11 +1,14 @@
+import { InputText } from 'primereact/inputtext';
+import useValidateInput from '../../hooks/use-validate-input';
 import styles from './Form.module.css';
 
-const NUMBER = 'number';
-
-// useInput, input = { placeholder, type, min, max, validationMethod }
-// const validationMethod = value => validateNumber(value, MIN, MAX)
+const TEXT = 'text';
 
 export default function useInput(input) {
+   const type = input.type ? input.type : TEXT;
+   const validateNumber = (value, min, max) => !isNaN(value) && value >= min && value <= max;
+
+
    const {
       value,
       isValid,
@@ -53,3 +56,7 @@ export default function useInput(input) {
 //       onBlur={inputBlurHandler}
 //    />
 // );
+
+// Example
+// input = { placeholder, type, min, max, validationMethod }
+// const validationMethod = value => validateNumber(value, MIN, MAX)

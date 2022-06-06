@@ -143,7 +143,6 @@ export default function Form(props) {
 
 
 // import { Fragment } from 'react';
-// import { InputText } from 'primereact/inputtext';
 // import useValidateInput from '../../../../hooks/use-validate-input';
 
 // const MIN = 0;
@@ -152,7 +151,6 @@ export default function Form(props) {
 
 // export default function AddNutrientModalInputs(props) {
 
-//    const validateNumber = (value, min, max) => !isNaN(value) && value >= min && value <= max;
 //    const validateText = value => value.trim() !== '' ? true : false;
 
 //    const {
