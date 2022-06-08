@@ -1,29 +1,44 @@
+// FORMIK
+
+import FormikWrapper from '../form/formik/FormikWrapper';
+
+export default function HomePage(props) {
+  return <FormikWrapper />;
+}
+
+
+// MY FORM
+
+// import { Fragment } from 'react';
+// import useInput from '../ui/form/use-input';
+// const MIN = 1;
+// const MAX = 100;
+
+// export default function HomePage(props) {
+//   const numberInput = {
+//     placeholder: 'Calories',
+//     validationMethod: value => validateNumber(value, MIN, MAX)
+//   };
+
+//   const { element, isValid, reset } = useInput(numberInput);
+
+//   console.log(isValid);
+
+//   return (
+//     <Fragment>
+//       {element}
+//       <input type={'email'} ></input>
+//       <button onClick={reset}>Reset</button>
+//     </Fragment>
+//   );
+// }
+
+
+// HOME PAGE
+
 // import axios from 'axios';
 // import Home from '../components/home/Home';
 // import { CONSTANTS } from './api/constants';
-import { Fragment } from 'react';
-import useInput from '../ui/form/use-input';
-const MIN = 1;
-const MAX = 100;
-
-export default function HomePage(props) {
-  const numberInput = {
-    placeholder: 'Calories',
-    validationMethod: value => validateNumber(value, MIN, MAX)
-  };
-
-  const { element, isValid, reset } = useInput(numberInput);
-
-  console.log(isValid);
-
-  return (
-    <Fragment>
-      {element}
-      <input type={'email'} ></input>
-      <button onClick={reset}>Reset</button>
-    </Fragment>
-  );
-}
 
 // export default function HomePage(props) {
 //   return <Home nutrients={props.nutrients} dailyTargetValues={props.dailyTargetValues} />;
