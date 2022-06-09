@@ -44,7 +44,7 @@ export default function MainNavigation() {
             setDisplayDataSettings(true);
             break;
          case 3:
-            setDisplayForm(true);
+            setDisplayForm(state => !state);
             break;
          case 4:
             if (auth.isLoggedIn)
