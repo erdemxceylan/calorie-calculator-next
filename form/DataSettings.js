@@ -1,80 +1,75 @@
-// Integrating an existing form
+// import { useRouter } from 'next/router';
+import { Dialog } from 'primereact/dialog';
+// import { Button } from 'primereact/button';
+// import DataSettingsModalForm from './components/DataSettingsModalForm';
+// import useHttpRequest from '../../../hooks/use-http-request';
+// import { CONSTANTS } from '../../../global/constants';
+import DataSettingsForm from './formik/DataSettingsForm';
 
+export default function DataSettings(props) {
+   // const router = useRouter();
+   // const { error, sendRequest: updateSettings } = useHttpRequest();
+   // let formData = {};
 
-// import React from "react";
-// import { useForm } from "react-hook-form";
+   // function getInputData(inputData) {
+   //    formData.reset = inputData.resetForm;
+   //    formData.isValid = inputData.isFormValid;
+   //    if (formData.isValid) {
+   //       formData.dailyCalorieNeed = Number(inputData.enteredValues.dailyCalorieNeed);
+   //       formData.weight = Number(inputData.enteredValues.weight);
+   //       formData.fatRatio = Number(inputData.enteredValues.fatRatio);
+   //    }
+   // }
 
-// // The following component is an example of your existing Input Component
-// const Input = ({ label, register, required }) => (
-//   <>
-//     <label>{label}</label>
-//     <input {...register(label, { required })} />
-//   </>
-// );
+   // function getFitnessGoal(goal) {
+   //    formData.fitnessGoal = goal;
+   // }
 
-// // you can use React.forwardRef to pass the ref too
-// const Select = React.forwardRef(({ onChange, onBlur, name, label }, ref) => (
-//   <>
-//     <label>{label}</label>
-//     <select name={name} ref={ref} onChange={onChange} onBlur={onBlur}>
-//       <option value="20">20</option>
-//       <option value="30">30</option>
-//     </select>
-//   </>
-// ));
+   // function submitHandler() {
 
-// const App = () => {
-//   const { register, handleSubmit } = useForm();
+   //    if (!formData.isValid) return;
 
-//   const onSubmit = (data) => {
-//     alert(JSON.stringify(data));
-//   };
+   //    const url = CONSTANTS.UPDATE_SETTINGS_URL;
+   //    const method = CONSTANTS.PUT;
+   //    const body = {
+   //       dailyCalorieNeed: formData.dailyCalorieNeed,
+   //       weight: formData.weight,
+   //       fatRatio: formData.fatRatio,
+   //       fitnessGoal: formData.fitnessGoal
+   //    };
 
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <Input label="First Name" register={register} required />
-//       <Select label="Age" {...register("Age")} />
-//       <input type="submit" />
-//     </form>
-//   );
-// };
+   //    updateSettings({ url, method, body });
 
-// Apply Validation
+   //    if (error) console.log(error);
 
-// import React from "react";
-// import { useForm } from "react-hook-form";
+   //    formData.reset();
+   //    props.onHide();
+   //    router.push(CONSTANTS.HOME_PAGE);
+   // }
 
-// export default function App() {
-//   const { register, handleSubmit } = useForm();
-//   const onSubmit = data => console.log(data);
-   
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <input {...register("firstName", { required: true, maxLength: 20 })} />
-//       <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
-//       <input type="number" {...register("age", { min: 18, max: 99 })} />
-//       <input type="submit" />
-//     </form>
-//   );
-// }
+   // const submitButton = (
+   //    <Button
+   //       label='Submit'
+   //       className='p-button-success'
+   //       onClick={submitHandler}
+   //    />
+   // );
 
-// Handle Errors
+   return (
+      <Dialog
+         className='modal'
+         header='Data Settings'
+         visible={props.visible}
+         onHide={props.onHide}
+         // footer={submitButton}
+         resizable={false}
+      >
+         {/* <DataSettingsModalForm
+            sendInputData={getInputData}
+            sendFitnessGoal={getFitnessGoal}
+         /> */}
 
-// import React from "react";
-// import { useForm } from "react-hook-form";
-
-// export default function App() {
-//   const { register, formState: { errors }, handleSubmit } = useForm();
-  
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <input {...register("firstName", { required: true })} />
-//       {errors.firstName?.type === 'required' && "First name is required"}
-      
-//       <input {...register("lastName", { required: true })} />
-//       {errors.lastName && "Last name is required"}
-      
-//       <input type="submit" />
-//     </form>
-//   );
-// }
+         <DataSettingsForm />
+      </Dialog>
+   );
+}

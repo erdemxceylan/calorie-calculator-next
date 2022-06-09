@@ -15,6 +15,7 @@ export default function FormikWrapper() {
       radioChoice: "",
       checkBoxChoice: "",
    };
+
    const validationSchema = Yup.object({
       email: Yup.string().required("Required"),
       description: Yup.string().required("Required"),
@@ -22,7 +23,9 @@ export default function FormikWrapper() {
       radioChoice: Yup.string().required("Required"),
       checkBoxChoice: Yup.array().required("Required"),
    });
+
    const onSubmit = values => console.log("Form data", values);
+
    return (
       <Formik
          initialValues={initialValues}
