@@ -63,6 +63,7 @@ export default function DataSettings(props) {
          onHide={props.onHide}
          // footer={submitButton}
          resizable={false}
+         draggable={false}
       >
          {/* <DataSettingsModalForm
             sendInputData={getInputData}

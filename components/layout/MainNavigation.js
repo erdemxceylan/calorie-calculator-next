@@ -73,8 +73,8 @@ export default function MainNavigation() {
             visible={displayLogin}
             onHide={setDisplayLogin.bind(null, false)}
          />
-         {/* <DataSettings visible={displayForm} onHide={setDisplayForm.bind(null, false)} /> */}
-         {displayForm && <FormikFormDemo />}
+         <DataSettings visible={displayForm} onHide={setDisplayForm.bind(null, false)} />
+         {/* {displayForm && <FormikFormDemo />} */}
       </Fragment>
    );
 }

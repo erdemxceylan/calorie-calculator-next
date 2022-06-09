@@ -1,19 +1,17 @@
-import { Field, ErrorMessage } from "formik";
-import { InputText } from 'primereact/inputtext';
-import { InputNumber } from 'primereact/inputnumber';
-import styles from './Formik.module.css';
 import { Fragment } from 'react';
+import { Field, ErrorMessage } from "formik";
+import styles from './Formik.module.css';
+import cn from 'classnames';
 
-function Input(props) {
-  const { name, label, ...rest } = props;
+export default function Input(props) {
+  const { name, label, errors, touched, ...rest } = props;
+  const invalid = errors[name] && touched[name] ? 'invalid' : null;
+
   return (
     <Fragment>
-      <label htmlFor={name}> {label}</label>
-      <Field className={styles.finput} name={name} {...rest} />
-      {/* <InputNumber name={name} {...rest} /> */}
-      {/* <InputText name={name} {...rest} /> */}
-      <ErrorMessage name={name} />
+      {/* <label htmlFor={name}> {label}</label> */}
+      <Field className={cn(styles.input, invalid)} name={name} {...rest} />
+      <ErrorMessage component='div' className='invalid' name={name} />
     </Fragment>
   );
 }
-export default Input;

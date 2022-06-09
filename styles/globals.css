@@ -52,16 +52,36 @@ body {
   padding: 0;
 }
 
+/* Forms */
+
+/* p-dialog header */
 .modal > div:nth-child(1) {
   padding: 1rem;
 }
 
-.modal > div:nth-child(2),
-.modal > div:nth-child(3) {
+/* p-dialog content */
+.modal > div:nth-child(2) {
   padding: 0rem 1rem 1rem 1rem;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .invalid {
   color: #ff0c00 !important;
   border-color: #ff0c00 !important;
 }
+
+.invalid:hover {
+  border-color: #ff0c00;
+}
+
+/* .invalid:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #ff0c00;
+  border-color: #ff0c00;
+}
+
+.invalid:focus-visible {
+  outline-offset: 0px;
+} */
