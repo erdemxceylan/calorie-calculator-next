@@ -1,23 +1,19 @@
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import FormikController from './FormikController.js';
-import { CONSTANTS } from '../../global/constants';
+import Input from './Input.js';
+import { Button } from 'primereact/button';
 import styles from './Formik.module.css';
+import FitnessGoalSelection from './FitnessGoalSelection.js';
 
-const INPUT = 'input';
 const NUMBER = 'number';
 
 export default function DataSettingsForm() {
-   const choices = [
-      { key: CONSTANTS.WEIGHT_GAIN, value: CONSTANTS.WEIGHT_GAIN },
-      { key: CONSTANTS.WEIGHT_LOSS, value: CONSTANTS.WEIGHT_LOSS },
-   ];
+   let formData = {};
 
    const initialValues = {
       dailyCalorieNeed: '',
       weight: '',
       fatRatio: '',
-      fitnessGoal: CONSTANTS.WEIGHT_GAIN
    };
 
    const validationSchema = Yup.object({
@@ -36,52 +32,49 @@ export default function DataSettingsForm() {
          .integer('Fat ratio must be integer')
          .max(99, 'Fat ratio can be 99 maximum')
          .required('Please enter your fat ratio'),
-      fitnessGoal: Yup.string().required('Please choose a fitness goal'),
    });
 
-   const onSubmit = values => console.log('Form Data', values);
+   function getFitnessGoal(goal) {
+      formData = { fitnessGoal: goal };
+   }
 
    return (
       <Formik
          initialValues={initialValues}
          validationSchema={validationSchema}
-         onSubmit={onSubmit}
+         onSubmit={(values, { resetForm }) => {
+            formData = { ...formData, ...values };
+            setTimeout(() => {
+               console.log(formData);
+               resetForm();
+            }, 1500);
+         }}
       >
          {formik => (
             <Form className={styles.form} >
-               <FormikController
-                  control={INPUT}
+               <Input
                   type={NUMBER}
                   placeholder='Daily Calorie Need (kcal)'
                   name={'dailyCalorieNeed'}
                   errors={formik.errors}
                   touched={formik.touched}
                />
-               <FormikController
-                  control={INPUT}
+               <Input
                   type={NUMBER}
                   placeholder='Weight (kg)'
                   name={'weight'}
                   errors={formik.errors}
                   touched={formik.touched}
                />
-               <FormikController
-                  control={INPUT}
+               <Input
                   type={NUMBER}
                   placeholder='Fat Ratio (%)'
                   name={'fatRatio'}
                   errors={formik.errors}
                   touched={formik.touched}
                />
-               <FormikController
-                  control='radio'
-                  label='Fitness Goal'
-                  name={'fitnessGoal'}
-                  options={choices}
-                  errors={formik.errors}
-                  touched={formik.touched}
-               />
-               <button type='submit'>Submit</button>
+               <FitnessGoalSelection sendFitnessGoal={getFitnessGoal} />
+               <Button label='Submit' type='submit' disabled={formik.isSubmitting} />
             </Form>
          )}
       </Formik>

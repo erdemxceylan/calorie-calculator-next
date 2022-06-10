@@ -61,15 +61,9 @@ export default function DataSettings(props) {
          header='Data Settings'
          visible={props.visible}
          onHide={props.onHide}
-         // footer={submitButton}
          resizable={false}
          draggable={false}
       >
-         {/* <DataSettingsModalForm
-            sendInputData={getInputData}
-            sendFitnessGoal={getFitnessGoal}
-         /> */}
-
          <DataSettingsForm />
       </Dialog>
    );

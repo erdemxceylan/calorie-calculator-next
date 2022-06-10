@@ -8,7 +8,6 @@ import { CONSTANTS } from '../../global/constants';
 import styles from './MainNavigation.module.css';
 
 import DataSettings from '../../form/DataSettings';
-import { FormikFormDemo } from '../../form/FormikFormDemo';
 
 export default function MainNavigation() {
    const [activeIndex, setActiveIndex] = useState(0);
@@ -74,7 +73,6 @@ export default function MainNavigation() {
             onHide={setDisplayLogin.bind(null, false)}
          />
          <DataSettings visible={displayForm} onHide={setDisplayForm.bind(null, false)} />
-         {/* {displayForm && <FormikFormDemo />} */}
       </Fragment>
    );
 }

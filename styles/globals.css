@@ -66,9 +66,13 @@ body {
   border-bottom-right-radius: 6px;
 }
 
-.invalid {
+.invalid * {
   color: #ff0c00 !important;
   border-color: #ff0c00 !important;
+}
+
+.invalid > div {
+  font-size: x-small;
 }
 
 .invalid:hover {
