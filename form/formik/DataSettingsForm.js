@@ -1,19 +1,20 @@
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Input from './Input.js';
 import { Button } from 'primereact/button';
+import { Fragment } from 'react';
+import { RadioButton } from 'primereact/radiobutton';
+import { CONSTANTS } from '../../global/constants.js';
 import styles from './Formik.module.css';
-import FitnessGoalSelection from './FitnessGoalSelection.js';
 
 const NUMBER = 'number';
 
 export default function DataSettingsForm() {
-   let formData = {};
-
    const initialValues = {
       dailyCalorieNeed: '',
       weight: '',
       fatRatio: '',
+      fitnessGoal: CONSTANTS.WEIGHT_GAIN
    };
 
    const validationSchema = Yup.object({
@@ -32,22 +33,16 @@ export default function DataSettingsForm() {
          .integer('Fat ratio must be integer')
          .max(99, 'Fat ratio can be 99 maximum')
          .required('Please enter your fat ratio'),
+      fitnessGoal: Yup.string().required('Please select your fitness goal')
    });
-
-   function getFitnessGoal(goal) {
-      formData = { fitnessGoal: goal };
-   }
 
    return (
       <Formik
          initialValues={initialValues}
          validationSchema={validationSchema}
          onSubmit={(values, { resetForm }) => {
-            formData = { ...formData, ...values };
-            setTimeout(() => {
-               console.log(formData);
-               resetForm();
-            }, 1500);
+            console.log(values);
+            resetForm();
          }}
       >
          {formik => (
@@ -73,7 +68,35 @@ export default function DataSettingsForm() {
                   errors={formik.errors}
                   touched={formik.touched}
                />
-               <FitnessGoalSelection sendFitnessGoal={getFitnessGoal} />
+               <div className={styles.radio}>
+                  <Field name='fitnessGoal' >
+                     {({ field }) => {
+                        return (
+                           <Fragment>
+                              <h4>Fitness Goal</h4>
+                              <div className='p-field-radiobutton'>
+                                 <RadioButton
+                                    inputId={CONSTANTS.WEIGHT_GAIN}
+                                    {...field}
+                                    value={CONSTANTS.WEIGHT_GAIN}
+                                    checked={field.value === CONSTANTS.WEIGHT_GAIN}
+                                 />
+                                 <label htmlFor={CONSTANTS.WEIGHT_GAIN}>{CONSTANTS.WEIGHT_GAIN}</label>
+                              </div>
+                              <div className='p-field-radiobutton'>
+                                 <RadioButton
+                                    inputId={CONSTANTS.WEIGHT_LOSS}
+                                    {...field}
+                                    value={CONSTANTS.WEIGHT_LOSS}
+                                    checked={field.value === CONSTANTS.WEIGHT_LOSS}
+                                 />
+                                 <label htmlFor={CONSTANTS.WEIGHT_LOSS}>{CONSTANTS.WEIGHT_LOSS}</label>
+                              </div>
+                           </Fragment>
+                        );
+                     }}
+                  </Field>
+               </div>
                <Button label='Submit' type='submit' disabled={formik.isSubmitting} />
             </Form>
          )}
