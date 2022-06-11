@@ -13,7 +13,7 @@ export default function DataSettingsForm() {
       dailyCalorieNeed: '',
       weight: '',
       fatRatio: '',
-      fitnessGoal: CONSTANTS.WEIGHT_GAIN
+      fitnessGoal: ''
    };
 
    const validationSchema = Yup.object({

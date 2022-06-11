@@ -38,7 +38,7 @@ export default function MyRadioButton(props) {
                }}
             </Field>
          </div>
-         <ErrorMessage component='div' className={styles['error-message']} name={name} />
+         <ErrorMessage className={styles['error-message']} name={name} component='div' />
       </Fragment>
    );
 }
