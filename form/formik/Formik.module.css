@@ -56,3 +56,17 @@
   margin: 0.25rem;
   color: grey;
 }
+
+.invalid {
+  color: #ff0c00;
+  border-color: #ff0c00;
+}
+
+.invalid:hover {
+  border-color: #ff0c00;
+}
+
+.error-message {
+  color: #ff0c00;
+  font-size: small;
+}

@@ -66,26 +66,11 @@ body {
   border-bottom-right-radius: 6px;
 }
 
-.invalid * {
+.invalid {
   color: #ff0c00 !important;
   border-color: #ff0c00 !important;
-}
-
-.invalid > div {
-  font-size: x-small;
 }
 
 .invalid:hover {
   border-color: #ff0c00;
 }
-
-/* .invalid:focus {
-  outline: 0 none;
-  outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #ff0c00;
-  border-color: #ff0c00;
-}
-
-.invalid:focus-visible {
-  outline-offset: 0px;
-} */
