@@ -1,64 +1,101 @@
-import axios from 'axios';
-import Home from '../components/home/Home';
-import { CONSTANTS } from './api/constants';
+import MyForm from '../myform/MyForm';
+import * as Yup from 'yup';
 
 export default function HomePage(props) {
-  return <Home nutrients={props.nutrients} dailyTargetValues={props.dailyTargetValues} />;
+  const validationSchema = Yup.object({
+    dailyCalorieNeed: Yup.number()
+      .positive('Daily calorie need must be positive')
+      .integer('Daily calorie need must be an integer')
+      .max(10000, 'Daily calorie need can be 10000 maximum')
+      .required('Please enter your daily calorie need'),
+    weight: Yup.number()
+      .positive('Weight must be positive')
+      .integer('Weight must be an integer')
+      .max(1000, 'Weight can be 1000 maximum')
+      .required('Please enter your weight'),
+    fatRatio: Yup.number()
+      .positive('Fat ratio must be positive')
+      .integer('Fat ratio must be an integer')
+      .max(99, 'Fat ratio can be 99 maximum')
+      .required('Please enter your fat ratio'),
+    // fitnessGoal: Yup.string().required('Please select your fitness goal')
+  });
+
+  const inputs = [
+    { name: 'dailyCalorieNeed', placeholder: 'Daily Calorie Need', type: 'number', initialValue: '' },
+    { name: 'weight', placeholder: 'Weight', type: 'number', initialValue: '' },
+    { name: 'fatRatio', placeholder: 'Fat Ratio', type: 'number', initialValue: '' }
+  ];
+
+  function submitHandler(values) {  // ({dailyCalorieNeed, weight, fatRatio}) instead of (values)
+    console.log(values);
+  }
+
+  return <MyForm inputs={inputs} validationSchema={validationSchema} onSubmit={submitHandler} submitButtonLabel='Submit Test' />;
 }
 
-export async function getServerSideProps() {
-  // Fetching nutrients
-  let nutrients = [];
 
-  const nutrientsResponse = await axios.get(`${CONSTANTS.NUTRIENTS_URL}.json`);
+// import axios from 'axios';
+// import Home from '../components/home/Home';
+// import { CONSTANTS } from './api/constants';
 
-  for (const key in nutrientsResponse.data) {
-    nutrients.push({
-      id: key,
-      name: nutrientsResponse.data[key].name,
-      unit: nutrientsResponse.data[key].unit,
-      calories: nutrientsResponse.data[key].calories,
-      proteins: nutrientsResponse.data[key].proteins
-    });
-  }
+// export default function HomePage(props) {
+//   return <Home nutrients={props.nutrients} dailyTargetValues={props.dailyTargetValues} />;
+// }
 
-  // Fetching daily target values
-  let dataSettings = {};
-  let dailyCalorieTargetLowerBound = 0;
-  let dailyCalorieTargetUpperBound = 0;
-  let dailyProteinNeed = 0;
+// export async function getServerSideProps() {
+//   // Fetching nutrients
+//   let nutrients = [];
 
-  const settingsResponse = await axios.get(`${CONSTANTS.SETTINGS_URL}.json`);
+//   const nutrientsResponse = await axios.get(`${CONSTANTS.NUTRIENTS_URL}.json`);
 
-  for (const key in settingsResponse.data) {
-    dataSettings = {
-      dailyCalorieNeed: settingsResponse.data[key].dailyCalorieNeed,
-      weight: settingsResponse.data[key].weight,
-      fatRatio: settingsResponse.data[key].fatRatio,
-      fitnessGoal: settingsResponse.data[key].fitnessGoal
-    };
-  }
+//   for (const key in nutrientsResponse.data) {
+//     nutrients.push({
+//       id: key,
+//       name: nutrientsResponse.data[key].name,
+//       unit: nutrientsResponse.data[key].unit,
+//       calories: nutrientsResponse.data[key].calories,
+//       proteins: nutrientsResponse.data[key].proteins
+//     });
+//   }
 
-  const fatlessWeight = dataSettings.weight * (100 - dataSettings.fatRatio) / 100;
+//   // Fetching daily target values
+//   let dataSettings = {};
+//   let dailyCalorieTargetLowerBound = 0;
+//   let dailyCalorieTargetUpperBound = 0;
+//   let dailyProteinNeed = 0;
 
-  switch (dataSettings.fitnessGoal) {
-    case CONSTANTS.WEIGHT_GAIN:
-      dailyCalorieTargetLowerBound = dataSettings.dailyCalorieNeed;
-      dailyCalorieTargetUpperBound = dataSettings.dailyCalorieNeed + 300;
-      dailyProteinNeed = fatlessWeight * 2;
-      break;
-    case CONSTANTS.WEIGHT_LOSS:
-      dailyCalorieTargetLowerBound = dataSettings.dailyCalorieNeed - 500;
-      dailyCalorieTargetUpperBound = dataSettings.dailyCalorieNeed;
-      dailyProteinNeed = fatlessWeight * 1.5;
-      break;
-  }
+//   const settingsResponse = await axios.get(`${CONSTANTS.SETTINGS_URL}.json`);
 
-  const dailyTargetValues = {
-    dailyCalorieTargetLowerBound,
-    dailyCalorieTargetUpperBound,
-    dailyProteinNeed
-  };
+//   for (const key in settingsResponse.data) {
+//     dataSettings = {
+//       dailyCalorieNeed: settingsResponse.data[key].dailyCalorieNeed,
+//       weight: settingsResponse.data[key].weight,
+//       fatRatio: settingsResponse.data[key].fatRatio,
+//       fitnessGoal: settingsResponse.data[key].fitnessGoal
+//     };
+//   }
 
-  return { props: { nutrients, dailyTargetValues } };
-}
+//   const fatlessWeight = dataSettings.weight * (100 - dataSettings.fatRatio) / 100;
+
+//   switch (dataSettings.fitnessGoal) {
+//     case CONSTANTS.WEIGHT_GAIN:
+//       dailyCalorieTargetLowerBound = dataSettings.dailyCalorieNeed;
+//       dailyCalorieTargetUpperBound = dataSettings.dailyCalorieNeed + 300;
+//       dailyProteinNeed = fatlessWeight * 2;
+//       break;
+//     case CONSTANTS.WEIGHT_LOSS:
+//       dailyCalorieTargetLowerBound = dataSettings.dailyCalorieNeed - 500;
+//       dailyCalorieTargetUpperBound = dataSettings.dailyCalorieNeed;
+//       dailyProteinNeed = fatlessWeight * 1.5;
+//       break;
+//   }
+
+//   const dailyTargetValues = {
+//     dailyCalorieTargetLowerBound,
+//     dailyCalorieTargetUpperBound,
+//     dailyProteinNeed
+//   };
+
+//   return { props: { nutrients, dailyTargetValues } };
+// }

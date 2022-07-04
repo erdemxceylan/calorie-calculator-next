@@ -1,0 +1,50 @@
+/* p-dialog header */
+.modal > div:nth-child(1) {
+  padding: 1rem;
+}
+
+/* p-dialog content */
+.modal > div:nth-child(2) {
+  padding: 0rem 1rem 1rem 1rem;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 18rem;
+  min-height: 22rem;
+}
+
+.radio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 6rem;
+}
+
+.radio h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.radio label {
+  margin: 0.25rem;
+  color: grey;
+}
+
+.invalid {
+  color: #ff0c00 !important;
+  border-color: #ff0c00 !important;
+}
+
+.invalid:hover {
+  border-color: #ff0c00 !important;
+}
+
+.error-message {
+  color: #ff0c00;
+  font-size: small;
+}
