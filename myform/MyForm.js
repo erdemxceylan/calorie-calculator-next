@@ -1,7 +1,6 @@
 import { Formik, Form } from 'formik';
 import { Button } from 'primereact/button';
-import Input from '../form/formik/Input';
-import MyRadioButton from '../form/formik/MyRadioButton';
+import Inputs from './Inputs';
 import styles from './MyForm.module.css';
 
 export default function MyForm({ inputs, validationSchema, onSubmit, submitButtonLabel }) {
@@ -20,16 +19,16 @@ export default function MyForm({ inputs, validationSchema, onSubmit, submitButto
          {formik => (
             <Form className={styles.form} >
                {inputs.map(input =>
-                  <Input
+                  <Inputs
                      key={input.name}
                      type={input.type}
                      placeholder={input.placeholder}
                      name={input.name}
                      errors={formik.errors}
                      touched={formik.touched}
+                     selections={input.selections}
                   />
                )}
-               {/* <MyRadioButton name='fitnessGoal' /> */}
                <Button
                   label={submitButtonLabel}
                   type='submit'

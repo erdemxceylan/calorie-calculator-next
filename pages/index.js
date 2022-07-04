@@ -18,20 +18,28 @@ export default function HomePage(props) {
       .integer('Fat ratio must be an integer')
       .max(99, 'Fat ratio can be 99 maximum')
       .required('Please enter your fat ratio'),
-    // fitnessGoal: Yup.string().required('Please select your fitness goal')
+    fitnessGoal: Yup.string().required('Please select your fitness goal')
   });
 
   const inputs = [
     { name: 'dailyCalorieNeed', placeholder: 'Daily Calorie Need', type: 'number', initialValue: '' },
     { name: 'weight', placeholder: 'Weight', type: 'number', initialValue: '' },
-    { name: 'fatRatio', placeholder: 'Fat Ratio', type: 'number', initialValue: '' }
+    { name: 'fatRatio', placeholder: 'Fat Ratio', type: 'number', initialValue: '' },
+    { name: 'fitnessGoal', placeholder: 'Fitness Goal', type: 'radio', initialValue: '', selections: [{ value: 'Weight Gain' }, { value: 'Weight Loss' }] }
   ];
 
-  function submitHandler(values) {  // ({dailyCalorieNeed, weight, fatRatio}) instead of (values)
+  function submitHandler(values) {  // ({dailyCalorieNeed, weight, fatRatio, fitnessGoal}) instead of (values)
     console.log(values);
   }
 
-  return <MyForm inputs={inputs} validationSchema={validationSchema} onSubmit={submitHandler} submitButtonLabel='Submit Test' />;
+  return (
+    <MyForm
+      inputs={inputs}
+      validationSchema={validationSchema}
+      onSubmit={submitHandler}
+      submitButtonLabel='Submit'
+    />
+  );
 }
 
 
