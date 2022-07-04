@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Field } from 'formik';
 import { RadioButton } from 'primereact/radiobutton';
-import styles from '../MyForm.module.css';
+import styles from '../Form.module.css';
 
 export default function Radio(props) {
    const { name, placeholder, selections } = props;

@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import { ErrorMessage } from 'formik';
-import Radio from './components/Radio';
-import Input from './components/Input';
-import styles from './MyForm.module.css';
+import Radio from './inputs/Radio';
+import Input from './inputs/Input';
+import styles from './Form.module.css';
 
 export default function Inputs(props) {
   const { type, name, errors, touched, ...rest } = props;

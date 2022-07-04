@@ -7,7 +7,7 @@ import LoginModal from '../modals/LoginModal/LoginModal';
 import { CONSTANTS } from '../../global/constants';
 import styles from './MainNavigation.module.css';
 
-import DataSettings from '../../form/DataSettings';
+import DataSettings from './DataSettings';
 
 export default function MainNavigation() {
    const [activeIndex, setActiveIndex] = useState(0);
@@ -72,7 +72,10 @@ export default function MainNavigation() {
             visible={displayLogin}
             onHide={setDisplayLogin.bind(null, false)}
          />
-         <DataSettings visible={displayForm} onHide={setDisplayForm.bind(null, false)} />
+         <DataSettings
+            visible={displayForm}
+            onHide={setDisplayForm.bind(null, false)}
+         />
       </Fragment>
    );
 }

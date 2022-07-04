@@ -1,9 +1,9 @@
-import { Formik, Form } from 'formik';
+import { Formik, Form as FormikForm } from 'formik';
 import { Button } from 'primereact/button';
 import Inputs from './Inputs';
-import styles from './MyForm.module.css';
+import styles from './Form.module.css';
 
-export default function MyForm({ inputs, validationSchema, onSubmit, submitButtonLabel }) {
+export default function Form({ inputs, validationSchema, onSubmit, submitButtonLabel }) {
    let initialValues = {};
    inputs.map(input => initialValues[`${input.name}`] = input.initialValue);
 
@@ -17,13 +17,13 @@ export default function MyForm({ inputs, validationSchema, onSubmit, submitButto
          }}
       >
          {formik => (
-            <Form className={styles.form} >
+            <FormikForm className={styles.form} >
                {inputs.map(input =>
                   <Inputs
                      key={input.name}
-                     type={input.type}
-                     placeholder={input.placeholder}
                      name={input.name}
+                     placeholder={input.placeholder}
+                     type={input.type}
                      errors={formik.errors}
                      touched={formik.touched}
                      selections={input.selections}
@@ -34,7 +34,7 @@ export default function MyForm({ inputs, validationSchema, onSubmit, submitButto
                   type='submit'
                   disabled={formik.isSubmitting}
                />
-            </Form>
+            </FormikForm>
          )}
       </Formik>
    );

@@ -1,18 +1,17 @@
 import { Dialog } from 'primereact/dialog';
-import MyForm from './MyForm';
-import styles from './MyForm.module.css';
+import styles from './Modal.module.css';
 
-export default function DataSettings(props) {
+export default function Modal(props) {
    return (
       <Dialog
          className={styles.modal}
          header={props.header}
          visible={props.visible}
          onHide={props.onHide}
-         resizable={false}
-         draggable={false}
+         resizable={props.resizable}
+         draggable={props.draggable}
       >
-         <MyForm />
+         {props.content}
       </Dialog>
    );
 }

@@ -1,0 +1,11 @@
+/* p-dialog header */
+.modal > div:nth-child(1) {
+  padding: 1rem;
+}
+
+/* p-dialog content */
+.modal > div:nth-child(2) {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  padding: 0rem 1rem 1rem 1rem;
+}
