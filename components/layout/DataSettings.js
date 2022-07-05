@@ -1,7 +1,13 @@
+import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 import FormModal from '../../ui/form-modal/FormModal';
+import { CONSTANTS } from '../../global/constants';
+import useHttpRequest from '../../hooks/use-http-request';
 
 export default function DataSettings(props) {
+   const router = useRouter();
+   const { error, sendRequest: updateSettings } = useHttpRequest();
+
    const inputs = [
       { name: 'dailyCalorieNeed', placeholder: 'Daily Calorie Need', type: 'number', initialValue: '' },
       { name: 'weight', placeholder: 'Weight', type: 'number', initialValue: '' },
@@ -28,8 +34,17 @@ export default function DataSettings(props) {
       fitnessGoal: Yup.string().required('Please select your fitness goal')
    });
 
-   function submitHandler(values) {  // ({dailyCalorieNeed, weight, fatRatio, fitnessGoal}) instead of (values)
-      console.log(values);
+   function submitHandler(values) {  // ({dailyCalorieNeed, weight, fatRatio, fitnessGoal}) can be used instead of (values)
+      const url = CONSTANTS.UPDATE_SETTINGS_URL;
+      const method = CONSTANTS.PUT;
+      const body = values;
+
+      updateSettings({ url, method, body });
+
+      if (error) console.log(error);
+
+      props.onHide();
+      router.push(CONSTANTS.HOME_PAGE);
    }
 
    return (
