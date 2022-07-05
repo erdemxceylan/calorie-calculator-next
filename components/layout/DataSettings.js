@@ -6,7 +6,7 @@ import useHttpRequest from '../../hooks/use-http-request';
 
 export default function DataSettings(props) {
    const router = useRouter();
-   const { error, sendRequest: updateSettings } = useHttpRequest();
+   const { sendRequest: updateSettings } = useHttpRequest();
 
    const inputs = [
       { name: 'dailyCalorieNeed', placeholder: 'Daily Calorie Need', type: 'number', initialValue: '' },
@@ -31,17 +31,16 @@ export default function DataSettings(props) {
          .integer('Fat ratio must be an integer')
          .max(99, 'Fat ratio can be 99 maximum')
          .required('Please enter your fat ratio'),
-      fitnessGoal: Yup.string().required('Please select your fitness goal')
+      fitnessGoal: Yup.string()
+         .required('Please select your fitness goal')
    });
 
-   function submitHandler(values) {  // ({dailyCalorieNeed, weight, fatRatio, fitnessGoal}) can be used instead of (values)
+   function submitHandler(values) {
       const url = CONSTANTS.UPDATE_SETTINGS_URL;
       const method = CONSTANTS.PUT;
       const body = values;
 
       updateSettings({ url, method, body });
-
-      if (error) console.log(error);
 
       props.onHide();
       router.push(CONSTANTS.HOME_PAGE);
