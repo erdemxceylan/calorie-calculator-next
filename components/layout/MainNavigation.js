@@ -2,12 +2,12 @@ import { Fragment, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import AuthContext from '../../global/context/auth';
 import { TabMenu } from 'primereact/tabmenu';
-import DataSettingsModal from '../modals/DataSettingsModal/DataSettingsModal';
-import LoginModal from '../modals/LoginModal/LoginModal';
+import DataSettings from '../modals/DataSettings';
+import Login from '../modals/Login';
 import { CONSTANTS } from '../../global/constants';
 import styles from './MainNavigation.module.css';
 
-import Login from './Login';
+// import AddNewNutrient from '../modals/AddNewNutrient';
 
 export default function MainNavigation() {
    const [activeIndex, setActiveIndex] = useState(0);
@@ -16,7 +16,7 @@ export default function MainNavigation() {
    const auth = useContext(AuthContext);
    const router = useRouter();
 
-   const [displayForm, setDisplayForm] = useState(false);
+   // const [displayForm, setDisplayForm] = useState(false);
 
    const loginButton = { label: 'Login', icon: 'pi pi-fw pi-sign-in' };
    const logoutButton = { label: 'Logout', icon: 'pi pi-fw pi-sign-out' };
@@ -25,7 +25,7 @@ export default function MainNavigation() {
       { label: 'Home', icon: 'pi pi-fw pi-home' },
       { label: 'Nutrient List', icon: 'pi pi-fw pi-list' },
       { label: 'Data Settings', icon: 'pi pi-fw pi-cog' },
-      { label: 'Form', icon: 'pi pi-fw pi-cog' },
+      // { label: 'Form', icon: 'pi pi-fw pi-cog' },
       auth.isLoggedIn ? logoutButton : loginButton
    ];
 
@@ -42,10 +42,10 @@ export default function MainNavigation() {
          case 2:
             setDisplayDataSettings(true);
             break;
+         // case 3:
+         //    setDisplayForm(state => !state);
+         //    break;
          case 3:
-            setDisplayForm(state => !state);
-            break;
-         case 4:
             if (auth.isLoggedIn)
                auth.logout();
             else
@@ -64,18 +64,18 @@ export default function MainNavigation() {
             activeIndex={activeIndex}
             onTabChange={tabChangeHandler}
          />
-         <DataSettingsModal
+         <DataSettings
             visible={displayDataSettings}
             onHide={setDisplayDataSettings.bind(null, false)}
          />
-         <LoginModal
+         <Login
             visible={displayLogin}
             onHide={setDisplayLogin.bind(null, false)}
          />
-         <Login
+         {/* <AddNewNutrient
             visible={displayForm}
             onHide={setDisplayForm.bind(null, false)}
-         />
+         /> */}
       </Fragment>
    );
 }
