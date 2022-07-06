@@ -1,38 +1,25 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   min-width: 18rem;
-  min-height: 22rem;
 }
 
-.radio {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 6rem;
+.form > div,
+.form > div > div,
+.form > div > p,
+.form > button {
+  margin: 0.5rem 0;
 }
 
-.radio h4 {
+.form > div > input,
+.form > button {
+  width: 100%;
+}
+
+.form > div h4 {
   margin: 0;
   padding: 0;
 }
 
-.radio label {
-  margin: 0.25rem;
+.form > div label {
+  margin: 0 0.25rem;
   color: grey;
-}
-
-.invalid {
-  color: #ff0c00 !important;
-  border-color: #ff0c00 !important;
-}
-
-.invalid:hover {
-  border-color: #ff0c00 !important;
-}
-
-.error-message {
-  color: #ff0c00;
-  font-size: small;
 }

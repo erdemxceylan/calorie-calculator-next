@@ -9,9 +9,9 @@ export default function DataSettings(props) {
    const { sendRequest: updateSettings } = useHttpRequest();
 
    const inputs = [
-      { name: 'dailyCalorieNeed', placeholder: 'Daily Calorie Need', type: 'number', initialValue: '' },
-      { name: 'weight', placeholder: 'Weight', type: 'number', initialValue: '' },
-      { name: 'fatRatio', placeholder: 'Fat Ratio', type: 'number', initialValue: '' },
+      { name: 'dailyCalorieNeed', placeholder: 'Daily Calorie Need (kcal)', type: 'number', initialValue: '' },
+      { name: 'weight', placeholder: 'Weight (kg)', type: 'number', initialValue: '' },
+      { name: 'fatRatio', placeholder: 'Fat Ratio (%)', type: 'number', initialValue: '' },
       { name: 'fitnessGoal', placeholder: 'Fitness Goal', type: 'radio', initialValue: '', selections: [{ value: 'Weight Gain' }, { value: 'Weight Loss' }] }
    ];
 

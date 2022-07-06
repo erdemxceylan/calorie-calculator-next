@@ -1,8 +1,7 @@
-import { Fragment } from 'react';
 import { ErrorMessage } from 'formik';
 import Radio from './inputs/Radio';
 import Input from './inputs/Input';
-import styles from './Form.module.css';
+import styles from './Inputs.module.css';
 
 export default function Inputs(props) {
   const { type, name, errors, touched, ...rest } = props;
@@ -19,9 +18,9 @@ export default function Inputs(props) {
   }
 
   return (
-    <Fragment>
+    <div>
       {input}
-      <ErrorMessage className={styles['error-message']} name={name} component='div' />
-    </Fragment>
+      <ErrorMessage className={styles['error-message']} name={name} component='p' />
+    </div>
   );
 }
