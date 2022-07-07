@@ -51,26 +51,3 @@ body {
 .table > div > div:last-child {
   padding: 0;
 }
-
-/* Forms */
-
-/* p-dialog header */
-.modal > div:nth-child(1) {
-  padding: 1rem;
-}
-
-/* p-dialog content */
-.modal > div:nth-child(2) {
-  padding: 0rem 1rem 1rem 1rem;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-
-.invalid {
-  color: #ff0c00 !important;
-  border-color: #ff0c00 !important;
-}
-
-.invalid:hover {
-  border-color: #ff0c00;
-}
