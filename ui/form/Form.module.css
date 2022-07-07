@@ -4,14 +4,17 @@
 
 .form > div,
 .form > div > div,
-.form > div > p,
 .form > button {
-  margin: 0.5rem 0;
+  margin: 0.75rem 0;
 }
 
 .form > div > input,
 .form > button {
   width: 100%;
+}
+
+.form > div > p {
+  margin: 0.5rem 0;
 }
 
 .form > div h4 {

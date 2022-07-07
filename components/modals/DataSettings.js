@@ -18,17 +18,17 @@ export default function DataSettings(props) {
    const validationSchema = Yup.object({
       dailyCalorieNeed: Yup.number()
          .positive('Daily calorie need must be positive')
-         .integer('Daily calorie need must be an integer')
-         .max(10000, 'Daily calorie need can be 10000 maximum')
+         // .integer('Daily calorie need must be an integer')
+         .max(100000, 'Daily calorie need can be 100000 maximum')
          .required('Please enter your daily calorie need'),
       weight: Yup.number()
          .positive('Weight must be positive')
-         .integer('Weight must be an integer')
-         .max(1000, 'Weight can be 1000 maximum')
+         // .integer('Weight must be an integer')
+         .max(10000, 'Weight can be 10000 maximum')
          .required('Please enter your weight'),
       fatRatio: Yup.number()
          .positive('Fat ratio must be positive')
-         .integer('Fat ratio must be an integer')
+         // .integer('Fat ratio must be an integer')
          .max(99, 'Fat ratio can be 99 maximum')
          .required('Please enter your fat ratio'),
       fitnessGoal: Yup.string()

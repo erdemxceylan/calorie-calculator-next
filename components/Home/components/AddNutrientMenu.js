@@ -57,7 +57,7 @@ export default function AddNutrientMenu(props) {
          </span>
          <Button
             label='Add'
-            className={cn('p-button-success', styles.button)}
+            className={styles.button}
             type='submit'
          />
       </form>

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { Fragment, useContext, useState } from 'react';
 import useHttpRequest from '../../hooks/use-http-request';
-import AddNutrientModal from '../modals/AddNutrientModal/AddNutrientModal';
+import AddNewNutrient from '../modals/AddNewNutrient';
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { InputText } from 'primereact/inputtext';
@@ -21,7 +21,7 @@ const CALORIES_FIELD = 'calories';
 const PROTEINS_FIELD = 'proteins';
 
 export default function NutrientList(props) {
-   const [displayAddNutrientModal, setDisplayAddNutrientModal] = useState(false);
+   const [displayAddNewNutrient, setDisplayAddNewNutrient] = useState(false);
    const router = useRouter();
    const auth = useContext(AuthContext);
    const { sendRequest: updateNutrient } = useHttpRequest();
@@ -106,10 +106,10 @@ export default function NutrientList(props) {
 
    const addNewNutrientButton = (
       <Button
-         className={cn('p-button-success', styles.button)}
+         className={styles.button}
          label='Add New Nutrient'
          icon='pi pi-plus'
-         onClick={setDisplayAddNutrientModal.bind(null, true)}
+         onClick={setDisplayAddNewNutrient.bind(null, true)}
       />
    );
 
@@ -154,9 +154,9 @@ export default function NutrientList(props) {
                {auth.isAdminLoggedIn && deletionColumn}
             </DataTable>
          </div>
-         <AddNutrientModal
-            visible={displayAddNutrientModal}
-            onHide={setDisplayAddNutrientModal.bind(null, false)}
+         <AddNewNutrient
+            visible={displayAddNewNutrient}
+            onHide={setDisplayAddNewNutrient.bind(null, false)}
          />
       </Fragment>
    );
