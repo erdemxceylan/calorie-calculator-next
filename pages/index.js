@@ -28,7 +28,7 @@ export async function getServerSideProps() {
     });
   }
 
-  // Fetching daily target values
+  // Fetching data settings and constructing daily target values
   let dataSettings = {};
   let dailyCalorieTargetLowerBound = 0;
   let dailyCalorieTargetUpperBound = 0;

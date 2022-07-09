@@ -9,7 +9,7 @@ export default function Home(props) {
 
    return (
       <Fragment>
-         <DataMenu bodyData={props.dataSettings} />
+         <DataMenu dataSettings={props.dataSettings} />
          <AddNutrientMenu nutrients={props.nutrients} />
          {!isEmpty && <ConsumedNutrientsTable dailyTargetValues={props.dailyTargetValues} />}
       </Fragment>

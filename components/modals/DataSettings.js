@@ -5,16 +5,18 @@ import { CONSTANTS } from '../../global/constants';
 import useHttpRequest from '../../hooks/use-http-request';
 
 export default function DataSettings(props) {
+   const { initialValues } = props;
+
    const router = useRouter();
    const { sendRequest: updateSettings } = useHttpRequest();
 
    const selections = [{ value: CONSTANTS.WEIGHT_GAIN }, { value: CONSTANTS.WEIGHT_LOSS }];
 
    const inputs = [
-      { name: 'dailyCalorieNeed', placeholder: `${CONSTANTS.DCN} (kcal)`, type: 'number', initialValue: '' },
-      { name: 'weight', placeholder: `${CONSTANTS.WEIGHT} (kg)`, type: 'number', initialValue: '' },
-      { name: 'fatRatio', placeholder: `${CONSTANTS.FAT_RATIO} (%)`, type: 'number', initialValue: '' },
-      { name: 'fitnessGoal', placeholder: CONSTANTS.FITNESS_GOAL, type: 'radio', initialValue: '', selections }
+      { name: 'dailyCalorieNeed', placeholder: `${CONSTANTS.DCN} (kcal)`, type: 'number', initialValue: initialValues.dailyCalorieNeed },
+      { name: 'weight', placeholder: `${CONSTANTS.WEIGHT} (kg)`, type: 'number', initialValue: initialValues.weight },
+      { name: 'fatRatio', placeholder: `${CONSTANTS.FAT_RATIO} (%)`, type: 'number', initialValue: initialValues.fatRatio },
+      { name: 'fitnessGoal', placeholder: CONSTANTS.FITNESS_GOAL, type: 'radio', initialValue: initialValues.fitnessGoal, selections }
    ];
 
    const validationSchema = Yup.object({
