@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { Fragment } from 'react';
-import styles from './TotalValues.module.css';
+import styles from './Totals.module.css';
 
-export default function TotalValues(props) {
+export default function Totals(props) {
    const totalCalories = useSelector(state => state.consumedNutrients.totalCalories).toFixed(2);
    const totalProteins = useSelector(state => state.consumedNutrients.totalProteins).toFixed(2);
    const dailyCalorieTargetLowerBound = props.dailyTargetValues.dailyCalorieTargetLowerBound;

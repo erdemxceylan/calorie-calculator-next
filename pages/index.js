@@ -3,7 +3,13 @@ import Home from '../components/home/Home';
 import { CONSTANTS } from './api/constants';
 
 export default function HomePage(props) {
-  return <Home nutrients={props.nutrients} dailyTargetValues={props.dailyTargetValues} />;
+  return (
+    <Home
+      nutrients={props.nutrients}
+      dataSettings={props.dataSettings}
+      dailyTargetValues={props.dailyTargetValues}
+    />
+  );
 }
 
 export async function getServerSideProps() {
@@ -60,5 +66,5 @@ export async function getServerSideProps() {
     dailyProteinNeed
   };
 
-  return { props: { nutrients, dailyTargetValues } };
+  return { props: { nutrients, dataSettings, dailyTargetValues } };
 }

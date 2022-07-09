@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+.group {
+  display: flex;
+}
+
+.group > label,
+.group > p {
+  margin: 0.2rem;
+  text-align: center;
+  font-size: large;
+}
+
+.group > label {
+  color: grey;
+}
+
+.group > p {
+  color: aqua;
+}

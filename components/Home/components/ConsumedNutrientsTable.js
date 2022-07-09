@@ -4,7 +4,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import TotalValues from './TotalValues';
+import Totals from './Totals';
 import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrients';
 import styles from './ConsumedNutrientsTable.module.css';
 import cn from 'classnames';
@@ -91,7 +91,7 @@ export default function ConsumedNutrientsTable(props) {
          editMode='row'
          onRowEditComplete={rowEditCompletionHandler}
          responsiveLayout='scroll'
-         footer={<TotalValues dailyTargetValues={props.dailyTargetValues} />}
+         footer={<Totals dailyTargetValues={props.dailyTargetValues} />}
       >
          {consumedNutrientsTableColumns.map(({ field, header }) => {
             if (field === CONSUMED_QUANTITY) {
