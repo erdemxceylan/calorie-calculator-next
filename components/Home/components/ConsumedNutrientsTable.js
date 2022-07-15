@@ -124,7 +124,7 @@ export default function ConsumedNutrientsTable(props) {
          <div className={cn('card p-fluid', 'table')}>
             {consumedNutrientsTable}
          </div>
-         {auth.isLoggedIn && <Button label='Save List' />}
+         {auth.isLoggedIn && <Button className={styles.button} label='Save List' />}
       </Fragment>
    );
 }
