@@ -5,6 +5,7 @@ import { TabMenu } from 'primereact/tabmenu';
 import Login from '../modals/Login';
 import { CONSTANTS } from '../../global/constants';
 import styles from './MainNavigation.module.css';
+import cn from 'classnames';
 
 export default function MainNavigation() {
    const [activeIndex, setActiveIndex] = useState(0);
@@ -20,6 +21,9 @@ export default function MainNavigation() {
       { label: 'Nutrient List', icon: 'pi pi-fw pi-list' },
       auth.isLoggedIn ? logoutButton : loginButton
    ];
+
+   let mobileItems = [];
+   items.forEach(item => mobileItems.push({ label: '', icon: item.icon }));
 
    function tabChangeHandler(event) {
       setActiveIndex(event.index);
@@ -45,7 +49,13 @@ export default function MainNavigation() {
    return (
       <Fragment>
          <TabMenu
-            className={styles.header}
+            className={styles['nav-mobile']}
+            model={mobileItems}
+            activeIndex={activeIndex}
+            onTabChange={tabChangeHandler}
+         />
+         <TabMenu
+            className={styles.nav}
             model={items}
             activeIndex={activeIndex}
             onTabChange={tabChangeHandler}

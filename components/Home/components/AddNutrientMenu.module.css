@@ -6,13 +6,13 @@
 }
 
 .dropdown {
-  margin: 0.5rem;
   width: 100%;
+  margin: 0.5rem;
 }
 
 .span {
-  margin: 0.5rem !important;
   width: 100%;
+  margin: 0.5rem !important;
 }
 
 .span > input {
@@ -20,8 +20,8 @@
 }
 
 .button {
-  margin: 0.5rem !important;
   width: 100%;
+  margin: 0.5rem !important;
 }
 
 @media (min-width: 36rem) {
