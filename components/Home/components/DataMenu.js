@@ -1,8 +1,8 @@
 import { Fragment, useState } from 'react';
 import { Button } from 'primereact/button';
 import { CONSTANTS } from '../../../global/constants';
-import styles from './DataMenu.module.css';
 import DataSettings from '../../modals/DataSettings';
+import styles from './DataMenu.module.css';
 
 export default function DataMenu({ dataSettings }) {
    const [displayDataSettings, setDisplayDataSettings] = useState(false);
@@ -23,7 +23,11 @@ export default function DataMenu({ dataSettings }) {
                   <p>{group.value} {group.unit}</p>
                </div>
             ))}
-            <Button icon='pi pi-fw pi-cog' onClick={() => setDisplayDataSettings(true)} />
+            <Button
+               className={styles.button}
+               icon='pi pi-fw pi-cog'
+               onClick={() => setDisplayDataSettings(true)}
+            />
          </div>
          <DataSettings
             visible={displayDataSettings}

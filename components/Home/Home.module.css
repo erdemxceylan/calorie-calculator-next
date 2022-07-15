@@ -1,0 +1,14 @@
+.divider {
+  align-self: center;
+  height: 0;
+  width: 100%;
+  margin-top: 0.5rem;
+  border-top: 1px solid #6c757d;
+}
+
+@media (min-width: 36rem) {
+  .divider {
+    margin: 0;
+    width: calc(100% - 1rem);
+  }
+}

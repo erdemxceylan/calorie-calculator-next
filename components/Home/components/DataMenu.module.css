@@ -1,8 +1,8 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  margin: 0.5rem;
+  align-items: flex-start;
 }
 
 .group {
@@ -23,4 +23,30 @@
 
 .group > p {
   color: lightseagreen;
+}
+
+.button {
+  width: 100% !important;
+}
+
+@media (min-width: 36rem) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+    margin: 0.5rem;
+  }
+
+  .group {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 3rem !important;
+  }
+}
+
+@media (min-width: 64rem) {
+  .group {
+    flex-direction: row;
+  }
 }
