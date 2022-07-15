@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { Fragment } from 'react';
 import styles from './Totals.module.css';
 
 export default function Totals(props) {
@@ -27,46 +26,39 @@ export default function Totals(props) {
    const totalProteinsLabelStyle = totalProteins >= dailyProteinNeed ? styles.success : null;
 
    return (
-      <Fragment>
-
-         <div className={styles.mobile}>
-            <div>
-               <h4>Calories Taken</h4>
+      <div className={styles.container}>
+         <div>
+            <div className={styles.group}>
+               <label>Calories Taken:</label>
                <p className={totalCaloriesLabelStyle}>{totalCalories} kcal</p>
-               <h4>Target</h4>
+            </div>
+            <div className={styles.group}>
+               <label>Target:</label>
                <p>{dailyCalorieTargetInterval} kcal</p>
             </div>
-            <div>
-               <h4>Proteins Taken</h4>
+            <div className={styles.lateral}>
+               <label>Calories Taken:</label>
+               <p className={totalCaloriesLabelStyle}>{totalCalories} kcal</p>
+               <p>/</p>
+               <p>{dailyCalorieTargetInterval} kcal</p>
+            </div>
+         </div>
+         <div>
+            <div className={styles.group}>
+               <label>Proteins Taken:</label>
                <p className={totalProteinsLabelStyle}>{totalProteins} gram</p>
-               <h4>Target</h4>
+            </div>
+            <div className={styles.group}>
+               <label>Target:</label>
+               <p>{dailyProteinNeed} gram</p>
+            </div>
+            <div className={styles.lateral}>
+               <label>Proteins Taken:</label>
+               <p className={totalProteinsLabelStyle}>{totalProteins} gram</p>
+               <p>/</p>
                <p>{dailyProteinNeed} gram</p>
             </div>
          </div>
-
-         <div className={styles.desktop}>
-            <div className={styles.group}>
-               <div className={styles['group-unit']}>
-                  <h4>Calories Taken: </h4>
-                  <p className={totalCaloriesLabelStyle}>{totalCalories} kcal</p>
-               </div>
-               <div className={styles['group-unit']}>
-                  <h4>Target: </h4>
-                  <p>{dailyCalorieTargetInterval} kcal</p>
-               </div>
-            </div>
-            <div className={styles.group}>
-               <div className={styles['group-unit']}>
-                  <h4>Proteins Taken: </h4>
-                  <p className={totalProteinsLabelStyle}>{totalProteins} gram</p>
-               </div>
-               <div className={styles['group-unit']}>
-                  <h4>Target: </h4>
-                  <p>{dailyProteinNeed} gram</p>
-               </div>
-            </div>
-         </div>
-
-      </Fragment>
+      </div>
    );
 }

@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  height: 12rem;
 }
 
 .group {
@@ -18,11 +19,11 @@
 }
 
 .group > label {
-  color: grey;
+  color: #3b82f6;
 }
 
 .group > p {
-  color: lightseagreen;
+  color: grey;
 }
 
 .button {
@@ -33,6 +34,7 @@
   .container {
     flex-direction: row;
     align-items: center;
+    height: auto;
     margin: 0.5rem;
   }
 

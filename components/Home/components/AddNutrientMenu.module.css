@@ -1,8 +1,9 @@
 .form {
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  height: 13rem;
 }
 
 .dropdown {
@@ -28,6 +29,7 @@
   .form {
     flex-flow: row;
     justify-content: space-between;
+    height: auto;
   }
 
   .dropdown {

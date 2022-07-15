@@ -1,29 +1,28 @@
-.desktop {
-  display: none;
-}
-
-.mobile {
+.container {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  align-content: center;
-  margin: 0.5rem;
+  padding: 0.25rem;
 }
 
-.mobile h4,
-.desktop h4 {
+.container label,
+.container p {
   margin: 0;
-  padding: 0.25rem;
-  color: lightseagreen;
-  text-align: center;
+  padding: 0.125rem;
 }
 
-.mobile p,
-.desktop p {
-  margin: 0;
-  padding: 0.25rem;
+.container label {
+  color: #3b82f6;
+}
+
+.container p {
   color: grey;
-  text-align: center;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .success {
@@ -34,27 +33,22 @@
   color: #ff2020 !important;
 }
 
+.lateral {
+  display: none;
+}
+
 @media (min-width: 36rem) {
-  .mobile {
+  .group {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 64rem) {
+  .group {
     display: none;
   }
 
-  .desktop {
+  .lateral {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  .group {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  .group-unit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
