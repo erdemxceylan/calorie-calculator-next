@@ -6,8 +6,8 @@ import styles from './DataMenu.module.css';
 import cn from 'classnames';
 
 export default function DataMenu({ dataSettings }) {
-   const [displayDataSettings, setDisplayDataSettings] = useState(false);
-   const [toggleMenu, setToggleMenu] = useState(false);
+   const [displaySettings, setDisplaySettings] = useState(false);
+   const [displayMenu, setDisplayMenu] = useState(false);
 
    const data = [
       { label: CONSTANTS.DCN, value: dataSettings.dailyCalorieNeed, unit: 'kcal' },
@@ -16,12 +16,9 @@ export default function DataMenu({ dataSettings }) {
       { label: CONSTANTS.FITNESS_GOAL, value: dataSettings.fitnessGoal }
    ];
 
-   const visible = toggleMenu ? styles.visible : null;
-   const border = toggleMenu ? styles['border-bottom'] : styles['border-top'];
-
    return (
       <Fragment>
-         <div className={cn(styles.container, visible)}>
+         <div className={cn(styles.container, displayMenu ? styles.visible : null)}>
             {data.map(group => (
                <div className={styles.group} key={group.label}>
                   <label>{group.label}:</label>
@@ -31,19 +28,18 @@ export default function DataMenu({ dataSettings }) {
             <Button
                className={styles.button}
                icon='pi pi-fw pi-cog'
-               onClick={() => setDisplayDataSettings(true)}
+               onClick={() => setDisplaySettings(true)}
             />
          </div>
          <div
-            className={cn(styles.toggle, border)}
-            onClick={() => setToggleMenu(state => !state)}
-            icon='pi pi-fw pi-angle-up'
+            className={cn(styles.toggle, displayMenu ? styles.color : null)}
+            onClick={() => setDisplayMenu(state => !state)}
          >
-            {toggleMenu ? 'up' : 'down'}
+            <i className={displayMenu ? 'pi pi-angle-up' : 'pi pi-angle-down'} />
          </div>
          <DataSettings
-            visible={displayDataSettings}
-            onHide={setDisplayDataSettings.bind(null, false)}
+            visible={displaySettings}
+            onHide={setDisplaySettings.bind(null, false)}
             initialValues={dataSettings}
          />
       </Fragment>

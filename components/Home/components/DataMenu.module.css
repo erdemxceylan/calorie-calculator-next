@@ -33,17 +33,13 @@
 .toggle {
   align-self: center;
   width: 90%;
-  border: solid #6c757d;
+  border: 0;
   text-align: center;
   cursor: pointer;
 }
 
-.border-top {
-  border-width: 1px 0 0;
-}
-
-.border-bottom {
-  border-width: 0 0 1px;
+.color {
+  color: #3b82f6;
 }
 
 .visible {
