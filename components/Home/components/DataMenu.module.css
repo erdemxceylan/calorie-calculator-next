@@ -1,5 +1,5 @@
 .container {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
@@ -30,8 +30,29 @@
   width: 100% !important;
 }
 
-@media (min-width: 36rem) {
+.toggle {
+  align-self: center;
+  width: 90%;
+  border: solid #6c757d;
+  text-align: center;
+  cursor: pointer;
+}
+
+.border-top {
+  border-width: 1px 0 0;
+}
+
+.border-bottom {
+  border-width: 0 0 1px;
+}
+
+.visible {
+  display: flex;
+}
+
+@media (min-width: 50rem) {
   .container {
+    display: flex;
     flex-direction: row;
     align-items: center;
     height: auto;
@@ -44,6 +65,10 @@
 
   .button {
     width: 3rem !important;
+  }
+
+  .toggle {
+    display: none;
   }
 }
 

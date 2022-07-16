@@ -25,7 +25,7 @@
   margin: 0.5rem !important;
 }
 
-@media (min-width: 36rem) {
+@media (min-width: 50rem) {
   .form {
     flex-flow: row;
     justify-content: space-between;
