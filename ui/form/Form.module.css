@@ -1,5 +1,14 @@
 .form {
   min-width: 18rem;
+  padding: 0.25rem;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.form::-webkit-scrollbar {
+  display: none;
 }
 
 .form > div,
