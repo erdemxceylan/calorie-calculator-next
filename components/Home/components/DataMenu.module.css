@@ -23,17 +23,19 @@
 }
 
 .group > p {
-  color: grey;
+  color: #6c757d;
 }
 
 .button {
   width: 100% !important;
+  height: 2.5rem;
 }
 
 .toggle {
   align-self: center;
   width: 90%;
   border: 0;
+  color: #6c757d;
   text-align: center;
   cursor: pointer;
 }
@@ -61,6 +63,7 @@
 
   .button {
     width: 3rem !important;
+    height: 3rem;
   }
 
   .toggle {
