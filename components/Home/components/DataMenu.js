@@ -32,7 +32,7 @@ export default function DataMenu({ dataSettings }) {
             />
          </div>
          <div
-            className={cn(styles.toggle, displayMenu ? styles.color : null)}
+            className={styles.toggle}
             onClick={() => setDisplayMenu(state => !state)}
          >
             <i className={displayMenu ? 'pi pi-angle-up' : 'pi pi-angle-down'} />
