@@ -51,3 +51,11 @@ body {
 .table > div > div:last-child {
   padding: 0;
 }
+
+.button {
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #3b83f6e7 !important;
+}

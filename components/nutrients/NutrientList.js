@@ -106,7 +106,7 @@ export default function NutrientList(props) {
 
    const addNewNutrientButton = (
       <Button
-         className={styles.button}
+         className={cn(styles.button, 'button')}
          label='Add New Nutrient'
          icon='pi pi-plus'
          onClick={setDisplayAddNewNutrient.bind(null, true)}

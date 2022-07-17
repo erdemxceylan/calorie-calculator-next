@@ -30,6 +30,7 @@ export default function Form({ inputs, validationSchema, onSubmit, submitButtonL
                   />
                )}
                <Button
+                  className='button'
                   label={submitButtonLabel}
                   type='submit'
                   disabled={formik.isSubmitting || disabled}

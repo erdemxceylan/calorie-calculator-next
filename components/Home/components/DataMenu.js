@@ -26,7 +26,7 @@ export default function DataMenu({ dataSettings }) {
                </div>
             ))}
             <Button
-               className={styles.button}
+               className={cn(styles.button, 'button')}
                icon='pi pi-fw pi-cog'
                onClick={() => setDisplaySettings(true)}
             />

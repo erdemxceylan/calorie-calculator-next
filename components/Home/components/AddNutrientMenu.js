@@ -57,7 +57,7 @@ export default function AddNutrientMenu(props) {
          </span>
          <Button
             label='Add'
-            className={styles.button}
+            className={cn(styles.button, 'button')}
             type='submit'
          />
       </form>
