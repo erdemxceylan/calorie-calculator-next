@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import * as Yup from 'yup';
 import FormModal from '../../ui/form-modal/FormModal';
 import { CONSTANTS } from '../../global/constants';
@@ -8,7 +9,9 @@ export default function DataSettings(props) {
    const { initialValues } = props;
 
    const router = useRouter();
-   const { sendRequest: updateSettings } = useHttpRequest();
+   const { isLoading, error, sendRequest: updateSettings } = useHttpRequest();
+   const [buttonLabel, setButtonLabel] = useState('Submit');
+   const delay = 5000;
 
    const selections = [{ value: CONSTANTS.WEIGHT_GAIN }, { value: CONSTANTS.WEIGHT_LOSS }];
 
@@ -45,8 +48,11 @@ export default function DataSettings(props) {
       const body = values;
 
       updateSettings({ url, method, body });
+      console.log(error);
 
-      props.onHide();
+      setButtonLabel(error ? 'Error' : <i className='pi pi-check'></i>);
+      setTimeout(() => props.onHide(), delay);
+      setTimeout(() => setButtonLabel('Submit'), delay + 300);
       router.push(CONSTANTS.HOME_PAGE);
    }
 
@@ -58,7 +64,7 @@ export default function DataSettings(props) {
          inputs={inputs}
          validationSchema={validationSchema}
          onSubmit={submitHandler}
-         submitButtonLabel='Submit'
+         submitButtonLabel={isLoading ? <i className='pi pi-spinner'></i> : buttonLabel}
          resizable={false}
          draggable={false}
       />
