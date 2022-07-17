@@ -9,9 +9,9 @@ export default function DataSettings(props) {
    const { initialValues } = props;
 
    const router = useRouter();
-   const { isLoading, error, sendRequest: updateSettings } = useHttpRequest();
+   const { isLoading, sendRequest: updateSettings } = useHttpRequest();
    const [buttonLabel, setButtonLabel] = useState('Submit');
-   const delay = 5000;
+   const delay = 300;
 
    const selections = [{ value: CONSTANTS.WEIGHT_GAIN }, { value: CONSTANTS.WEIGHT_LOSS }];
 
@@ -47,13 +47,12 @@ export default function DataSettings(props) {
       const method = CONSTANTS.PUT;
       const body = values;
 
-      updateSettings({ url, method, body });
-      console.log(error);
-
-      setButtonLabel(error ? 'Error' : <i className='pi pi-check'></i>);
-      setTimeout(() => props.onHide(), delay);
-      setTimeout(() => setButtonLabel('Submit'), delay + 300);
-      router.push(CONSTANTS.HOME_PAGE);
+      updateSettings({ url, method, body }, () => {
+         setButtonLabel(<i className='pi pi-check' />);
+         setTimeout(() => props.onHide(), delay);
+         setTimeout(() => setButtonLabel('Submit'), delay + 300);
+         router.push(CONSTANTS.HOME_PAGE);
+      });
    }
 
    return (
@@ -64,7 +63,7 @@ export default function DataSettings(props) {
          inputs={inputs}
          validationSchema={validationSchema}
          onSubmit={submitHandler}
-         submitButtonLabel={isLoading ? <i className='pi pi-spinner'></i> : buttonLabel}
+         submitButtonLabel={isLoading ? <i className='pi pi-spinner' /> : buttonLabel}
          disabled={isLoading}
          resizable={false}
          draggable={false}
