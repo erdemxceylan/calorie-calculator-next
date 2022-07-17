@@ -8,6 +8,7 @@ export default function FormModal(props) {
          validationSchema={props.validationSchema}
          onSubmit={props.onSubmit}
          submitButtonLabel={props.submitButtonLabel}
+         disabled={props.disabled}
       />
    );
 

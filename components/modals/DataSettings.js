@@ -65,6 +65,7 @@ export default function DataSettings(props) {
          validationSchema={validationSchema}
          onSubmit={submitHandler}
          submitButtonLabel={isLoading ? <i className='pi pi-spinner'></i> : buttonLabel}
+         disabled={isLoading}
          resizable={false}
          draggable={false}
       />

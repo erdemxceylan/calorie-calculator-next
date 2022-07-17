@@ -3,7 +3,7 @@ import { Button } from 'primereact/button';
 import Inputs from './Inputs';
 import styles from './Form.module.css';
 
-export default function Form({ inputs, validationSchema, onSubmit, submitButtonLabel }) {
+export default function Form({ inputs, validationSchema, onSubmit, submitButtonLabel, disabled }) {
    let initialValues = {};
    inputs.map(input => initialValues[`${input.name}`] = input.initialValue);
 
@@ -32,7 +32,7 @@ export default function Form({ inputs, validationSchema, onSubmit, submitButtonL
                <Button
                   label={submitButtonLabel}
                   type='submit'
-                  disabled={formik.isSubmitting}
+                  disabled={formik.isSubmitting || disabled}
                />
             </FormikForm>
          )}
