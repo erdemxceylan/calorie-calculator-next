@@ -1,13 +1,21 @@
+import { useContext } from 'react';
 import { Button } from 'primereact/button';
-import React from 'react';
+import AuthContext from '../../global/context/auth';
 import Modal from '../../ui/modal/Modal';
 import styles from './Logout.module.css';
 
-function Logout(props) {
+export default function Logout(props) {
+   const auth = useContext(AuthContext);
+
+   function logoutHandler() {
+      auth.logout();
+      props.onHide();
+   }
+
    const content = (
       <div className={styles.container}>
-         <Button label='Cancel' />
-         <Button label='Logout' />
+         <Button className='button' label='Cancel' onClick={props.onHide} />
+         <Button label='Logout' onClick={logoutHandler} />
       </div>
    );
 
@@ -22,5 +30,3 @@ function Logout(props) {
       />
    );
 }
-
-export default Logout;

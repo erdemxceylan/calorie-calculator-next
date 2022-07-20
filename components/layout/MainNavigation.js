@@ -1,12 +1,11 @@
-import { Fragment, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
-import AuthContext from '../../global/context/auth';
+import { Fragment, useContext, useState } from 'react';
 import { TabMenu } from 'primereact/tabmenu';
-import Login from '../modals/Login';
 import { CONSTANTS } from '../../global/constants';
-import styles from './MainNavigation.module.css';
-import cn from 'classnames';
+import AuthContext from '../../global/context/auth';
+import Login from '../modals/Login';
 import Logout from '../modals/Logout';
+import styles from './MainNavigation.module.css';
 
 export default function MainNavigation() {
    const [activeIndex, setActiveIndex] = useState(0);
@@ -38,11 +37,10 @@ export default function MainNavigation() {
             router.push(CONSTANTS.NUTRIENTS_PAGE);
             break;
          case 2:
-            if (auth.isLoggedIn)
-               // auth.logout();
-               setDisplayLogout(true);
-            else
+            if (!auth.isLoggedIn)
                setDisplayLogin(true);
+            else
+               setDisplayLogout(true);
             break;
          default:
             break;

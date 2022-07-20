@@ -1,4 +1,21 @@
 .container {
   display: flex;
   justify-content: space-between;
+  margin: 0.5rem;
+  min-width: 15rem;
+}
+
+.container > button {
+  width: 45%;
+  height: 3rem;
+}
+
+.container > button:last-of-type {
+  background-color: #22c55e;
+  border-color: #22c55e;
+}
+
+.container > button:last-of-type:hover {
+  background-color: #16a34a;
+  border-color: #16a34a;
 }
