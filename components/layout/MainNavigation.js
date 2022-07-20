@@ -6,10 +6,12 @@ import Login from '../modals/Login';
 import { CONSTANTS } from '../../global/constants';
 import styles from './MainNavigation.module.css';
 import cn from 'classnames';
+import Logout from '../modals/Logout';
 
 export default function MainNavigation() {
    const [activeIndex, setActiveIndex] = useState(0);
    const [displayLogin, setDisplayLogin] = useState(false);
+   const [displayLogout, setDisplayLogout] = useState(false);
    const auth = useContext(AuthContext);
    const router = useRouter();
 
@@ -37,7 +39,8 @@ export default function MainNavigation() {
             break;
          case 2:
             if (auth.isLoggedIn)
-               auth.logout();
+               // auth.logout();
+               setDisplayLogout(true);
             else
                setDisplayLogin(true);
             break;
@@ -63,6 +66,10 @@ export default function MainNavigation() {
          <Login
             visible={displayLogin}
             onHide={setDisplayLogin.bind(null, false)}
+         />
+         <Logout
+            visible={displayLogout}
+            onHide={setDisplayLogout.bind(null, false)}
          />
       </Fragment>
    );
