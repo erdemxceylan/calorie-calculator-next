@@ -118,3 +118,10 @@ body {
     width: 5rem !important;
   }
 }
+
+@media (min-width: 65rem) {
+  .table th:nth-child(6),
+  .table th:nth-child(7) {
+    width: 8rem !important;
+  }
+}
