@@ -21,6 +21,7 @@ const CALORIES_FIELD = 'calories';
 const PROTEINS_FIELD = 'proteins';
 
 export default function NutrientList(props) {
+   const nutrients = props.nutrients.map((nutrient, index) => { return { index, ...nutrient }; });
    const [displayAddNewNutrient, setDisplayAddNewNutrient] = useState(false);
    const router = useRouter();
    const auth = useContext(AuthContext);
@@ -33,6 +34,51 @@ export default function NutrientList(props) {
       { field: CALORIES_FIELD, header: CALORIES },
       { field: PROTEINS_FIELD, header: PROTEINS }
    ];
+
+   const addNewNutrientButton = (
+      <Button
+         className={cn(styles.button, 'button')}
+         label='Add New Nutrient'
+         icon='pi pi-plus'
+         onClick={setDisplayAddNewNutrient.bind(null, true)}
+      />
+   );
+
+   const numberColumn = (
+      <Column
+         header='No'
+         headerStyle={{ width: '2rem', minWidth: '2rem' }}
+         bodyStyle={{ textAlign: 'center' }}
+         body={rowData => rowData.index + 1}
+      />
+   );
+
+   const nutrientListColumns = nutrientListColumnHeaders.map(({ field, header }) => {
+      return <Column
+         key={field}
+         field={field}
+         header={header}
+         body={rowData => labelField(rowData, field)}
+         editor={options => editor(options, field)}
+      />;
+   });
+
+   const editionColumn = (
+      <Column
+         header='Edit'
+         rowEditor headerStyle={{ width: '2rem', minWidth: '2rem' }}
+         bodyStyle={{ textAlign: 'center' }}
+      />
+   );
+
+   const deletionColumn = (
+      <Column
+         header='Delete'
+         headerStyle={{ width: '3.25rem', minWidth: '3.25rem' }}
+         bodyStyle={{ textAlign: 'center' }}
+         body={rowData => deletionButton(rowData)}
+      />
+   );
 
    function editor(options, field) {
       if ([CALORIES_FIELD, PROTEINS_FIELD].includes(field)) {
@@ -84,52 +130,6 @@ export default function NutrientList(props) {
       router.push(CONSTANTS.NUTRIENTS_PAGE);
    }
 
-   function deletionHandler(selectedNutrientId) {
-      const url = CONSTANTS.DELETE_NUTRIENT_URL;
-      const method = CONSTANTS.DELETE;
-      const body = { id: selectedNutrientId };
-
-      deleteNutrient({ url, method, body });
-
-      router.push(CONSTANTS.NUTRIENTS_PAGE);
-   }
-
-   const addNewNutrientButton = (
-      <Button
-         className={cn(styles.button, 'button')}
-         label='Add New Nutrient'
-         icon='pi pi-plus'
-         onClick={setDisplayAddNewNutrient.bind(null, true)}
-      />
-   );
-
-   const numberColumn = (
-      <Column
-         header='No'
-         headerStyle={{ width: '2rem', minWidth: '2rem' }}
-         bodyStyle={{ textAlign: 'center' }}
-         body={130}
-      />
-   );
-
-   const nutrientListColumns = nutrientListColumnHeaders.map(({ field, header }) => {
-      return <Column
-         key={field}
-         field={field}
-         header={header}
-         body={rowData => labelField(rowData, field)}
-         editor={options => editor(options, field)}
-      />;
-   });
-
-   const editionColumn = (
-      <Column
-         header='Edit'
-         rowEditor headerStyle={{ width: '2rem', minWidth: '2rem' }}
-         bodyStyle={{ textAlign: 'center' }}
-      />
-   );
-
    function deletionButton(rowData) {
       return (
          <Button
@@ -140,21 +140,22 @@ export default function NutrientList(props) {
       );
    }
 
-   const deletionColumn = (
-      <Column
-         header='Delete'
-         headerStyle={{ width: '3.25rem', minWidth: '3.25rem' }}
-         bodyStyle={{ textAlign: 'center' }}
-         body={rowData => deletionButton(rowData)}
-      />
-   );
+   function deletionHandler(selectedNutrientId) {
+      const url = CONSTANTS.DELETE_NUTRIENT_URL;
+      const method = CONSTANTS.DELETE;
+      const body = { id: selectedNutrientId };
+
+      deleteNutrient({ url, method, body });
+
+      router.push(CONSTANTS.NUTRIENTS_PAGE);
+   }
 
    return (
       <Fragment>
          {auth.isAdminLoggedIn && addNewNutrientButton}
          <div className={cn('card p-fluid', 'table')}>
             <DataTable
-               value={props.nutrients}
+               value={nutrients}
                editMode='row'
                onRowEditComplete={rowEditCompletionHandler}
                responsiveLayout='scroll'
