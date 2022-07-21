@@ -94,22 +94,21 @@ export default function NutrientList(props) {
       router.push(CONSTANTS.NUTRIENTS_PAGE);
    }
 
-   function deletionButton(rowData) {
-      return (
-         <Button
-            icon='pi pi-trash'
-            className={styles['deletion-button']}
-            onClick={deletionHandler.bind(null, rowData.id)}
-         />
-      );
-   }
-
    const addNewNutrientButton = (
       <Button
          className={cn(styles.button, 'button')}
          label='Add New Nutrient'
          icon='pi pi-plus'
          onClick={setDisplayAddNewNutrient.bind(null, true)}
+      />
+   );
+
+   const numberColumn = (
+      <Column
+         header='No'
+         headerStyle={{ width: '2rem', minWidth: '2rem' }}
+         bodyStyle={{ textAlign: 'center' }}
+         body={130}
       />
    );
 
@@ -126,14 +125,25 @@ export default function NutrientList(props) {
    const editionColumn = (
       <Column
          header='Edit'
-         rowEditor headerStyle={{ width: '8rem', minWidth: '8rem' }}
+         rowEditor headerStyle={{ width: '2rem', minWidth: '2rem' }}
          bodyStyle={{ textAlign: 'center' }}
       />
    );
 
+   function deletionButton(rowData) {
+      return (
+         <Button
+            icon='pi pi-trash'
+            className={styles['deletion-button']}
+            onClick={deletionHandler.bind(null, rowData.id)}
+         />
+      );
+   }
+
    const deletionColumn = (
       <Column
          header='Delete'
+         headerStyle={{ width: '3.25rem', minWidth: '3.25rem' }}
          bodyStyle={{ textAlign: 'center' }}
          body={rowData => deletionButton(rowData)}
       />
@@ -149,6 +159,7 @@ export default function NutrientList(props) {
                onRowEditComplete={rowEditCompletionHandler}
                responsiveLayout='scroll'
             >
+               {numberColumn}
                {nutrientListColumns}
                {auth.isAdminLoggedIn && editionColumn}
                {auth.isAdminLoggedIn && deletionColumn}
