@@ -60,6 +60,23 @@ export default function ConsumedNutrientsTable(props) {
       />
    );
 
+   const editionColumn = (
+      <Column
+         header='Edit'
+         rowEditor headerStyle={{ width: '2rem', minWidth: '2rem' }}
+         bodyStyle={{ textAlign: 'center' }}
+      />
+   );
+
+   const deletionColumn = (
+      <Column
+         header='Delete'
+         headerStyle={{ width: '3.25rem', minWidth: '3.25rem' }}
+         bodyStyle={{ textAlign: 'center' }}
+         body={rowData => deletionButton(rowData)}
+      />
+   );
+
    const consumedNutrientsTable = (
       <DataTable
          value={indexedConsumedNutrients}
@@ -70,11 +87,8 @@ export default function ConsumedNutrientsTable(props) {
       >
          {numberColumn}
          {consumedNutrientsColumns}
-         <Column
-            header='Edit'
-            rowEditor headerStyle={{ width: '2rem', minWidth: '2rem' }}
-            bodyStyle={{ textAlign: 'center' }}
-         />
+         {editionColumn}
+         {deletionColumn}
       </DataTable>
    );
 
@@ -129,6 +143,25 @@ export default function ConsumedNutrientsTable(props) {
       } else {
          originalEvent.preventDefault();
       }
+   }
+
+   function deletionButton(rowData) {
+      return (
+         <Button
+            icon='pi pi-trash'
+            className={'deletion-button'}
+            onClick={deletionHandler.bind(null, rowData)}
+         />
+      );
+   }
+
+   function deletionHandler(rowData) {
+      const nutrient = {
+         id: rowData.id,
+         calories: rowData.caloriesTaken,
+         proteins: rowData.proteinsTaken
+      };
+      dispatch(consumedNutrientsActions.delete(nutrient));
    }
 
    return (

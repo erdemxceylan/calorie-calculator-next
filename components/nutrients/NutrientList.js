@@ -134,7 +134,7 @@ export default function NutrientList(props) {
       return (
          <Button
             icon='pi pi-trash'
-            className={styles['deletion-button']}
+            className={'deletion-button'}
             onClick={deletionHandler.bind(null, rowData.id)}
          />
       );
