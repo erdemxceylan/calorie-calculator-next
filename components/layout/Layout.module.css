@@ -3,6 +3,7 @@
   flex-direction: column;
   position: relative;
   top: 3.625rem;
+  min-width: 17rem;
   max-width: 75rem;
   margin: 0.5rem;
   padding: 0.5rem;

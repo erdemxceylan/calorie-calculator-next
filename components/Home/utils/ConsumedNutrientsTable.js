@@ -78,18 +78,20 @@ export default function ConsumedNutrientsTable(props) {
    );
 
    const consumedNutrientsTable = (
-      <DataTable
-         value={indexedConsumedNutrients}
-         editMode='row'
-         onRowEditComplete={rowEditCompletionHandler}
-         responsiveLayout='scroll'
-         footer={<Totals dailyTargetValues={props.dailyTargetValues} />}
-      >
-         {numberColumn}
-         {consumedNutrientsColumns}
-         {editionColumn}
-         {deletionColumn}
-      </DataTable>
+      <div className={cn('card p-fluid', 'table')}>
+         <DataTable
+            value={indexedConsumedNutrients}
+            editMode='row'
+            onRowEditComplete={rowEditCompletionHandler}
+            responsiveLayout='scroll'
+            footer={<Totals dailyTargetValues={props.dailyTargetValues} />}
+         >
+            {numberColumn}
+            {consumedNutrientsColumns}
+            {editionColumn}
+            {deletionColumn}
+         </DataTable>
+      </div>
    );
 
    function labelField(rowData, field) {
@@ -166,9 +168,7 @@ export default function ConsumedNutrientsTable(props) {
 
    return (
       <Fragment>
-         <div className={cn('card p-fluid', 'table')}>
-            {consumedNutrientsTable}
-         </div>
+         {consumedNutrientsTable}
          {auth.isLoggedIn && <Button className={cn(styles.button, 'button')} label='Save List' />}
       </Fragment>
    );
