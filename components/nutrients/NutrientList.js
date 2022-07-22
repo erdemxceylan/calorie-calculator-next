@@ -66,7 +66,7 @@ export default function NutrientList(props) {
    const editionColumn = (
       <Column
          header='Edit'
-         rowEditor headerStyle={{ width: '2rem', minWidth: '2rem' }}
+         rowEditor headerStyle={{ width: '8rem', minWidth: '8rem' }}
          bodyStyle={{ textAlign: 'center' }}
       />
    );
@@ -74,7 +74,7 @@ export default function NutrientList(props) {
    const deletionColumn = (
       <Column
          header='Delete'
-         headerStyle={{ width: '3.25rem', minWidth: '3.25rem' }}
+         headerStyle={{ width: '5rem', minWidth: '5rem' }}
          bodyStyle={{ textAlign: 'center' }}
          body={rowData => deletionButton(rowData)}
       />

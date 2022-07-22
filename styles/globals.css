@@ -89,6 +89,10 @@ body {
     border: 0;
   }
 
+  .table tbody tr td {
+    font-size: small;
+  }
+
   .table tbody tr td:first-of-type {
     display: table-cell;
     background-color: #f8f9fa;
@@ -108,19 +112,15 @@ body {
   }
 }
 
-@media (min-width: 60rem) {
+@media (min-width: 64rem) {
+  .table tbody tr td {
+    font-size: 1rem;
+  }
+
   .table th:first-of-type {
     width: 3rem !important;
   }
 
-  .table th:nth-child(6),
-  .table th:nth-child(7) {
-    width: 5rem !important;
-  }
-}
-
-@media (min-width: 65rem) {
-  .table th:nth-child(6),
   .table th:nth-child(7) {
     width: 8rem !important;
   }
