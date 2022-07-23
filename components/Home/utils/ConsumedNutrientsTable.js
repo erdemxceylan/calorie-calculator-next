@@ -56,9 +56,11 @@ export default function ConsumedNutrientsTable(props) {
       }
    });
 
+   const clearTableButton = <DeletionButton onClick={() => console.log('Clicked')} />;
+
    const consumedNutrientsTable = (
       <Fragment>
-         <Header title='Consumed Nutrients' content='Button' />
+         <Header title='Consumed Nutrients' content={clearTableButton} />
          <div className={cn('card p-fluid', 'table')}>
             <DataTable
                value={indexedConsumedNutrients}
