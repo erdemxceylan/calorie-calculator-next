@@ -1,9 +1,9 @@
 import { Column } from 'primereact/column';
 
-export default function Deletion({ body }) {
+export default function Deletion({ header, body }) {
    return (
       <Column
-         header='Delete'
+         header={header}
          headerStyle={{ width: '5rem', minWidth: '5rem' }}
          bodyStyle={{ textAlign: 'center' }}
          body={body}

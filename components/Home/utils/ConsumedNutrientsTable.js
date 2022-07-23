@@ -7,6 +7,10 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import AuthContext from '../../../global/context/auth';
 import Header from '../../../ui/table/Header';
+import Numbers from '../../../ui/table/columns/Numbers';
+import Edition from '../../../ui/table/columns/Edition';
+import Deletion from '../../../ui/table/columns/Deletion';
+import DeletionButton from '../../../ui/table/button/Deletion';
 import Totals from './Totals';
 import styles from './ConsumedNutrientsTable.module.css';
 import cn from 'classnames';
@@ -52,32 +56,6 @@ export default function ConsumedNutrientsTable(props) {
       }
    });
 
-   const numberColumn = (
-      <Column
-         header='No'
-         headerStyle={{ width: '2rem', minWidth: '2rem' }}
-         bodyStyle={{ textAlign: 'center' }}
-         body={rowData => rowData.index + 1}
-      />
-   );
-
-   const editionColumn = (
-      <Column
-         header='Edit'
-         rowEditor headerStyle={{ width: '8rem', minWidth: '8rem' }}
-         bodyStyle={{ textAlign: 'center' }}
-      />
-   );
-
-   const deletionColumn = (
-      <Column
-         header='Delete'
-         headerStyle={{ width: '5rem', minWidth: '5rem' }}
-         bodyStyle={{ textAlign: 'center' }}
-         body={rowData => deletionButton(rowData)}
-      />
-   );
-
    const consumedNutrientsTable = (
       <Fragment>
          <Header title='Consumed Nutrients' content='Button' />
@@ -89,10 +67,10 @@ export default function ConsumedNutrientsTable(props) {
                responsiveLayout='scroll'
                footer={<Totals dailyTargetValues={props.dailyTargetValues} />}
             >
-               {numberColumn}
+               <Numbers header='No' body={rowData => rowData.index + 1} />
                {consumedNutrientsColumns}
-               {editionColumn}
-               {deletionColumn}
+               <Edition header='Edit' rowEditor />
+               <Deletion header='Delete' body={rowData => deletionButton(rowData)} />
             </DataTable>
          </div>
       </Fragment>
@@ -151,21 +129,15 @@ export default function ConsumedNutrientsTable(props) {
       }
    }
 
-   function deletionButton(rowData) {
-      return (
-         <Button
-            icon='pi pi-trash'
-            className={'deletion-button'}
-            onClick={deletionHandler.bind(null, rowData)}
-         />
-      );
+   function deletionButton(data) {
+      return <DeletionButton onClick={deletionHandler.bind(null, data)} />;
    }
 
-   function deletionHandler(rowData) {
+   function deletionHandler(data) {
       const nutrient = {
-         id: rowData.id,
-         calories: rowData.caloriesTaken,
-         proteins: rowData.proteinsTaken
+         id: data.id,
+         calories: data.caloriesTaken,
+         proteins: data.proteinsTaken
       };
       dispatch(consumedNutrientsActions.delete(nutrient));
    }
