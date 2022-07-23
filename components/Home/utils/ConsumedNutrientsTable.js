@@ -1,14 +1,15 @@
 import { Fragment, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrients';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
+import AuthContext from '../../../global/context/auth';
+import Header from '../../../ui/table/Header';
 import Totals from './Totals';
-import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrients';
 import styles from './ConsumedNutrientsTable.module.css';
 import cn from 'classnames';
-import AuthContext from '../../../global/context/auth';
 
 const NAME = 'Name';
 const QUANTITY = 'Quantity';
@@ -78,20 +79,23 @@ export default function ConsumedNutrientsTable(props) {
    );
 
    const consumedNutrientsTable = (
-      <div className={cn('card p-fluid', 'table')}>
-         <DataTable
-            value={indexedConsumedNutrients}
-            editMode='row'
-            onRowEditComplete={rowEditCompletionHandler}
-            responsiveLayout='scroll'
-            footer={<Totals dailyTargetValues={props.dailyTargetValues} />}
-         >
-            {numberColumn}
-            {consumedNutrientsColumns}
-            {editionColumn}
-            {deletionColumn}
-         </DataTable>
-      </div>
+      <Fragment>
+         <Header title='Consumed Nutrients' content='Button' />
+         <div className={cn('card p-fluid', 'table')}>
+            <DataTable
+               value={indexedConsumedNutrients}
+               editMode='row'
+               onRowEditComplete={rowEditCompletionHandler}
+               responsiveLayout='scroll'
+               footer={<Totals dailyTargetValues={props.dailyTargetValues} />}
+            >
+               {numberColumn}
+               {consumedNutrientsColumns}
+               {editionColumn}
+               {deletionColumn}
+            </DataTable>
+         </div>
+      </Fragment>
    );
 
    function labelField(rowData, field) {

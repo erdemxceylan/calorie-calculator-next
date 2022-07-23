@@ -29,6 +29,10 @@ body {
   border: 1px solid lightgrey;
 }
 
+.table tbody tr:first-of-type {
+  margin-top: 1rem;
+}
+
 .table tbody tr td {
   padding: 0.25rem !important;
   text-align: center !important;
