@@ -56,7 +56,7 @@ export default function ConsumedNutrientsTable(props) {
       }
    });
 
-   const clearTableButton = <DeletionButton onClick={() => console.log('Clicked')} />;
+   const clearTableButton = <DeletionButton icon='pi pi-times-circle' onClick={() => console.log('Clicked')} />;
 
    const consumedNutrientsTable = (
       <Fragment>
