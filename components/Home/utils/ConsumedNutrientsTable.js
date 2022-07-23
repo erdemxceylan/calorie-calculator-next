@@ -130,16 +130,11 @@ export default function ConsumedNutrientsTable(props) {
    }
 
    function deletionButton(data) {
-      return <DeletionButton onClick={deletionHandler.bind(null, data)} />;
-   }
-
-   function deletionHandler(data) {
-      const nutrient = {
+      return <DeletionButton onClick={() => dispatch(consumedNutrientsActions.delete({
          id: data.id,
          calories: data.caloriesTaken,
          proteins: data.proteinsTaken
-      };
-      dispatch(consumedNutrientsActions.delete(nutrient));
+      }))} />;
    }
 
    return (
