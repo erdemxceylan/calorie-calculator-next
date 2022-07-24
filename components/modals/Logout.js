@@ -1,8 +1,6 @@
 import { useContext } from 'react';
-import { Button } from 'primereact/button';
 import AuthContext from '../../global/context/auth';
-import Modal from '../../ui/modal/Modal';
-import styles from './Logout.module.css';
+import Confirmation from '../../ui/modal/Confirmation';
 
 export default function Logout(props) {
    const auth = useContext(AuthContext);
@@ -12,21 +10,15 @@ export default function Logout(props) {
       props.onHide();
    }
 
-   const content = (
-      <div className={styles.container}>
-         <Button className='button' label='Cancel' onClick={props.onHide} />
-         <Button label='Logout' onClick={logoutHandler} />
-      </div>
-   );
-
    return (
-      <Modal
+      <Confirmation
          header='Are you sure?'
          visible={props.visible}
          onHide={props.onHide}
-         content={content}
-         resizable={false}
-         draggable={false}
+         cancelLabel='Cancel'
+         confirmLabel='Logout'
+         onCancelClick={props.onHide}
+         onConfirmClick={logoutHandler}
       />
    );
 }

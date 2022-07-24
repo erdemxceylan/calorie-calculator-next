@@ -10,7 +10,7 @@ import useHttpRequest from '../../hooks/use-http-request';
 import Numbers from '../../ui/table/columns/Numbers';
 import Edition from '../../ui/table/columns/Edition';
 import Deletion from '../../ui/table/columns/Deletion';
-import DeletionButton from '../../ui/table/button/Deletion';
+import IconButton from '../../ui/table/button/IconButton';
 import AddNewNutrient from '../modals/AddNewNutrient';
 import styles from './NutrientList.module.css';
 import cn from 'classnames';
@@ -57,15 +57,6 @@ export default function NutrientList(props) {
          editor={options => editor(options, field)}
       />;
    });
-
-   // const deletionColumn = (
-   //    <Column
-   //       header='Delete'
-   //       headerStyle={{ width: '5rem', minWidth: '5rem' }}
-   //       bodyStyle={{ textAlign: 'center' }}
-   //       body={rowData => deletionButton(rowData)}
-   //    />
-   // );
 
    function editor(options, field) {
       if ([CALORIES_FIELD, PROTEINS_FIELD].includes(field)) {
@@ -118,7 +109,7 @@ export default function NutrientList(props) {
    }
 
    function deletionButton(data) {
-      return <DeletionButton onClick={deletionHandler.bind(null, data.id)} />;
+      return <IconButton icon='pi pi-trash' onClick={deletionHandler.bind(null, data.id)} />;
    }
 
    function deletionHandler(selectedNutrientId) {

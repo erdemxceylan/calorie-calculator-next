@@ -1,10 +1,10 @@
 import { Button } from 'primereact/button';
-import styles from './Button.module.css';
+import styles from './IconButton.module.css';
 
-export default function Reset({ onClick }) {
+export default function IconButton({ icon, onClick }) {
    return (
       <Button
-         icon='pi pi-times-circle'
+         icon={icon}
          className={styles.button}
          onClick={onClick}
       />
