@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 3.5rem;
   margin: 0.5rem 0.5rem 0;
   border: solid #dee2e6;
   border-width: 0 0 1px 0;
@@ -13,7 +12,8 @@
 }
 
 .container > label {
-  color: #2563eb;
+  font-size: 1.25rem;
+  color: black;
 }
 
 .content {

@@ -10,10 +10,10 @@ import Numbers from '../../../ui/table/columns/Numbers';
 import Edition from '../../../ui/table/columns/Edition';
 import Deletion from '../../../ui/table/columns/Deletion';
 import IconButton from '../../../ui/table/button/IconButton';
+import Reset from '../../modals/Reset';
 import Totals from './Totals';
 import styles from './ConsumedNutrientsTable.module.css';
 import cn from 'classnames';
-import Reset from '../../modals/Reset';
 
 const NAME = 'Name';
 const QUANTITY = 'Quantity';

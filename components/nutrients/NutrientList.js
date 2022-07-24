@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
 import { Fragment, useContext, useState } from 'react';
-import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { InputText } from 'primereact/inputtext';
 import { Column } from 'primereact/column';
 import { CONSTANTS } from '../../global/constants';
 import AuthContext from '../../global/context/auth';
 import useHttpRequest from '../../hooks/use-http-request';
+import Header from '../../ui/table/Header';
 import Numbers from '../../ui/table/columns/Numbers';
 import Edition from '../../ui/table/columns/Edition';
 import Deletion from '../../ui/table/columns/Deletion';
@@ -39,15 +39,6 @@ export default function NutrientList(props) {
       { field: PROTEINS_FIELD, header: PROTEINS }
    ];
 
-   const addNewNutrientButton = (
-      <Button
-         className={cn(styles.button, 'button')}
-         label='Add New Nutrient'
-         icon='pi pi-plus'
-         onClick={setDisplayAddNewNutrient.bind(null, true)}
-      />
-   );
-
    const nutrientListColumns = nutrientListColumnHeaders.map(({ field, header }) => {
       return <Column
          key={field}
@@ -57,6 +48,8 @@ export default function NutrientList(props) {
          editor={options => editor(options, field)}
       />;
    });
+
+   const addNewNutrientButton = <IconButton icon='pi pi-plus' onClick={setDisplayAddNewNutrient.bind(null, true)} />;
 
    function editor(options, field) {
       if ([CALORIES_FIELD, PROTEINS_FIELD].includes(field)) {
@@ -124,7 +117,7 @@ export default function NutrientList(props) {
 
    return (
       <Fragment>
-         {auth.isAdminLoggedIn && addNewNutrientButton}
+         <Header title='Nutrient List' content={auth.isAdminLoggedIn ? addNewNutrientButton : null} />
          <div className={cn('card p-fluid', 'table')}>
             <DataTable
                value={nutrients}
