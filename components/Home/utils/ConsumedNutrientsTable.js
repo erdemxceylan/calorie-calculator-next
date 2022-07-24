@@ -4,7 +4,6 @@ import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrien
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
-import { Button } from 'primereact/button';
 import AuthContext from '../../../global/context/auth';
 import Header from '../../../ui/table/Header';
 import Numbers from '../../../ui/table/columns/Numbers';
@@ -56,25 +55,10 @@ export default function ConsumedNutrientsTable(props) {
       }
    });
 
-   const resetButton = <IconButton icon='pi pi-times-circle' onClick={() => console.log('Clicked')} />;
-
-   const consumedNutrientsTable = (
+   const headerContent = (
       <Fragment>
-         <Header title='Consumed Nutrients' content={resetButton} />
-         <div className={cn('card p-fluid', 'table')}>
-            <DataTable
-               value={indexedConsumedNutrients}
-               editMode='row'
-               onRowEditComplete={rowEditCompletionHandler}
-               responsiveLayout='scroll'
-               footer={<Totals dailyTargetValues={props.dailyTargetValues} />}
-            >
-               <Numbers header='No' body={rowData => rowData.index + 1} />
-               {consumedNutrientsColumns}
-               <Edition header='Edit' rowEditor />
-               <Deletion header='Delete' body={rowData => deletionButton(rowData)} />
-            </DataTable>
-         </div>
+         {auth.isLoggedIn && <IconButton icon='pi pi-save' />}
+         <IconButton icon='pi pi-times-circle' onClick={() => console.log('Clicked')} />
       </Fragment>
    );
 
@@ -141,8 +125,21 @@ export default function ConsumedNutrientsTable(props) {
 
    return (
       <Fragment>
-         {consumedNutrientsTable}
-         {auth.isLoggedIn && <Button className={cn(styles.button, 'button')} label='Save List' />}
+         <Header title='Consumed Nutrients' content={headerContent} />
+         <div className={cn('card p-fluid', 'table')}>
+            <DataTable
+               value={indexedConsumedNutrients}
+               editMode='row'
+               onRowEditComplete={rowEditCompletionHandler}
+               responsiveLayout='scroll'
+               footer={<Totals dailyTargetValues={props.dailyTargetValues} />}
+            >
+               <Numbers header='No' body={rowData => rowData.index + 1} />
+               {consumedNutrientsColumns}
+               <Edition header='Edit' rowEditor />
+               <Deletion header='Delete' body={rowData => deletionButton(rowData)} />
+            </DataTable>
+         </div>
       </Fragment>
    );
 }
