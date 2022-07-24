@@ -15,7 +15,6 @@ export default function Logout(props) {
          header='Are you sure?'
          visible={props.visible}
          onHide={props.onHide}
-         cancelLabel='Cancel'
          confirmLabel='Logout'
          onCancelClick={props.onHide}
          onConfirmClick={logoutHandler}

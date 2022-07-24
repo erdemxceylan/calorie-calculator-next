@@ -11,7 +11,6 @@ export default function Reset(props) {
          header='Clear table?'
          visible={props.visible}
          onHide={props.onHide}
-         cancelLabel='Cancel'
          confirmLabel='Clear'
          onCancelClick={props.onHide}
          onConfirmClick={reset}

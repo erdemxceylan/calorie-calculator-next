@@ -5,7 +5,7 @@ import styles from './Confirmation.module.css';
 export default function Confirmation(props) {
    const content = (
       <div className={styles.container}>
-         <Button className='button' label={props.cancelLabel} onClick={props.onCancelClick} />
+         <Button className='button' label={props.cancelLabel ? props.cancelLabel : 'Cancel'} onClick={props.onCancelClick} />
          <Button label={props.confirmLabel} onClick={props.onConfirmClick} />
       </div>
    );
