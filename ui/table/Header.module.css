@@ -1,8 +1,9 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 3rem;
+  height: 3.5rem;
   margin: 0.5rem 0.5rem 0;
   border: solid #dee2e6;
   border-width: 0 0 1px 0;
@@ -12,7 +13,6 @@
 }
 
 .container > label {
-  font-size: small;
   color: #2563eb;
 }
 
@@ -20,12 +20,14 @@
   display: flex;
 }
 
-@media (min-width: 22rem) {
-  .container > label {
-    font-size: 1rem;
-  }
+.content > button {
+  margin: 0 0.5rem !important;
+}
 
+@media (min-width: 25rem) {
   .container {
+    flex-direction: row;
+    height: 3rem;
     padding: 0 0.5rem 0 2rem;
   }
 }

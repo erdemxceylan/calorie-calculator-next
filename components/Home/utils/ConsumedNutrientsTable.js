@@ -1,4 +1,4 @@
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { consumedNutrientsActions } from '../../../global/redux/consumed-nutrients';
 import { DataTable } from 'primereact/datatable';
@@ -13,6 +13,7 @@ import IconButton from '../../../ui/table/button/IconButton';
 import Totals from './Totals';
 import styles from './ConsumedNutrientsTable.module.css';
 import cn from 'classnames';
+import Reset from '../../modals/Reset';
 
 const NAME = 'Name';
 const QUANTITY = 'Quantity';
@@ -26,6 +27,7 @@ const PROTEINS_TAKEN = 'proteinsTaken';
 export default function ConsumedNutrientsTable(props) {
    const consumedNutrients = useSelector(state => state.consumedNutrients.consumedNutrients);
    const indexedConsumedNutrients = consumedNutrients.map((nutrient, index) => { return { index, ...nutrient }; });
+   const [displayReset, setDisplayReset] = useState(false);
    const auth = useContext(AuthContext);
    const dispatch = useDispatch();
 
@@ -58,7 +60,7 @@ export default function ConsumedNutrientsTable(props) {
    const headerContent = (
       <Fragment>
          {auth.isLoggedIn && <IconButton icon='pi pi-save' />}
-         <IconButton icon='pi pi-times-circle' onClick={() => console.log('Clicked')} />
+         <IconButton icon='pi pi-times-circle' onClick={() => setDisplayReset(true)} />
       </Fragment>
    );
 
@@ -140,6 +142,7 @@ export default function ConsumedNutrientsTable(props) {
                <Deletion header='Delete' body={rowData => deletionButton(rowData)} />
             </DataTable>
          </div>
+         <Reset visible={displayReset} onHide={() => setDisplayReset(false)} />
       </Fragment>
    );
 }
