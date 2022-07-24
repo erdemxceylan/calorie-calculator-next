@@ -1,8 +1,12 @@
+import { useDispatch } from 'react-redux';
+import { consumedNutrientsActions } from '../../global/redux/consumed-nutrients';
 import Confirmation from '../../ui/modal/Confirmation';
 
 export default function Reset(props) {
-   function reset() {
-      console.log('Reset');
+   const dispatch = useDispatch();
+
+   function resetHandler() {
+      dispatch(consumedNutrientsActions.reset());
       props.onHide();
    }
 
@@ -13,7 +17,7 @@ export default function Reset(props) {
          onHide={props.onHide}
          confirmLabel='Clear'
          onCancelClick={props.onHide}
-         onConfirmClick={reset}
+         onConfirmClick={resetHandler}
       />
    );
 }

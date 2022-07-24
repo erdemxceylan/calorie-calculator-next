@@ -57,6 +57,12 @@ const consumedNutrientsSlice = createSlice({
          state.totalCalories -= action.payload.calories;
          state.totalProteins -= action.payload.proteins;
          state.isEmpty = state.consumedNutrients.length > 0 ? false : true;
+      },
+      reset(state) {
+         state.consumedNutrients = [];
+         state.isEmpty = true;
+         state.totalCalories = 0;
+         state.totalProteins = 0;
       }
    }
 });
