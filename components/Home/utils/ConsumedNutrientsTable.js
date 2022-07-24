@@ -11,6 +11,7 @@ import Numbers from '../../../ui/table/columns/Numbers';
 import Edition from '../../../ui/table/columns/Edition';
 import Deletion from '../../../ui/table/columns/Deletion';
 import DeletionButton from '../../../ui/table/button/Deletion';
+import Reset from '../../../ui/table/button/Reset';
 import Totals from './Totals';
 import styles from './ConsumedNutrientsTable.module.css';
 import cn from 'classnames';
@@ -56,11 +57,11 @@ export default function ConsumedNutrientsTable(props) {
       }
    });
 
-   const clearTableButton = <DeletionButton icon='pi pi-times-circle' onClick={() => console.log('Clicked')} />;
+   const resetButton = <Reset onClick={() => console.log('Clicked')} />;
 
    const consumedNutrientsTable = (
       <Fragment>
-         <Header title='Consumed Nutrients' content={clearTableButton} />
+         <Header title='Consumed Nutrients' content={resetButton} />
          <div className={cn('card p-fluid', 'table')}>
             <DataTable
                value={indexedConsumedNutrients}
