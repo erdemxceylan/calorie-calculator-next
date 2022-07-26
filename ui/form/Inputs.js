@@ -1,5 +1,6 @@
 import { ErrorMessage } from 'formik';
 import Radio from './inputs/Radio';
+import Password from './inputs/Password';
 import Input from './inputs/Input';
 import styles from './Inputs.module.css';
 
@@ -11,6 +12,9 @@ export default function Inputs(props) {
   switch (type) {
     case 'radio':
       input = <Radio name={name} type={type} {...rest} />;
+      break;
+    case 'password':
+      input = <Password className={invalid} name={name} type={type} {...rest} />;
       break;
     default:
       input = <Input className={invalid} name={name} type={type} {...rest} />;
