@@ -12,7 +12,7 @@ export default function HomePage(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale }) {
   // Fetching nutrients
   let nutrients = [];
 
@@ -66,5 +66,5 @@ export async function getServerSideProps() {
     dailyProteinNeed
   };
 
-  return { props: { nutrients, dataSettings, dailyTargetValues } };
+  return { props: { nutrients, dataSettings, dailyTargetValues, locale } };
 }

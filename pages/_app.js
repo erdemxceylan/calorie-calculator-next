@@ -8,8 +8,9 @@ import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import '../styles/globals.css';
+import { appWithTranslation } from 'next-i18next';
 
-export default function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
     <Fragment>
       <Head>
@@ -26,3 +27,5 @@ export default function MyApp({ Component, pageProps }) {
     </Fragment>
   );
 }
+
+export default appWithTranslation(MyApp);
