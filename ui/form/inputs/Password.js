@@ -16,7 +16,7 @@ export default function Password(props) {
             <div className={styles.container}>
                <InputText className={className} {...field} {...rest} type={type} />
                <i
-                  className={type === PASSWORD ? 'pi pi-eye' : 'pi pi-eye-slash'}
+                  className={type === PASSWORD ? 'pi pi-eye-slash' : 'pi pi-eye'}
                   onClick={() => setType(state => state === PASSWORD ? TEXT : PASSWORD)}
                />
             </div>
