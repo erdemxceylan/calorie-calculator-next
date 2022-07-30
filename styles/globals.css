@@ -60,6 +60,10 @@ body {
   border-color: #2563eb !important;
 }
 
+.blue {
+  color: #3b82f6;
+}
+
 @media (min-width: 51rem) {
   .table th {
     display: table-cell;
