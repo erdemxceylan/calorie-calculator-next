@@ -8,25 +8,24 @@ Calorie Calculator is a responsive web application that helps you calculate dail
 
 ### Tools
 
-Next.js (Pre-rendering - SSR, File Based Routing, and API Routes),
-Redux,
-Context API,
-Custom Hooks,
-PrimeReact,
-Axios,
-Formik,
-Yup,
-Firebase
+- Next.js (Pre-rendering - SSR, File Based Routing, and API Routes)
+- Redux
+- Context API
+- Custom Hooks
+- PrimeReact
+- Axios
+- Formik
+- Yup
+- Firebase
 
 ### Features
 
-Tracking total calorie and protein values of consumed nutrients,
-CRUD operations on consumed nutrients,
-Login/Register,
-Admin Panel for CRUD operations on every nutrient in database
+- Tracking total calorie and protein values of consumed nutrients
+- CRUD operations on consumed nutrients
+- Login/Register
+- Admin Panel for CRUD operations on every nutrient in database
 
-[Admin Panel](/assets/admin-panel-1.jpg)
-[Admin Panel - Adding a new nutrient](/assets/admin-panel-2.jpg)
+[Admin Panel](/assets/images)
 
 | Further Improvement Plans        |
 | -------------------------------- |
