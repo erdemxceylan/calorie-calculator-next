@@ -1,6 +1,6 @@
-import axios from 'axios';
-import Home from '../components/home/Home.js';
 import { CONSTANTS } from './api/constants';
+import axios from 'axios';
+import Home from '../components/home';
 
 export default function HomePage(props) {
    return (

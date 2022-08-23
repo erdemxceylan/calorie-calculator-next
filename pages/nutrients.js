@@ -1,6 +1,6 @@
-import axios from 'axios';
-import NutrientList from '../components/nutrients/NutrientList';
 import { CONSTANTS } from '../pages/api/constants';
+import axios from 'axios';
+import NutrientList from '../components/nutrients';
 
 export default function NutrientPage(props) {
    return <NutrientList nutrients={props.nutrients} />;
