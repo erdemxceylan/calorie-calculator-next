@@ -23,9 +23,7 @@ Calorie Calculator is a responsive web application that helps you calculate dail
 - Tracking total calorie and protein values of consumed nutrients
 - CRUD operations on consumed nutrients
 - Login/Register
-- Admin Panel for CRUD operations on every nutrient in database
-
-[Admin Panel](/assets/images)
+- [Admin Panel for CRUD operations on every nutrient in database](/assets/images)
 
 | Further Improvement Plans        |
 | -------------------------------- |
