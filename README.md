@@ -31,3 +31,7 @@ Calorie Calculator is a responsive web application that helps you calculate dail
 | MongoDB integration              |
 | Saving consumed nutrient list    |
 | OOP implementations              |
+
+### Notes
+
+Backend codes are visible since this project is for practice purposes
