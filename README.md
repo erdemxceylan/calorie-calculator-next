@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Calorie Calculator is a responsive web application that helps you calculate daily total nutrition facts with ease.
 
-[See App](https://calorie-calculator-next.vercel.app/)
+[See Live](https://calorie-calculator-next.vercel.app/)
 
 ### Tools
 
