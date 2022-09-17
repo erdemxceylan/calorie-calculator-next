@@ -28,12 +28,12 @@ export default function AddNewNutrient(props) {
          .required('Please enter proteins for 1 unit')
    });
 
-   function submitHandler(values) {
+   async function submitHandler(values) {
       const url = CONSTANTS.ADD_NUTRIENT_URL;
       const method = CONSTANTS.POST;
       const body = values;
 
-      addNewNutrient({ url, method, body });
+      await addNewNutrient({ url, method, body });
 
       props.onHide();
       router.push(CONSTANTS.NUTRIENTS_PAGE);

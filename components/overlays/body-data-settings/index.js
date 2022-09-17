@@ -42,12 +42,12 @@ export default function DataSettings(props) {
          .required('Please select your fitness goal')
    });
 
-   function submitHandler(values) {
+   async function submitHandler(values) {
       const url = CONSTANTS.UPDATE_SETTINGS_URL;
       const method = CONSTANTS.PUT;
       const body = values;
 
-      updateSettings({ url, method, body }, () => {
+      await updateSettings({ url, method, body }, () => {
          setButtonLabel(<i className='pi pi-check' />);
          setTimeout(() => props.onHide(), delay);
          setTimeout(() => setButtonLabel('Submit'), delay + 300);

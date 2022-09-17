@@ -31,12 +31,12 @@ export default function Login(props) {
          .min(7, 'Password has to be 7 characters minimum')
    });
 
-   function submitHandler(values) {
+   async function submitHandler(values) {
       const url = CONSTANTS.AUTH_URL;
       const method = CONSTANTS.POST;
       const body = { isLoggingIn: auth.isLoggingIn, ...values };
 
-      sign({ url, method, body }, data => auth.login(data.idToken, data.email));
+      await sign({ url, method, body }, data => auth.login(data.idToken, data.email));
 
       props.onHide();
    }

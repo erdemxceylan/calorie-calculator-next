@@ -83,7 +83,7 @@ export default function NutrientList(props) {
       }
    }
 
-   function rowEditCompletionHandler(event) {
+   async function rowEditCompletionHandler(event) {
       let { newData: updatedNutrient } = event;
 
       const url = CONSTANTS.UPDATE_NUTRIENT_URL;
@@ -96,7 +96,7 @@ export default function NutrientList(props) {
          unit: updatedNutrient.unit,
       };
 
-      updateNutrient({ url, method, body });
+      await updateNutrient({ url, method, body });
 
       router.push(CONSTANTS.NUTRIENTS_PAGE);
    }
@@ -105,12 +105,12 @@ export default function NutrientList(props) {
       return <IconButton icon='pi pi-trash' onClick={deletionHandler.bind(null, data.id)} />;
    }
 
-   function deletionHandler(selectedNutrientId) {
+   async function deletionHandler(selectedNutrientId) {
       const url = CONSTANTS.DELETE_NUTRIENT_URL;
       const method = CONSTANTS.DELETE;
       const body = { id: selectedNutrientId };
 
-      deleteNutrient({ url, method, body });
+      await deleteNutrient({ url, method, body });
 
       router.push(CONSTANTS.NUTRIENTS_PAGE);
    }
