@@ -1,17 +1,19 @@
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
+// import { useState } from 'react';
 import useHttpRequest from '../../../hooks/use-http-request';
+import useSubmit from '../../../hooks/use-submit';
 import { CONSTANTS } from '../../../global/constants';
 import Form from '../../../ui/overlays/form';
 import * as Yup from 'yup';
-import { useState } from 'react';
 
-const { DCN, WEIGHT, FAT_RATIO, FITNESS_GOAL, WEIGHT_GAIN, WEIGHT_LOSS, UPDATE_SETTINGS_URL, PUT, DELAY, HOME } = CONSTANTS;
+const { DCN, WEIGHT, FAT_RATIO, FITNESS_GOAL, WEIGHT_GAIN, WEIGHT_LOSS, UPDATE_SETTINGS_URL, PUT, HOME } = CONSTANTS;
 
 export default function DataSettings(props) {
-   const { initialValues } = props;
-   const [isSubmitted, setIsSubmitted] = useState(false);
-   const router = useRouter();
+   const { initialValues, onHide, visible } = props;
+   // const [isSubmitted, setIsSubmitted] = useState(false);
+   // const router = useRouter();
    const { isLoading, sendRequest: updateSettings } = useHttpRequest();
+   const { isSubmitted, submitHandler } = useSubmit();
 
    const selections = [{ value: WEIGHT_GAIN }, { value: WEIGHT_LOSS }];
 
@@ -42,27 +44,29 @@ export default function DataSettings(props) {
          .required('Please select your fitness goal')
    });
 
-   async function submitHandler(values) {
-      const url = UPDATE_SETTINGS_URL;
-      const method = PUT;
-      const body = values;
+   // async function onSubmit(values) {
+   //    const url = UPDATE_SETTINGS_URL;
+   //    const method = PUT;
+   //    const body = values;
 
-      await updateSettings({ url, method, body }, () => {
-         setIsSubmitted(true);
-         setTimeout(() => props.onHide(), DELAY);
-         setTimeout(() => setIsSubmitted(false), DELAY * 2);
-         router.push(HOME);
-      });
-   }
+   //    await updateSettings({ url, method, body }, () => {
+   //       setIsSubmitted(true);
+   //       setTimeout(() => onHide(), DELAY);
+   //       setTimeout(() => setIsSubmitted(false), DELAY * 2);
+   //       router.push(HOME);
+   //    });
+   // }
+
+   const onSubmit = async (values) => await submitHandler(UPDATE_SETTINGS_URL, PUT, values, updateSettings, null, onHide, HOME);
 
    return (
       <Form
          header='Data Settings'
-         visible={props.visible}
-         onHide={props.onHide}
+         visible={visible}
+         onHide={onHide}
          inputs={inputs}
          validationSchema={validationSchema}
-         onSubmit={submitHandler}
+         onSubmit={onSubmit}
          loading={isLoading}
          submitted={isSubmitted}
          submitButtonLabel={'Submit'}

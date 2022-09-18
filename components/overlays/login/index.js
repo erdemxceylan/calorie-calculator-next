@@ -8,6 +8,8 @@ import Modal from '../../../ui/overlays/modal';
 import * as Yup from 'yup';
 import styles from './styles.module.css';
 
+const { AUTH_URL, POST, ADMIN } = CONSTANTS;
+
 export default function Login(props) {
    const auth = useContext(AuthContext);
    const { sendRequest: sign } = useHttpRequest();
@@ -25,15 +27,15 @@ export default function Login(props) {
          Yup.string()
             .email('Please enter a valid email')
             .required('Please enter your email')
-            .notOneOf([CONSTANTS.ADMIN], `${CONSTANTS.ADMIN} is reserved`),
+            .notOneOf([ADMIN], `${ADMIN} is reserved`),
       password: Yup.string()
          .required('Please enter your password')
          .min(7, 'Password has to be 7 characters minimum')
    });
 
    async function submitHandler(values) {
-      const url = CONSTANTS.AUTH_URL;
-      const method = CONSTANTS.POST;
+      const url = AUTH_URL;
+      const method = POST;
       const body = { isLoggingIn: auth.isLoggingIn, ...values };
 
       await sign({ url, method, body }, data => auth.login(data.idToken, data.email));
