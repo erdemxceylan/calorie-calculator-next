@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { CONSTANTS } from '../constants';
 
+const { ADMIN } = CONSTANTS;
+
 const AuthContext = React.createContext({
    token: '',
    isLoggingIn: true,
@@ -21,7 +23,7 @@ export function AuthContextProvider(props) {
 
    function login(token, email) {
       setToken(token);
-      setIsAdmin(email === CONSTANTS.ADMIN);
+      setIsAdmin(email === ADMIN);
    }
 
    function logout() {

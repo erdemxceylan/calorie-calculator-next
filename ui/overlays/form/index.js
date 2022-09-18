@@ -1,7 +1,10 @@
 import Modal from '../modal';
 import Form from '../../form';
+import Loading from '../../loading/loading';
 
 export default function FormModal(props) {
+   const { loading, submitted } = props;
+
    const form = (
       <Form
          inputs={props.inputs}
@@ -17,7 +20,7 @@ export default function FormModal(props) {
          header={props.header}
          visible={props.visible}
          onHide={props.onHide}
-         content={form}
+         content={loading ? <Loading /> : submitted ? <Loading complete /> : form}
          resizable={props.resizable}
          draggable={props.draggable}
       />

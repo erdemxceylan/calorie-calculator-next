@@ -2,11 +2,11 @@ import { useSelector } from 'react-redux';
 import styles from './styles.module.css';
 
 export default function Totals(props) {
-   const totalCalories = useSelector(state => state.consumedNutrients.totalCalories).toFixed(2);
-   const totalProteins = useSelector(state => state.consumedNutrients.totalProteins).toFixed(2);
+   const totalCalories = +useSelector(state => state.consumedNutrients.totalCalories).toFixed(2);
+   const totalProteins = +useSelector(state => state.consumedNutrients.totalProteins).toFixed(2);
    const dailyCalorieTargetLowerBound = props.dailyTargetValues.dailyCalorieTargetLowerBound;
    const dailyCalorieTargetUpperBound = props.dailyTargetValues.dailyCalorieTargetUpperBound;
-   const dailyProteinNeed = props.dailyTargetValues.dailyProteinNeed;
+   const dailyProteinNeed = +props.dailyTargetValues.dailyProteinNeed.toFixed(2);
 
    const dailyCalorieTargetInterval = `${dailyCalorieTargetLowerBound} - ${dailyCalorieTargetUpperBound}`;
 

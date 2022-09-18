@@ -7,6 +7,8 @@ import Login from '../../overlays/login';
 import Logout from '../../overlays/logout';
 import styles from './styles.module.css';
 
+const { HOME, NUTRIENTS } = CONSTANTS;
+
 export default function MainNavigation() {
    const [activeIndex, setActiveIndex] = useState(0);
    const [displayLogin, setDisplayLogin] = useState(false);
@@ -31,10 +33,10 @@ export default function MainNavigation() {
 
       switch (event.index) {
          case 0:
-            router.push(CONSTANTS.HOME_PAGE);
+            router.push(HOME);
             break;
          case 1:
-            router.push(CONSTANTS.NUTRIENTS_PAGE);
+            router.push(NUTRIENTS);
             break;
          case 2:
             if (!auth.isLoggedIn)

@@ -15,6 +15,8 @@ import AddNewNutrient from '../overlays/add-new-nutrient';
 import styles from './styles.module.css';
 import cn from 'classnames';
 
+const { UPDATE_NUTRIENT_URL, PUT, DELETE_NUTRIENT_URL, DELETE, NUTRIENTS } = CONSTANTS;
+
 const NAME = 'Name';
 const UNIT = 'Unit';
 const CALORIES = 'Calories';
@@ -86,8 +88,8 @@ export default function NutrientList(props) {
    async function rowEditCompletionHandler(event) {
       let { newData: updatedNutrient } = event;
 
-      const url = CONSTANTS.UPDATE_NUTRIENT_URL;
-      const method = CONSTANTS.PUT;
+      const url = UPDATE_NUTRIENT_URL;
+      const method = PUT;
       const body = {
          id: updatedNutrient.id,
          name: updatedNutrient.name,
@@ -98,7 +100,7 @@ export default function NutrientList(props) {
 
       await updateNutrient({ url, method, body });
 
-      router.push(CONSTANTS.NUTRIENTS_PAGE);
+      router.push(NUTRIENTS);
    }
 
    function deletionButton(data) {
@@ -106,13 +108,13 @@ export default function NutrientList(props) {
    }
 
    async function deletionHandler(selectedNutrientId) {
-      const url = CONSTANTS.DELETE_NUTRIENT_URL;
-      const method = CONSTANTS.DELETE;
+      const url = DELETE_NUTRIENT_URL;
+      const method = DELETE;
       const body = { id: selectedNutrientId };
 
       await deleteNutrient({ url, method, body });
 
-      router.push(CONSTANTS.NUTRIENTS_PAGE);
+      router.push(NUTRIENTS);
    }
 
    return (
