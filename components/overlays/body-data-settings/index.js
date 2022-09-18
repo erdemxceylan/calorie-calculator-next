@@ -1,31 +1,31 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import useHttpRequest from '../../../hooks/use-http-request';
 import { CONSTANTS } from '../../../global/constants';
-import FormModal from '../../../ui/overlays/form';
+import Form from '../../../ui/overlays/form';
 import * as Yup from 'yup';
+import { useState } from 'react';
+
+const { DCN, WEIGHT, FAT_RATIO, FITNESS_GOAL, WEIGHT_GAIN, WEIGHT_LOSS, UPDATE_SETTINGS_URL, PUT, DELAY, HOME } = CONSTANTS;
 
 export default function DataSettings(props) {
    const { initialValues } = props;
-
+   const [isSubmitted, setIsSubmitted] = useState(false);
    const router = useRouter();
    const { isLoading, sendRequest: updateSettings } = useHttpRequest();
-   const [buttonLabel, setButtonLabel] = useState('Submit');
-   const delay = 300;
 
-   const selections = [{ value: CONSTANTS.WEIGHT_GAIN }, { value: CONSTANTS.WEIGHT_LOSS }];
+   const selections = [{ value: WEIGHT_GAIN }, { value: WEIGHT_LOSS }];
 
    const inputs = [
-      { name: 'dailyCalorieNeed', placeholder: `${CONSTANTS.DCN} (kcal)`, type: 'number', initialValue: initialValues.dailyCalorieNeed },
-      { name: 'weight', placeholder: `${CONSTANTS.WEIGHT} (kg)`, type: 'number', initialValue: initialValues.weight },
-      { name: 'fatRatio', placeholder: `${CONSTANTS.FAT_RATIO} (%)`, type: 'number', initialValue: initialValues.fatRatio },
-      { name: 'fitnessGoal', placeholder: CONSTANTS.FITNESS_GOAL, type: 'radio', initialValue: initialValues.fitnessGoal, selections }
+      { name: 'dailyCalorieNeed', placeholder: `${DCN} (kcal)`, type: 'number', initialValue: initialValues.dailyCalorieNeed },
+      { name: 'weight', placeholder: `${WEIGHT} (kg)`, type: 'number', initialValue: initialValues.weight },
+      { name: 'fatRatio', placeholder: `${FAT_RATIO} (%)`, type: 'number', initialValue: initialValues.fatRatio },
+      { name: 'fitnessGoal', placeholder: FITNESS_GOAL, type: 'radio', initialValue: initialValues.fitnessGoal, selections }
    ];
 
    const validationSchema = Yup.object({
       dailyCalorieNeed: Yup.number()
          .positive('Daily calorie need must be positive')
-         // .integer('Daily calorie need must be an integer')
+         .integer('Daily calorie need must be an integer')
          .max(100000, 'Daily calorie need can be 100000 maximum')
          .required('Please enter your daily calorie need'),
       weight: Yup.number()
@@ -43,27 +43,29 @@ export default function DataSettings(props) {
    });
 
    async function submitHandler(values) {
-      const url = CONSTANTS.UPDATE_SETTINGS_URL;
-      const method = CONSTANTS.PUT;
+      const url = UPDATE_SETTINGS_URL;
+      const method = PUT;
       const body = values;
 
       await updateSettings({ url, method, body }, () => {
-         setButtonLabel(<i className='pi pi-check' />);
-         setTimeout(() => props.onHide(), delay);
-         setTimeout(() => setButtonLabel('Submit'), delay + 300);
-         router.push(CONSTANTS.HOME_PAGE);
+         setIsSubmitted(true);
+         setTimeout(() => props.onHide(), DELAY);
+         setTimeout(() => setIsSubmitted(false), DELAY * 2);
+         router.push(HOME);
       });
    }
 
    return (
-      <FormModal
+      <Form
          header='Data Settings'
          visible={props.visible}
          onHide={props.onHide}
          inputs={inputs}
          validationSchema={validationSchema}
          onSubmit={submitHandler}
-         submitButtonLabel={isLoading ? <i className='pi pi-spinner' /> : buttonLabel}
+         loading={isLoading}
+         submitted={isSubmitted}
+         submitButtonLabel={'Submit'}
          disabled={isLoading}
          resizable={false}
          draggable={false}

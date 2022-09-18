@@ -98,7 +98,7 @@ export default function NutrientList(props) {
 
       await updateNutrient({ url, method, body });
 
-      router.push(CONSTANTS.NUTRIENTS_PAGE);
+      router.push(CONSTANTS.NUTRIENTS);
    }
 
    function deletionButton(data) {
@@ -112,7 +112,7 @@ export default function NutrientList(props) {
 
       await deleteNutrient({ url, method, body });
 
-      router.push(CONSTANTS.NUTRIENTS_PAGE);
+      router.push(CONSTANTS.NUTRIENTS);
    }
 
    return (

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import useHttpRequest from '../../../hooks/use-http-request';
 import { CONSTANTS } from '../../../global/constants';
-import FormModal from '../../../ui/overlays/form';
+import Form from '../../../ui/overlays/form';
 import * as Yup from 'yup';
 
 export default function AddNewNutrient(props) {
@@ -36,11 +36,11 @@ export default function AddNewNutrient(props) {
       await addNewNutrient({ url, method, body });
 
       props.onHide();
-      router.push(CONSTANTS.NUTRIENTS_PAGE);
+      router.push(CONSTANTS.NUTRIENTS);
    }
 
    return (
-      <FormModal
+      <Form
          header='Add New Nutrient'
          visible={props.visible}
          onHide={props.onHide}

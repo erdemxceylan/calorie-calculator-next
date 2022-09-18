@@ -11,8 +11,8 @@ export default function DataMenu({ dataSettings }) {
 
    const data = [
       { label: CONSTANTS.DCN, value: dataSettings.dailyCalorieNeed, unit: 'kcal' },
-      { label: CONSTANTS.WEIGHT, value: dataSettings.weight, unit: 'kg' },
-      { label: CONSTANTS.FAT_RATIO, value: dataSettings.fatRatio, unit: '%' },
+      { label: CONSTANTS.WEIGHT, value: dataSettings.weight.toFixed(2), unit: 'kg' },
+      { label: CONSTANTS.FAT_RATIO, value: dataSettings.fatRatio.toFixed(2), unit: '%' },
       { label: CONSTANTS.FITNESS_GOAL, value: dataSettings.fitnessGoal }
    ];
 

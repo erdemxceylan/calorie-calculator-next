@@ -1,6 +1,6 @@
 export const CONSTANTS = {
-   HOME_PAGE: '/',
-   NUTRIENTS_PAGE: '/nutrients',
+   HOME: '/',
+   NUTRIENTS: '/nutrients',
    ADD_NUTRIENT_URL: '/api/add-nutrient',
    DELETE_NUTRIENT_URL: '/api/delete-nutrient',
    UPDATE_NUTRIENT_URL: '/api/update-nutrient',
@@ -16,5 +16,6 @@ export const CONSTANTS = {
    GET: 'GET',
    POST: 'POST',
    PUT: 'PUT',
-   DELETE: 'DELETE'
+   DELETE: 'DELETE',
+   DELAY: 300
 };
