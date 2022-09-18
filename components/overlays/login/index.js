@@ -1,18 +1,22 @@
 import { Fragment, useContext } from 'react';
 import AuthContext from '../../../global/context/auth';
 import useHttpRequest from '../../../hooks/use-http-request';
+import useSubmit from '../../../hooks/use-submit';
 import { CONSTANTS } from '../../../global/constants';
 import { Button } from 'primereact/button';
 import Form from '../../../ui/form';
 import Modal from '../../../ui/overlays/modal';
+import Loading from '../../../ui/loading/loading';
 import * as Yup from 'yup';
 import styles from './styles.module.css';
 
 const { AUTH_URL, POST, ADMIN } = CONSTANTS;
 
 export default function Login(props) {
+   const { visible, onHide } = props;
    const auth = useContext(AuthContext);
-   const { sendRequest: sign } = useHttpRequest();
+   const { isLoading, sendRequest: sign } = useHttpRequest();
+   const { isSubmitted, submitHandler } = useSubmit();
 
    const inputs = [
       { name: 'email', placeholder: 'Email', type: 'email', initialValue: '' },
@@ -33,22 +37,21 @@ export default function Login(props) {
          .min(7, 'Password has to be 7 characters minimum')
    });
 
-   async function submitHandler(values) {
-      const url = AUTH_URL;
-      const method = POST;
-      const body = { isLoggingIn: auth.isLoggingIn, ...values };
-
-      await sign({ url, method, body }, data => auth.login(data.idToken, data.email));
-
-      props.onHide();
-   }
+   const onSubmit = async (values) => await submitHandler(
+      AUTH_URL,
+      POST,
+      { isLoggingIn: auth.isLoggingIn, ...values },
+      sign,
+      data => auth.login(data.idToken, data.email),
+      onHide
+   );
 
    const content = (
       <Fragment>
          <Form
             inputs={inputs}
             validationSchema={validationSchema}
-            onSubmit={submitHandler}
+            onSubmit={onSubmit}
             submitButtonLabel={auth.isLoggingIn ? 'Login' : 'Sign up'}
          />
          <Button
@@ -62,9 +65,9 @@ export default function Login(props) {
    return (
       <Modal
          header={auth.isLoggingIn ? 'Login' : 'Sign up'}
-         visible={props.visible}
-         onHide={props.onHide}
-         content={content}
+         visible={visible}
+         onHide={onHide}
+         content={isLoading ? <Loading /> : isSubmitted ? <Loading complete /> : content}
          resizable={false}
          draggable={false}
       />

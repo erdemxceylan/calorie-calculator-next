@@ -1,5 +1,3 @@
-// import { useRouter } from 'next/router';
-// import { useState } from 'react';
 import useHttpRequest from '../../../hooks/use-http-request';
 import useSubmit from '../../../hooks/use-submit';
 import { CONSTANTS } from '../../../global/constants';
@@ -9,9 +7,7 @@ import * as Yup from 'yup';
 const { DCN, WEIGHT, FAT_RATIO, FITNESS_GOAL, WEIGHT_GAIN, WEIGHT_LOSS, UPDATE_SETTINGS_URL, PUT, HOME } = CONSTANTS;
 
 export default function DataSettings(props) {
-   const { initialValues, onHide, visible } = props;
-   // const [isSubmitted, setIsSubmitted] = useState(false);
-   // const router = useRouter();
+   const { initialValues, visible, onHide } = props;
    const { isLoading, sendRequest: updateSettings } = useHttpRequest();
    const { isSubmitted, submitHandler } = useSubmit();
 
@@ -43,19 +39,6 @@ export default function DataSettings(props) {
       fitnessGoal: Yup.string()
          .required('Please select your fitness goal')
    });
-
-   // async function onSubmit(values) {
-   //    const url = UPDATE_SETTINGS_URL;
-   //    const method = PUT;
-   //    const body = values;
-
-   //    await updateSettings({ url, method, body }, () => {
-   //       setIsSubmitted(true);
-   //       setTimeout(() => onHide(), DELAY);
-   //       setTimeout(() => setIsSubmitted(false), DELAY * 2);
-   //       router.push(HOME);
-   //    });
-   // }
 
    const onSubmit = async (values) => await submitHandler(UPDATE_SETTINGS_URL, PUT, values, updateSettings, null, onHide, HOME);
 

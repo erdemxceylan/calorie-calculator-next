@@ -9,12 +9,14 @@ export default function useSubmit() {
    const router = useRouter();
 
    async function submitHandler(url, method, body, requestHandler, successActions, onHide, route) {
-      await requestHandler({ url, method, body }, () => {
-         setIsSubmitted(true);
-         !!successActions && successActions();
-         setTimeout(() => onHide(), DELAY);
-         setTimeout(() => setIsSubmitted(false), DELAY * 2);
+      await requestHandler({ url, method, body }, async data => {
+         !!successActions && await successActions(data);
          !!route && router.push(route);
+         setIsSubmitted(true);
+         setTimeout(() => {
+            onHide();
+            setTimeout(() => setIsSubmitted(false), DELAY * 2);
+         }, DELAY);
       });
    }
 
