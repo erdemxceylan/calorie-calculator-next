@@ -1,46 +1,46 @@
 .form {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 13rem;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 13rem;
 }
 
 .dropdown {
-  width: 100%;
-  margin: 0.5rem;
+	width: 100%;
+	margin: 0.5rem;
 }
 
 .span {
-  width: 100%;
-  margin: 0.5rem !important;
+	width: 100%;
+	margin: 0.5rem !important;
 }
 
 .span > input {
-  width: 100%;
+	width: 100%;
 }
 
 .button {
-  width: 100%;
-  margin: 0.5rem !important;
+	width: 100%;
+	margin: 0.5rem !important;
 }
 
 @media (min-width: 51rem) {
-  .form {
-    flex-flow: row;
-    justify-content: space-between;
-    height: auto;
-  }
+	.form {
+		flex-flow: row;
+		justify-content: space-between;
+		height: auto;
+	}
 
-  .dropdown {
-    width: 55%;
-  }
+	.dropdown {
+		width: 55%;
+	}
 
-  .span {
-    width: 20%;
-  }
+	.span {
+		width: 20%;
+	}
 
-  .button {
-    width: 20%;
-  }
+	.button {
+		width: 20%;
+	}
 }

@@ -1,33 +1,33 @@
 .nav-mobile,
 .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-width: 16rem;
-  box-sizing: border-box;
-  z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-width: 16rem;
+	box-sizing: border-box;
+	z-index: 1000;
 }
 
 .nav-mobile > ul > li:nth-child(3),
 .nav > ul > li:nth-child(3) {
-  margin-left: auto;
+	margin-left: auto;
 }
 
 .nav-mobile a > span {
-  margin: 0 !important;
+	margin: 0 !important;
 }
 
 .nav {
-  display: none;
+	display: none;
 }
 
 @media (min-width: 36rem) {
-  .nav-mobile {
-    display: none;
-  }
+	.nav-mobile {
+		display: none;
+	}
 
-  .nav {
-    display: block;
-  }
+	.nav {
+		display: block;
+	}
 }

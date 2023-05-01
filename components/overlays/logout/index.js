@@ -1,23 +1,23 @@
-import { useContext } from 'react';
-import AuthContext from '../../../global/context/auth';
-import Confirmation from '../../../ui/overlays/confirmation';
+import AuthContext from '../../../global/context/auth'
+import Confirmation from '../../../ui/overlays/confirmation'
+import { useContext } from 'react'
 
 export default function Logout(props) {
-   const auth = useContext(AuthContext);
+	const auth = useContext(AuthContext)
 
-   function logoutHandler() {
-      auth.logout();
-      props.onHide();
-   }
+	function logoutHandler() {
+		auth.logout()
+		props.onHide()
+	}
 
-   return (
-      <Confirmation
-         header='Are you sure?'
-         visible={props.visible}
-         onHide={props.onHide}
-         confirmLabel='Logout'
-         onCancelClick={props.onHide}
-         onConfirmClick={logoutHandler}
-      />
-   );
+	return (
+		<Confirmation
+			header='Are you sure?'
+			visible={props.visible}
+			onHide={props.onHide}
+			confirmLabel='Logout'
+			onCancelClick={props.onHide}
+			onConfirmClick={logoutHandler}
+		/>
+	)
 }

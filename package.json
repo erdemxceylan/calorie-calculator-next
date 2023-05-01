@@ -1,30 +1,47 @@
 {
-  "name": "calorie-calculator",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.8.3",
-    "axios": "^0.27.2",
-    "classnames": "^2.3.1",
-    "formik": "^2.2.9",
-    "next": "12.2.2",
-    "next-i18next": "^11.3.0",
-    "primeicons": "^5.0.0",
-    "primereact": "^8.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-redux": "^8.0.2",
-    "redux": "^4.2.0",
-    "yup": "^0.32.11"
-  },
-  "devDependencies": {
-    "eslint": "8.19.0",
-    "eslint-config-next": "12.2.2"
-  }
+	"name": "calorie-calculator",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
+	},
+	"dependencies": {
+		"@reduxjs/toolkit": "^1.8.3",
+		"axios": "^0.27.2",
+		"classnames": "^2.3.1",
+		"formik": "^2.2.9",
+		"next": "12.2.2",
+		"next-i18next": "^11.3.0",
+		"primeicons": "^5.0.0",
+		"primereact": "^8.2.0",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-redux": "^8.0.2",
+		"redux": "^4.2.0",
+		"yup": "^0.32.11"
+	},
+	"devDependencies": {
+		"eslint": "8.19.0",
+		"eslint-config-next": "12.2.2",
+		"prettier": "^2.8.8"
+	},
+	"description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+	"main": "next.config.js",
+	"directories": {
+		"test": "test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/erdemxceylan/calorie-calculator-next.git"
+	},
+	"author": "erdem",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/erdemxceylan/calorie-calculator-next/issues"
+	},
+	"homepage": "https://github.com/erdemxceylan/calorie-calculator-next#readme"
 }

@@ -1,21 +1,21 @@
 .container {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.5rem;
-  min-width: 15rem;
+	display: flex;
+	justify-content: space-between;
+	margin: 0.5rem;
+	min-width: 15rem;
 }
 
 .container > button {
-  width: 45%;
-  height: 3rem;
+	width: 45%;
+	height: 3rem;
 }
 
 .container > button:first-of-type {
-  background-color: #64748b;
-  border-color: #64748b;
+	background-color: #64748b;
+	border-color: #64748b;
 }
 
 .container > button:first-of-type:hover {
-  background-color: #475569;
-  border-color: #475569;
+	background-color: #475569;
+	border-color: #475569;
 }

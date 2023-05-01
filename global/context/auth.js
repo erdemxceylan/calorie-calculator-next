@@ -1,47 +1,52 @@
-import React, { useState } from 'react';
-import { CONSTANTS } from '../constants';
+import React, { useState } from 'react'
 
-const { ADMIN } = CONSTANTS;
+import { CONSTANTS } from '../constants'
+
+const { ADMIN } = CONSTANTS
 
 const AuthContext = React.createContext({
-   token: '',
-   isLoggingIn: true,
-   isLoggedIn: false,
-   isAdminLoggedIn: false,
-   login: function (token, email) { },
-   logout: function () { },
-   switchToSignup: function () { }
-});
+	token: '',
+	isLoggingIn: true,
+	isLoggedIn: false,
+	isAdminLoggedIn: false,
+	login: function (token, email) {},
+	logout: function () {},
+	switchToSignup: function () {},
+})
 
 export function AuthContextProvider(props) {
-   const [token, setToken] = useState(null);
-   const [isLoggingIn, setIsLoggingIn] = useState(true);
-   const [isAdmin, setIsAdmin] = useState(false);
+	const [token, setToken] = useState(null)
+	const [isLoggingIn, setIsLoggingIn] = useState(true)
+	const [isAdmin, setIsAdmin] = useState(false)
 
-   const isLoggedIn = !!token;
-   const isAdminLoggedIn = isLoggedIn && isAdmin;
+	const isLoggedIn = !!token
+	const isAdminLoggedIn = isLoggedIn && isAdmin
 
-   function login(token, email) {
-      setToken(token);
-      setIsAdmin(email === ADMIN);
-   }
+	function login(token, email) {
+		setToken(token)
+		setIsAdmin(email === ADMIN)
+	}
 
-   function logout() {
-      setToken(null);
-      setIsAdmin(false);
-   }
+	function logout() {
+		setToken(null)
+		setIsAdmin(false)
+	}
 
-   function switchToSignup() {
-      setIsLoggingIn(!isLoggingIn);
-   }
+	function switchToSignup() {
+		setIsLoggingIn(!isLoggingIn)
+	}
 
-   const value = { token, isLoggingIn, isLoggedIn, isAdminLoggedIn, login, logout, switchToSignup };
+	const value = {
+		token,
+		isLoggingIn,
+		isLoggedIn,
+		isAdminLoggedIn,
+		login,
+		logout,
+		switchToSignup,
+	}
 
-   return (
-      <AuthContext.Provider value={value}>
-         {props.children}
-      </AuthContext.Provider>
-   );
+	return <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>
 }
 
-export default AuthContext;
+export default AuthContext

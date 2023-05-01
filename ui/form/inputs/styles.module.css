@@ -1,10 +1,10 @@
 .invalid,
 .invalid:hover,
 .error-message {
-  color: #ff0c00 !important;
-  border-color: #ff0c00 !important;
+	color: #ff0c00 !important;
+	border-color: #ff0c00 !important;
 }
 
 .error-message {
-  font-size: small;
+	font-size: small;
 }

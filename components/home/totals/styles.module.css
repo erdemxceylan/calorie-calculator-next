@@ -1,62 +1,62 @@
 .container {
-  display: flex;
-  justify-content: space-around;
-  padding: 0.25rem;
+	display: flex;
+	justify-content: space-around;
+	padding: 0.25rem;
 }
 
 .container label,
 .container p {
-  margin: 0;
-  padding: 0.125rem;
-  font-size: small;
+	margin: 0;
+	padding: 0.125rem;
+	font-size: small;
 }
 
 @media (min-width: 20rem) {
-  .container label,
-  .container p {
-    font-size: 1rem;
-  }
+	.container label,
+	.container p {
+		font-size: 1rem;
+	}
 }
 
 .container label {
-  color: #3b82f6;
+	color: #3b82f6;
 }
 
 .container p {
-  color: grey;
+	color: grey;
 }
 
 .group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .success {
-  color: #22c55e !important;
+	color: #22c55e !important;
 }
 
 .excess {
-  color: #ff2020 !important;
+	color: #ff2020 !important;
 }
 
 .lateral {
-  display: none;
+	display: none;
 }
 
 @media (min-width: 36rem) {
-  .group {
-    flex-direction: row;
-  }
+	.group {
+		flex-direction: row;
+	}
 }
 
 @media (min-width: 64rem) {
-  .group {
-    display: none;
-  }
+	.group {
+		display: none;
+	}
 
-  .lateral {
-    display: flex;
-  }
+	.lateral {
+		display: flex;
+	}
 }

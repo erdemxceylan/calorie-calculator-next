@@ -1,86 +1,86 @@
 .container {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  height: 12rem;
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	height: 12rem;
 }
 
 .group {
-  display: flex;
+	display: flex;
 }
 
 .group > label,
 .group > p {
-  margin: 0.2rem;
-  text-align: center;
-  font-size: medium;
-  font-weight: 700;
+	margin: 0.2rem;
+	text-align: center;
+	font-size: medium;
+	font-weight: 700;
 }
 
 .group > label {
-  color: #3b82f6;
+	color: #3b82f6;
 }
 
 .group > p {
-  color: #6c757d;
+	color: #6c757d;
 }
 
 .button {
-  align-self: center;
-  width: 90% !important;
-  height: 2.25rem;
+	align-self: center;
+	width: 90% !important;
+	height: 2.25rem;
 }
 
 .toggle {
-  align-self: center;
-  width: 90%;
-  border: 0;
-  color: #6c757d;
-  text-align: center;
-  cursor: pointer;
+	align-self: center;
+	width: 90%;
+	border: 0;
+	color: #6c757d;
+	text-align: center;
+	cursor: pointer;
 }
 
 .toggle:hover {
-  color: #3b82f6;
+	color: #3b82f6;
 }
 
 .visible {
-  display: flex;
+	display: flex;
 }
 
 @media (min-width: 20rem) {
-  .group > label,
-  .group > p {
-    font-size: large;
-  }
+	.group > label,
+	.group > p {
+		font-size: large;
+	}
 }
 
 @media (min-width: 51rem) {
-  .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: auto;
-    margin: 0.5rem;
-  }
+	.container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		height: auto;
+		margin: 0.5rem;
+	}
 
-  .group {
-    flex-direction: column;
-  }
+	.group {
+		flex-direction: column;
+	}
 
-  .button {
-    width: 3rem !important;
-    height: 3rem;
-  }
+	.button {
+		width: 3rem !important;
+		height: 3rem;
+	}
 
-  .toggle {
-    display: none;
-  }
+	.toggle {
+		display: none;
+	}
 }
 
 @media (min-width: 64rem) {
-  .group {
-    flex-direction: row;
-  }
+	.group {
+		flex-direction: row;
+	}
 }
